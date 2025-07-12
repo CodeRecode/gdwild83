@@ -1,12 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8b6qnp400wcf"]
+[gd_scene load_steps=6 format=3 uid="uid://c8b6qnp400wcf"]
 
 [ext_resource type="PackedScene" uid="uid://ns1cyrf2ln52" path="res://player.tscn" id="1_u52ul"]
-[ext_resource type="PackedScene" uid="uid://vstiefs8fhix" path="res://rock.tscn" id="2_vonw3"]
+[ext_resource type="PackedScene" uid="uid://vstiefs8fhix" path="res://geo/small_rock.tscn" id="2_vonw3"]
+[ext_resource type="Shader" uid="uid://caolabr3n865r" path="res://shaders/paper.gdshader" id="3_0b4ue"]
+[ext_resource type="Texture2D" uid="uid://bqkpgxaxh24xb" path="res://shaders/paper_texture.tres" id="4_0b4ue"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oi3di"]
+shader = ExtResource("3_0b4ue")
 
 [node name="Level" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_u52ul")]
 position = Vector2(205, 98)
 
-[node name="Rock" parent="." instance=ExtResource("2_vonw3")]
+[node name="SmallRock" parent="." instance=ExtResource("2_vonw3")]
 position = Vector2(146, 71)
+scale = Vector2(0.5, 0.486033)
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -100
+material = SubResource("ShaderMaterial_oi3di")
+custom_minimum_size = Vector2(1000, 1000)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -208.0
+offset_right = 1324.0
+offset_bottom = 822.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("4_0b4ue")

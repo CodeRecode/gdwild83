@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs2opeeiq3bcx"]
+
+[ext_resource type="Texture2D" uid="uid://c0ex78j1xt07k" path="res://sprites/rocks.png" id="1_y26ej"]
+
+[node name="SmallRock" type="Sprite2D"]
+texture = ExtResource("1_y26ej")
+region_enabled = true
+region_rect = Rect2(477.051, 189.154, 144.205, 97.4359)

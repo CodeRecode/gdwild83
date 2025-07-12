@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://vstiefs8fhix"]
+
+[ext_resource type="PackedScene" uid="uid://cs2opeeiq3bcx" path="res://sprites/small_rock.tscn" id="1_o0qsl"]
+
+[node name="SmallRock" type="StaticBody2D"]
+
+[node name="SmallRock" parent="." instance=ExtResource("1_o0qsl")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-73, 12, -44, -37, 38, -27, 68, 14, 68, 21, 31, 38, -57, 32)
