@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ns1cyrf2ln52"]
+[gd_scene load_steps=5 format=3 uid="uid://ns1cyrf2ln52"]
 
 [ext_resource type="Script" uid="uid://gq6xa2l3g66g" path="res://player_movement.gd" id="1_4flbx"]
 
@@ -6,8 +6,15 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5xgho"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
+radius = 16.0
+
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 6
 script = ExtResource("1_4flbx")
+current_attack_evolution = 4
+current_attack_modifier = 4
+current_movement_evolution = 7500
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-4.76837e-07, 4.76837e-07)
@@ -16,3 +23,15 @@ texture = SubResource("PlaceholderTexture2D_4flbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5xgho")
+
+[node name="AttackRangeArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRangeArea2D"]
+shape = SubResource("CircleShape2D_4flbx")
+debug_color = Color(0.962607, 0, 0.503595, 0.42)
+
+[connection signal="body_entered" from="AttackRangeArea2D" to="." method="_on_attack_range_area_2d_body_entered"]
+[connection signal="body_exited" from="AttackRangeArea2D" to="." method="_on_attack_range_area_2d_body_exited"]

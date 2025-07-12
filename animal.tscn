@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfwe4cbgtoykq"]
+
+[ext_resource type="Script" uid="uid://bhulcaxqk44s1" path="res://animal.gd" id="1_23vr7"]
+[ext_resource type="Texture2D" uid="uid://dawjarjkcwxcu" path="res://icon.svg" id="1_stvu6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0b4ue"]
+
+[node name="Animal" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_23vr7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4.76837e-07, 5.36442e-07)
+scale = Vector2(0.140625, 0.140625)
+texture = ExtResource("1_stvu6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0b4ue")
+debug_color = Color(0.275355, 0.62802, 0.208024, 0.42)
