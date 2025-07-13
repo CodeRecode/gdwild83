@@ -3,13 +3,26 @@ extends CharacterBody2D
 
 const DEFAULT_SPEED: int = 5000
 const DEFAULT_ATTACK_RADIUS: int = 16
+const ARMOR_DEFAULT: float = 1.0
+const ARMOR_DAMAGE_REDUCTION: float = 0.7
 
 
 var current_speed: int = 5000
-@onready var attack_range_CS2D = $AttackRangeArea2D/CollisionShape2D
+@onready var current_attack_range_CS2D = $AttackRangeArea2D/CollisionShape2D
 
 
 @export var health: int = 10
+@export var regen_amount: int = 1
+@export var regen_timer: float = 2.0
+var can_regen: bool = false
+var armor_multiplier: float = 1.0
+
+
+@export var stored_dna: int = 0
+@export var evolution_threshold_1: int = 10
+@export var evolution_threshold_2: int = 50
+var cleared_evolution_threshold_1: bool = false
+var cleared_evolution_threshold_2: bool = false
 
 
 @export var current_damage: int = 1
@@ -21,6 +34,7 @@ var animals_in_range: Array[Animal] = []
 @export var current_attack_evolution: Attack_Evolution = Attack_Evolution.NONE
 @export var current_attack_modifier: Attack_Modifier = Attack_Modifier.NONE
 @export var current_movement_evolution: Movement_Evolution = Movement_Evolution.NONE
+@export var current_health_evolution: Health_Evolution = Health_Evolution.NONE
 
 
 enum Attack_Evolution {
@@ -46,9 +60,23 @@ enum Movement_Evolution {
 }
 
 
+enum Health_Evolution{
+	NONE = 1,
+	ARMOR = 2,
+	REGEN = 3
+}
+
+
 func _ready() -> void:
 	# top down motion mode
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
+
+	current_speed = DEFAULT_SPEED
+	current_attack_range_CS2D.shape.radius = DEFAULT_ATTACK_RADIUS
+	current_attack_evolution = Attack_Evolution.NONE
+	current_attack_modifier = Attack_Modifier.NONE
+	current_movement_evolution = Movement_Evolution.NONE
+	current_health_evolution = Health_Evolution.NONE
 
 
 func _physics_process(delta: float) -> void:
@@ -57,30 +85,30 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	_deal_damage()
-	_update_movement(Movement_Evolution.TENTACLES_BASIC)
-	_update_attack(Attack_Evolution.CLAWS)
-	_update_modifier(Attack_Modifier.VENOM)
+	_evolve()
+	_regen_health()
+
+#region Evolution
 
 
 func _update_attack(new_attack_evolution: Attack_Evolution) -> void:
 	match new_attack_evolution:
 		Attack_Evolution.NONE:
 			current_attack_evolution = Attack_Evolution.NONE
-			attack_range_CS2D.shape.radius = DEFAULT_ATTACK_RADIUS
-			current_attack_modifier = Attack_Modifier.NONE
+			current_attack_range_CS2D.shape.radius = DEFAULT_ATTACK_RADIUS
 		Attack_Evolution.TEETH:
 			current_attack_evolution = Attack_Evolution.TEETH
-			attack_range_CS2D.shape.radius = DEFAULT_ATTACK_RADIUS
+			current_attack_range_CS2D.shape.radius = DEFAULT_ATTACK_RADIUS
 			current_damage = 2
 			damage_delay = 1
 		Attack_Evolution.CLAWS:
 			current_attack_evolution = Attack_Evolution.CLAWS
-			attack_range_CS2D.shape.radius = DEFAULT_ATTACK_RADIUS + 4
+			current_attack_range_CS2D.shape.radius = DEFAULT_ATTACK_RADIUS + 4
 			current_damage = 3
 			damage_delay = 0.5
 		Attack_Evolution.SPRAY:
 			current_attack_evolution =Attack_Evolution.SPRAY
-			attack_range_CS2D.shape.radius = DEFAULT_ATTACK_RADIUS + 16
+			current_attack_range_CS2D.shape.radius = DEFAULT_ATTACK_RADIUS + 16
 			current_damage = 1
 			damage_delay = 2
 
@@ -107,8 +135,32 @@ func _update_movement(new_movemoent_evolution: Movement_Evolution) -> void:
 			current_speed = Movement_Evolution.TENTACLES_BASIC
 
 
+func _update_health(new_health_evolution: Health_Evolution) -> void:
+	match new_health_evolution:
+		Health_Evolution.NONE:
+			current_health_evolution = Health_Evolution.NONE
+			armor_multiplier = ARMOR_DEFAULT
+		Health_Evolution.ARMOR:
+			current_health_evolution = Health_Evolution.ARMOR
+			armor_multiplier *= ARMOR_DAMAGE_REDUCTION
+		Health_Evolution.REGEN:
+			current_health_evolution = Health_Evolution.REGEN
+			can_regen = true
 
-#region Attacking
+
+func _evolve() -> void:
+	if stored_dna >= evolution_threshold_1 and not cleared_evolution_threshold_1:
+		_update_movement(Movement_Evolution.TENTACLES_BASIC)
+		_update_attack(Attack_Evolution.CLAWS)
+		_update_modifier(Attack_Modifier.VENOM)
+		_update_health(Health_Evolution.REGEN)
+		cleared_evolution_threshold_1 = true
+	elif stored_dna >= evolution_threshold_2 and not cleared_evolution_threshold_2:
+		cleared_evolution_threshold_2 = true
+#endregion
+
+
+#region Combat
 func _on_attack_range_area_2d_body_entered(body: CharacterBody2D) -> void:
 	if body is Animal:
 		animals_in_range.append(body)
@@ -128,14 +180,36 @@ func _deal_damage() -> void:
 		can_deal_damage = false
 
 		for animal in animals_in_range:
+			var dna_if_animal_dies: int = animal.dna_awarded
+
 			animal.take_damage(current_damage, current_attack_modifier)
-			_restore_health(animal)
+
+			if animal.current_status == animal.STATUS.DEAD:
+				_consume_resources(animal)
 
 		await get_tree().create_timer(damage_delay).timeout
 		can_deal_damage = true
 
 
-func _restore_health(animal: Animal) -> void:
+func _consume_resources(animal: Animal) -> void:
 	health += animal.restore_health_value
+	stored_dna += animal.dna_awarded
+
+
+func take_damage(damage_amount: int) -> void:
+	health -= damage_amount * armor_multiplier
+
+	if health <= 0:
+		print("Player died")
+
+
+func _regen_health() -> void:
+	if can_regen:
+		can_regen = false
+
+		health += regen_amount
+		await get_tree().create_timer(regen_timer).timeout
+
+		can_regen = true
 
 #endregion
