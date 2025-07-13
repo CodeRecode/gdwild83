@@ -11,7 +11,7 @@ var current_speed: int = 5000
 @onready var current_attack_range_CS2D = $AttackRangeArea2D/CollisionShape2D
 
 
-@export var health: int = 10
+@export var health: float = 10.0
 @export var regen_amount: int = 1
 @export var regen_timer: float = 2.0
 var can_regen: bool = false
@@ -180,8 +180,6 @@ func _deal_damage() -> void:
 		can_deal_damage = false
 
 		for animal in animals_in_range:
-			var dna_if_animal_dies: int = animal.dna_awarded
-
 			animal.take_damage(current_damage, current_attack_modifier)
 
 			if animal.current_status == animal.STATUS.DEAD:
@@ -196,7 +194,7 @@ func _consume_resources(animal: Animal) -> void:
 	stored_dna += animal.dna_awarded
 
 
-func take_damage(damage_amount: int) -> void:
+func take_damage(damage_amount: float) -> void:
 	health -= damage_amount * armor_multiplier
 
 	if health <= 0:
