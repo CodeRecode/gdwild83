@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cs2opeeiq3bcx"]
+[gd_scene load_steps=4 format=3 uid="uid://cs2opeeiq3bcx"]
 
+[ext_resource type="Shader" uid="uid://3h883wfcxp6t" path="res://geo/blend.gdshader" id="1_b24ll"]
 [ext_resource type="Texture2D" uid="uid://c0ex78j1xt07k" path="res://sprites/rocks.png" id="1_y26ej"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q8e24"]
+shader = ExtResource("1_b24ll")
+
 [node name="SmallRock" type="Sprite2D"]
+material = SubResource("ShaderMaterial_q8e24")
 texture = ExtResource("1_y26ej")
 region_enabled = true
 region_rect = Rect2(477.051, 189.154, 144.205, 97.4359)
