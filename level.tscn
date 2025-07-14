@@ -11,6 +11,40 @@ shader = ExtResource("3_0b4ue")
 
 [node name="Level" type="Node2D"]
 
+[node name="StatsPanel" type="PanelContainer" parent="."]
+z_index = 50
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 109.0
+offset_bottom = 75.0
+
+[node name="MarginContainer" type="MarginContainer" parent="StatsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="StatsPanel/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="HealthText" type="Label" parent="StatsPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Health"
+
+[node name="HealthValue" type="Label" parent="StatsPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "100"
+
+[node name="DNAText" type="Label" parent="StatsPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "DNA"
+
+[node name="DNAValue" type="Label" parent="StatsPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "0"
+
 [node name="Player" parent="." instance=ExtResource("1_u52ul")]
 position = Vector2(205, 98)
 

@@ -10,7 +10,8 @@ const ARMOR_DAMAGE_REDUCTION: float = 0.7
 
 var current_speed: int = 5000
 @onready var current_attack_range_CS2D = $AttackRangeArea2D/CollisionShape2D
-
+@onready var health_value: Label = $"../StatsPanel/MarginContainer/GridContainer/HealthValue"
+@onready var dna_value: Label = $"../StatsPanel/MarginContainer/GridContainer/DNAValue"
 
 @export var health: float = 10.0
 @export var regen_amount: int = 1
@@ -78,6 +79,10 @@ func _ready() -> void:
 	current_attack_modifier = Attack_Modifier.NONE
 	current_movement_evolution = Movement_Evolution.NONE
 	current_health_evolution = Health_Evolution.NONE
+	
+	# update ui values
+	_modify_health(0)
+	_modify_dna(0)
 
 
 func _physics_process(delta: float) -> void:
@@ -191,24 +196,32 @@ func _deal_damage() -> void:
 
 
 func _consume_resources(animal: Animal) -> void:
-	health += animal.restore_health_value
-	stored_dna += animal.dna_awarded
+	_modify_health(animal.restore_health_value)
+	_modify_dna(animal.dna_awarded)
 
 
 func take_damage(damage_amount: float) -> void:
-	health -= damage_amount * armor_multiplier
-
-	if health <= 0:
-		print("Player died")
-
+	_modify_health(-1 * damage_amount * armor_multiplier)
 
 func _regen_health() -> void:
 	if can_regen:
 		can_regen = false
 
-		health += regen_amount
+		_modify_health(regen_amount)
 		await get_tree().create_timer(regen_timer).timeout
 
 		can_regen = true
+
+func _modify_health(delta: float) -> void:
+	health += delta
+	
+	health_value.text = str(int(floor(health)))
+	
+	if health <= 0:
+		print("Player died")
+
+func _modify_dna(delta: float) -> void:
+	stored_dna += delta
+	dna_value.text = str(stored_dna)
 
 #endregion
