@@ -14,6 +14,10 @@ var collided: bool = false
 var collision_normal: Vector2 = Vector2.ZERO
 var previously_collided: bool = false
 
+@onready var sight_detector: Area2D = $SightDetection
+var player_sighted: bool = false
+var player: Player = null
+
 
 var current_status: STATUS = STATUS.HEALTHY
 
@@ -35,22 +39,22 @@ var can_transition: bool = true
 
 enum STATE {
 	IDLE,
-	WANDER
+	WANDER,
+	FLEE,
+	LOOK,
+	CHASE,
+	ATTACK
 }
 
 
 func _physics_process(delta: float) -> void:
 	run_state_machine(delta)
+	print(current_state)
 	collided = move_and_slide()
 
-	if collided and velocity != Vector2.ZERO:
-		velocity = Vector2.ZERO
-		current_state = STATE.IDLE
-		_idle_state()
+	_idle_upon_obstacle_collision()
+	_flee_upon_player_sighted()
 
-		previously_collided = true
-		collision_normal = get_last_slide_collision().get_normal()
-		collided = false
 
 func run_state_machine(delta: float) -> void:
 	if not can_transition: return
@@ -60,6 +64,27 @@ func run_state_machine(delta: float) -> void:
 			_idle_state()
 		STATE.WANDER:
 			_wander_state(delta)
+		STATE.FLEE:
+			_flee_state(delta)
+		STATE.LOOK:
+			_look_state(delta)
+
+
+func _idle_upon_obstacle_collision() -> void:
+	if collided and velocity != Vector2.ZERO:
+		velocity = Vector2.ZERO
+		current_state = STATE.IDLE
+		_idle_state()
+
+		previously_collided = true
+		collision_normal = get_last_slide_collision().get_normal()
+		collided = false
+
+
+func _flee_upon_player_sighted() -> void:
+	if player_sighted and current_state != STATE.FLEE:
+		current_state = STATE.FLEE
+		_flee_state(get_physics_process_delta_time())
 
 
 func _idle_state() -> void:
@@ -69,7 +94,11 @@ func _idle_state() -> void:
 	state_time = randf_range(min_time,max_time)
 	await get_tree().create_timer(state_time).timeout
 
-	current_state = STATE.WANDER
+	if player_sighted:
+		current_state = STATE.FLEE
+	else:
+		current_state = STATE.WANDER
+
 	can_transition = true
 
 
@@ -78,23 +107,79 @@ func _wander_state(delta: float) -> void:
 
 	if previously_collided:
 		var angle_offset: float = randf_range(deg_to_rad(-30),deg_to_rad(30))
-		var move_away_vector: Vector2 =  collision_normal.rotated(angle_offset)
-		velocity = move_away_vector * speed * delta
+		var move_vector: Vector2 =  collision_normal.rotated(angle_offset)
+		velocity = move_vector * speed * delta
+
+		sight_detector.rotation = move_vector.angle()
 
 		previously_collided = false
 		collision_normal = Vector2.ZERO
 	else:
-		velocity = Vector2.UP.rotated(randf_range(0,TAU)) * speed * delta
+		var look_vector: Vector2 = Vector2.RIGHT.rotated(randf_range(0,TAU))
+		velocity = look_vector * speed * delta
+
+		sight_detector.rotation = look_vector.angle()
 
 	state_time = randf_range(min_time,max_time)
 	await get_tree().create_timer(state_time).timeout
 
-	if current_state != STATE.IDLE:
+	if player_sighted:
+		current_state = STATE.FLEE
+		can_transition = true
+	elif current_state != STATE.IDLE:
 		velocity = Vector2.ZERO
 		current_state = STATE.IDLE
 		can_transition = true
 	else:
 		velocity = Vector2.ZERO
+
+
+func _flee_state(delta: float) -> void:
+	can_transition = false
+
+	var flee_vector: Vector2 = (position - player.position).normalized()
+	velocity = flee_vector * speed * delta
+
+	sight_detector.rotation = flee_vector.angle()
+
+	state_time = randf_range(min_time,max_time)
+	await get_tree().create_timer(state_time).timeout
+
+	player_sighted = false
+	current_state = STATE.LOOK
+
+	can_transition = true
+
+
+func _look_state(delta: float) -> void:
+	if not can_transition: return
+	can_transition = false
+
+	var facing_direction = velocity.normalized()
+	sight_detector.rotation = get_angle_to(player.position)
+	velocity = Vector2.ZERO
+
+	var random_look_time: float = randf_range(0.3,1.0)
+	await get_tree().create_timer(random_look_time).timeout
+
+	if current_state == STATE.FLEE: return
+
+	sight_detector.rotation = facing_direction.angle()
+
+	random_look_time = randf_range(0.3,1.0)
+	await get_tree().create_timer(random_look_time).timeout
+
+	if current_state == STATE.FLEE: return
+
+	sight_detector.rotation = Vector2(-facing_direction.x,facing_direction.y).angle()
+
+	if player_sighted and not current_state == STATE.FLEE:
+		current_state = STATE.FLEE
+		can_transition = true
+	elif current_state != STATE.IDLE and not current_state == STATE.FLEE:
+		velocity = Vector2.ZERO
+		current_state = STATE.IDLE
+		can_transition = true
 
 
 func take_damage(damage_amount: int, attack_modifier) -> void:
@@ -115,3 +200,13 @@ func take_damage(damage_amount: int, attack_modifier) -> void:
 
 	if current_status == STATUS.DEAD:
 		queue_free.call_deferred()
+
+
+func _on_sight_detection_body_entered(_player: Player) -> void:
+	player_sighted = true
+	if player == null:
+		player = _player
+
+
+#func _on_sight_detection_body_exited(player: Player) -> void:
+	#player_sighted = false
