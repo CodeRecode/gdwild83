@@ -10,7 +10,8 @@ signal health_modified(new_value: float)
 signal dna_modified(new_value: int)
 
 var current_speed: int = 5000
-@onready var current_attack_range_CS2D = $AttackRangeArea2D/CollisionShape2D
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var current_attack_range_CS2D = $AttackRangeArea2D/AttackRange
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var health: float = 10.0
@@ -74,7 +75,7 @@ func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 
 	current_speed = DEFAULT_SPEED
-	current_attack_range_CS2D.shape.radius = DEFAULT_ATTACK_RADIUS
+	_update_attack_radius(DEFAULT_ATTACK_RADIUS)
 	current_attack_evolution = Attack_Evolution.NONE
 	current_attack_modifier = Attack_Modifier.NONE
 	current_movement_evolution = Movement_Evolution.NONE
@@ -98,25 +99,27 @@ func _physics_process(delta: float) -> void:
 
 #region Evolution
 
+func _update_attack_radius(new_radius: float) -> void:
+	current_attack_range_CS2D.shape.radius =  collision_shape_2d.shape.radius + new_radius
 
 func _update_attack(new_attack_evolution: Attack_Evolution) -> void:
 	match new_attack_evolution:
 		Attack_Evolution.NONE:
 			current_attack_evolution = Attack_Evolution.NONE
-			current_attack_range_CS2D.shape.radius = DEFAULT_ATTACK_RADIUS
+			_update_attack_radius(DEFAULT_ATTACK_RADIUS)
 		Attack_Evolution.TEETH:
 			current_attack_evolution = Attack_Evolution.TEETH
-			current_attack_range_CS2D.shape.radius = DEFAULT_ATTACK_RADIUS
+			_update_attack_radius(DEFAULT_ATTACK_RADIUS)
 			current_damage = 2
 			damage_delay = 1
 		Attack_Evolution.CLAWS:
 			current_attack_evolution = Attack_Evolution.CLAWS
-			current_attack_range_CS2D.shape.radius = DEFAULT_ATTACK_RADIUS + 4
+			_update_attack_radius(DEFAULT_ATTACK_RADIUS + 4)
 			current_damage = 3
 			damage_delay = 0.5
 		Attack_Evolution.SPRAY:
 			current_attack_evolution =Attack_Evolution.SPRAY
-			current_attack_range_CS2D.shape.radius = DEFAULT_ATTACK_RADIUS + 16
+			_update_attack_radius(DEFAULT_ATTACK_RADIUS + 16)
 			current_damage = 1
 			damage_delay = 2
 

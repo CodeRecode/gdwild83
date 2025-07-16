@@ -26,8 +26,6 @@ animations = [{
 radius = 30.0
 
 [node name="Animal" type="CharacterBody2D"]
-collision_layer = 4
-collision_mask = 7
 script = ExtResource("1_23vr7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -41,6 +39,7 @@ shape = SubResource("CircleShape2D_0b4ue")
 debug_color = Color(0.275355, 0.62802, 0.208024, 0.42)
 
 [node name="SightDetection" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SightDetection"]
 polygon = PackedVector2Array(80, 60, 80, -60, 0, 0)

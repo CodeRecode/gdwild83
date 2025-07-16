@@ -29,7 +29,6 @@ radius = 32.0624
 radius = 45.0999
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 6
 script = ExtResource("1_4flbx")
 current_attack_evolution = 4
 current_attack_modifier = 4
@@ -39,17 +38,16 @@ current_movement_evolution = 7500
 material = SubResource("ShaderMaterial_sweqy")
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_4flbx")
-frame_progress = 0.995833
+frame_progress = 0.805729
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5xgho")
 
 [node name="AttackRangeArea2D" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 4
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRangeArea2D"]
+[node name="AttackRange" type="CollisionShape2D" parent="AttackRangeArea2D"]
 shape = SubResource("CircleShape2D_4flbx")
 debug_color = Color(0.962607, 0, 0.503595, 0.42)
 

@@ -206,10 +206,12 @@ func take_damage(damage_amount: int, attack_modifier) -> void:
 		queue_free.call_deferred()
 
 
-func _on_sight_detection_body_entered(_player: Player) -> void:
+func _on_sight_detection_body_entered(node: Node) -> void:
+	if node is not Player:
+		return
 	player_sighted = true
 	if player == null:
-		player = _player
+		player = node
 
 
 #func _on_sight_detection_body_exited(player: Player) -> void:

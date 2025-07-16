@@ -51,7 +51,7 @@ layout_mode = 2
 text = "0"
 
 [node name="Player" parent="." instance=ExtResource("1_u52ul")]
-position = Vector2(205, 98)
+position = Vector2(204, 98)
 
 [node name="SmallRock" parent="." instance=ExtResource("2_vonw3")]
 position = Vector2(146, 71)
@@ -76,7 +76,7 @@ texture = ExtResource("3_0b4ue")
 stretch_mode = 1
 
 [node name="Animal" parent="." instance=ExtResource("3_oi3di")]
-position = Vector2(152, 136)
+position = Vector2(144, 172)
 
 [connection signal="dna_modified" from="Player" to="UI/StatsPanel" method="_on_player_dna_modified"]
 [connection signal="health_modified" from="Player" to="UI/StatsPanel" method="_on_player_health_modified"]
