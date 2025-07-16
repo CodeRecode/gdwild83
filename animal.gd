@@ -5,6 +5,8 @@ class_name Animal
 @export var health: int = 10
 @export var restore_health_value: int = 1
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
 
 @export var dna_awarded: int = 15
 
@@ -46,6 +48,8 @@ enum STATE {
 	ATTACK
 }
 
+func _ready() -> void:
+	animated_sprite_2d.play()
 
 func _physics_process(delta: float) -> void:
 	run_state_machine(delta)

@@ -12,6 +12,7 @@ var current_speed: int = 5000
 @onready var current_attack_range_CS2D = $AttackRangeArea2D/CollisionShape2D
 @onready var health_value: Label = $"../StatsPanel/MarginContainer/GridContainer/HealthValue"
 @onready var dna_value: Label = $"../StatsPanel/MarginContainer/GridContainer/DNAValue"
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var health: float = 10.0
 @export var regen_amount: int = 1
@@ -79,6 +80,8 @@ func _ready() -> void:
 	current_attack_modifier = Attack_Modifier.NONE
 	current_movement_evolution = Movement_Evolution.NONE
 	current_health_evolution = Health_Evolution.NONE
+	
+	animated_sprite_2d.play()
 	
 	# update ui values
 	_modify_health(0)
