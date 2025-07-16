@@ -39,7 +39,7 @@ current_movement_evolution = 7500
 material = SubResource("ShaderMaterial_sweqy")
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_4flbx")
-frame_progress = 0.566068
+frame_progress = 0.995833
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5xgho")

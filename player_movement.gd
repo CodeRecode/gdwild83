@@ -1,17 +1,16 @@
 extends CharacterBody2D
 class_name Player
 
-
 const DEFAULT_SPEED: int = 5000
 const DEFAULT_ATTACK_RADIUS: int = 16
 const ARMOR_DEFAULT: float = 1.0
 const ARMOR_DAMAGE_REDUCTION: float = 0.7
 
+signal health_modified(new_value: float)
+signal dna_modified(new_value: int)
 
 var current_speed: int = 5000
 @onready var current_attack_range_CS2D = $AttackRangeArea2D/CollisionShape2D
-@onready var health_value: Label = $"../StatsPanel/MarginContainer/GridContainer/HealthValue"
-@onready var dna_value: Label = $"../StatsPanel/MarginContainer/GridContainer/DNAValue"
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var health: float = 10.0
@@ -218,13 +217,13 @@ func _regen_health() -> void:
 func _modify_health(delta: float) -> void:
 	health += delta
 	
-	health_value.text = str(int(floor(health)))
+	health_modified.emit(health)
 	
 	if health <= 0:
 		print("Player died")
 
-func _modify_dna(delta: float) -> void:
+func _modify_dna(delta: int) -> void:
 	stored_dna += delta
-	dna_value.text = str(stored_dna)
+	dna_modified.emit(stored_dna)
 
 #endregion
