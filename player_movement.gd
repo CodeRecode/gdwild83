@@ -8,6 +8,7 @@ const ARMOR_DAMAGE_REDUCTION: float = 0.7
 
 signal health_modified(new_value: float)
 signal dna_modified(new_value: int)
+signal evolution_triggered(name1: String, name2: String)
 
 var current_speed: int = 5000
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -22,11 +23,9 @@ var armor_multiplier: float = 1.0
 
 
 @export var stored_dna: int = 0
-@export var evolution_threshold_1: int = 10
-@export var evolution_threshold_2: int = 50
-var cleared_evolution_threshold_1: bool = false
-var cleared_evolution_threshold_2: bool = false
-
+@export var evolution_thresholds: Array[int] = [10, 50, 250, 1000]
+var evolution_level: int = 0
+var choosing_evolution: bool = false
 
 @export var current_damage: int = 1
 @export var damage_delay: float = 0.5
@@ -52,7 +51,8 @@ enum Attack_Modifier {
 	NONE = 1,
 	SLOWDOWN = 2,
 	VENOM = 3,
-	ONESHOT = 4
+	ONESHOT = 4,
+	SPEED = 5
 }
 
 
@@ -94,7 +94,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	_deal_damage()
-	_evolve()
+	_check_evolve()
 	_regen_health()
 
 #region Evolution
@@ -159,15 +159,35 @@ func _update_health(new_health_evolution: Health_Evolution) -> void:
 			can_regen = true
 
 
-func _evolve() -> void:
-	if stored_dna >= evolution_threshold_1 and not cleared_evolution_threshold_1:
-		_update_movement(Movement_Evolution.TENTACLES_BASIC)
-		_update_attack(Attack_Evolution.CLAWS)
-		_update_modifier(Attack_Modifier.VENOM)
-		_update_health(Health_Evolution.REGEN)
-		cleared_evolution_threshold_1 = true
-	elif stored_dna >= evolution_threshold_2 and not cleared_evolution_threshold_2:
-		cleared_evolution_threshold_2 = true
+func _check_evolve() -> void:
+	if choosing_evolution:
+		return
+		
+	if evolution_level < evolution_thresholds.size() and stored_dna > evolution_thresholds[evolution_level]:
+		choosing_evolution = true
+		match evolution_level:
+			0: evolution_triggered.emit("Legs", "Tentacles")
+			1: evolution_triggered.emit("Claws", "Spray")
+			2: evolution_triggered.emit("Armor", "Regen")
+			3:
+				if current_attack_evolution == Attack_Evolution.CLAWS:
+					evolution_triggered.emit("Attack Speed", "Oneshot")
+				else:
+					evolution_triggered.emit("Venom", "Slowdown")
+					
+func _on_upgrade_panel_evolution_chosen(choice: int) -> void:
+	match evolution_level:
+		0: _update_movement(Movement_Evolution.LEGS_BASIC if choice == 1 else Movement_Evolution.TENTACLES_BASIC)
+		1: _update_attack(Attack_Evolution.CLAWS if choice == 1 else Attack_Evolution.SPRAY)
+		2: _update_health(Health_Evolution.ARMOR if choice == 1 else Health_Evolution.REGEN)
+		3:
+			if current_attack_evolution == Attack_Evolution.CLAWS:
+				_update_modifier(Attack_Modifier.SPEED if choice == 1 else Attack_Modifier.ONESHOT)
+			else:
+				_update_modifier(Attack_Modifier.VENOM if choice == 1 else Attack_Modifier.SLOWDOWN)
+				
+	evolution_level += 1
+	choosing_evolution = false
 #endregion
 
 

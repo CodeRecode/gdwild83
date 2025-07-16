@@ -1,54 +1,109 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8b6qnp400wcf"]
+[gd_scene load_steps=7 format=3 uid="uid://c8b6qnp400wcf"]
 
-[ext_resource type="Script" uid="uid://bep15pwdio6yf" path="res://stats_panel.gd" id="1_f2txt"]
+[ext_resource type="Script" uid="uid://bep15pwdio6yf" path="res://ui/stats_panel.gd" id="1_f2txt"]
 [ext_resource type="PackedScene" uid="uid://ns1cyrf2ln52" path="res://player.tscn" id="1_u52ul"]
+[ext_resource type="Script" uid="uid://ccngsd6hxa6nu" path="res://ui/upgrade_panel.gd" id="2_1ainy"]
 [ext_resource type="PackedScene" uid="uid://vstiefs8fhix" path="res://geo/small_rock.tscn" id="2_vonw3"]
 [ext_resource type="Texture2D" uid="uid://b74edsvtyu7gi" path="res://sprites/folded_paper.png" id="3_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://cfwe4cbgtoykq" path="res://animal.tscn" id="3_oi3di"]
 
 [node name="Level" type="Node2D"]
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 109.0
-offset_bottom = 75.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="StatsPanel" type="PanelContainer" parent="UI"]
+[node name="StatsPanel" type="PanelContainer" parent="CanvasLayer"]
 z_index = 50
-layout_mode = 0
-offset_right = 104.0
-offset_bottom = 70.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 114.0
+offset_bottom = 80.0
 script = ExtResource("1_f2txt")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/StatsPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/StatsPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="GridContainer" type="GridContainer" parent="UI/StatsPanel/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StatsPanel/MarginContainer"]
 layout_mode = 2
 columns = 2
 
-[node name="HealthText" type="Label" parent="UI/StatsPanel/MarginContainer/GridContainer"]
+[node name="HealthText" type="Label" parent="CanvasLayer/StatsPanel/MarginContainer/GridContainer"]
 layout_mode = 2
 text = "Health"
 
-[node name="HealthValue" type="Label" parent="UI/StatsPanel/MarginContainer/GridContainer"]
+[node name="HealthValue" type="Label" parent="CanvasLayer/StatsPanel/MarginContainer/GridContainer"]
 layout_mode = 2
 text = "100"
 
-[node name="DNAText" type="Label" parent="UI/StatsPanel/MarginContainer/GridContainer"]
+[node name="DNAText" type="Label" parent="CanvasLayer/StatsPanel/MarginContainer/GridContainer"]
 layout_mode = 2
 text = "DNA"
 
-[node name="DNAValue" type="Label" parent="UI/StatsPanel/MarginContainer/GridContainer"]
+[node name="DNAValue" type="Label" parent="CanvasLayer/StatsPanel/MarginContainer/GridContainer"]
 layout_mode = 2
 text = "0"
+
+[node name="UpgradePanel" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 9.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_1ainy")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UpgradePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UpgradePanel/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UpgradePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/UpgradePanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/UpgradePanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Choose an upgrade"
+
+[node name="Control2" type="Control" parent="CanvasLayer/UpgradePanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Spacer" type="Control" parent="CanvasLayer/UpgradePanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/UpgradePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Upgrade1Button" type="Button" parent="CanvasLayer/UpgradePanel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "This is upgrade 1"
+
+[node name="Spacer" type="Control" parent="CanvasLayer/UpgradePanel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Upgrade2Button" type="Button" parent="CanvasLayer/UpgradePanel/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "This is upgrade 2"
 
 [node name="Player" parent="." instance=ExtResource("1_u52ul")]
 position = Vector2(204, 98)
@@ -60,15 +115,10 @@ scale = Vector2(0.5, 0.486033)
 [node name="Background" type="TextureRect" parent="."]
 z_index = -100
 custom_minimum_size = Vector2(1000, 1000)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
 offset_left = -426.0
 offset_top = -410.0
 offset_right = 6646.0
 offset_bottom = 4934.0
-grow_horizontal = 2
-grow_vertical = 2
 scale = Vector2(0.25, 0.25)
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -78,5 +128,9 @@ stretch_mode = 1
 [node name="Animal" parent="." instance=ExtResource("3_oi3di")]
 position = Vector2(144, 172)
 
-[connection signal="dna_modified" from="Player" to="UI/StatsPanel" method="_on_player_dna_modified"]
-[connection signal="health_modified" from="Player" to="UI/StatsPanel" method="_on_player_health_modified"]
+[connection signal="evolution_chosen" from="CanvasLayer/UpgradePanel" to="Player" method="_on_upgrade_panel_evolution_chosen"]
+[connection signal="pressed" from="CanvasLayer/UpgradePanel/MarginContainer/VBoxContainer/HBoxContainer2/Upgrade1Button" to="CanvasLayer/UpgradePanel" method="_on_upgrade_1_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UpgradePanel/MarginContainer/VBoxContainer/HBoxContainer2/Upgrade2Button" to="CanvasLayer/UpgradePanel" method="_on_upgrade_2_button_pressed"]
+[connection signal="dna_modified" from="Player" to="CanvasLayer/StatsPanel" method="_on_player_dna_modified"]
+[connection signal="evolution_triggered" from="Player" to="CanvasLayer/UpgradePanel" method="_on_player_evolution_triggered"]
+[connection signal="health_modified" from="Player" to="CanvasLayer/StatsPanel" method="_on_player_health_modified"]
