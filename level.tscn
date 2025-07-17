@@ -130,10 +130,6 @@ position = Vector2(144, 172)
 
 [node name="Beetle" parent="." instance=ExtResource("7_n6hdu")]
 position = Vector2(315, 65)
-health = 10
-restore_health_value = 1
-dna_awarded = 15
-speed = 4000.0
 
 [connection signal="evolution_chosen" from="CanvasLayer/UpgradePanel" to="Player" method="_on_upgrade_panel_evolution_chosen"]
 [connection signal="pressed" from="CanvasLayer/UpgradePanel/MarginContainer/VBoxContainer/HBoxContainer2/Upgrade1Button" to="CanvasLayer/UpgradePanel" method="_on_upgrade_1_button_pressed"]

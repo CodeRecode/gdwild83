@@ -6,7 +6,7 @@ class_name Beetle
 @export var restore_health_value: int = 1
 
 
-# @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 
 @export var dna_awarded: int = 15
@@ -58,7 +58,7 @@ enum STATE {
 }
 
 func _ready() -> void:
-#	animated_sprite_2d.play()
+	animated_sprite_2d.play()
 	player = get_tree().get_first_node_in_group("Player")
 
 func _physics_process(delta: float) -> void:
