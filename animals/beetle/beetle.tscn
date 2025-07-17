@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://q33bmw1osj75"]
+
+[ext_resource type="Script" uid="uid://4i0yrchqlvqf" path="res://animals/beetle/beetle.gd" id="1_bj3vx"]
+[ext_resource type="Texture2D" uid="uid://dawjarjkcwxcu" path="res://icon.svg" id="2_bj3vx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0b4ue"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bj3vx"]
+radius = 32.0
+
+[node name="Beetle" type="CharacterBody2D"]
+script = ExtResource("1_bj3vx")
+
+[node name="ReplaceMe" type="Sprite2D" parent="."]
+scale = Vector2(0.203125, 0.203125)
+texture = ExtResource("2_bj3vx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0b4ue")
+debug_color = Color(0.275355, 0.62802, 0.208024, 0.42)
+
+[node name="SightDetection" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SightDetection"]
+polygon = PackedVector2Array(32, 24, 32, -24, 0, 0)
+
+[node name="AttackRangeArea2D" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="AttackRange" type="CollisionShape2D" parent="AttackRangeArea2D"]
+shape = SubResource("CircleShape2D_bj3vx")
+debug_color = Color(0.962607, 0, 0.503595, 0.42)
+
+[connection signal="body_entered" from="SightDetection" to="." method="_on_sight_detection_body_entered"]
+[connection signal="body_exited" from="SightDetection" to="." method="_on_sight_detection_body_exited"]
+[connection signal="body_entered" from="AttackRangeArea2D" to="." method="_on_attack_range_area_2d_body_entered"]
+[connection signal="body_exited" from="AttackRangeArea2D" to="." method="_on_attack_range_area_2d_body_exited"]

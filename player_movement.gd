@@ -80,9 +80,9 @@ func _ready() -> void:
 	current_attack_modifier = Attack_Modifier.NONE
 	current_movement_evolution = Movement_Evolution.NONE
 	current_health_evolution = Health_Evolution.NONE
-	
+
 	animated_sprite_2d.play()
-	
+
 	# update ui values
 	_modify_health(0)
 	_modify_dna(0)
@@ -162,7 +162,7 @@ func _update_health(new_health_evolution: Health_Evolution) -> void:
 func _check_evolve() -> void:
 	if choosing_evolution:
 		return
-		
+
 	if evolution_level < evolution_thresholds.size() and stored_dna > evolution_thresholds[evolution_level]:
 		choosing_evolution = true
 		match evolution_level:
@@ -174,7 +174,7 @@ func _check_evolve() -> void:
 					evolution_triggered.emit("Attack Speed", "Oneshot")
 				else:
 					evolution_triggered.emit("Venom", "Slowdown")
-					
+
 func _on_upgrade_panel_evolution_chosen(choice: int) -> void:
 	match evolution_level:
 		0: _update_movement(Movement_Evolution.LEGS_BASIC if choice == 1 else Movement_Evolution.TENTACLES_BASIC)
@@ -185,7 +185,7 @@ func _on_upgrade_panel_evolution_chosen(choice: int) -> void:
 				_update_modifier(Attack_Modifier.SPEED if choice == 1 else Attack_Modifier.ONESHOT)
 			else:
 				_update_modifier(Attack_Modifier.VENOM if choice == 1 else Attack_Modifier.SLOWDOWN)
-				
+
 	evolution_level += 1
 	choosing_evolution = false
 #endregion
@@ -239,9 +239,9 @@ func _regen_health() -> void:
 
 func _modify_health(delta: float) -> void:
 	health += delta
-	
+
 	health_modified.emit(health)
-	
+
 	if health <= 0:
 		print("Player died")
 

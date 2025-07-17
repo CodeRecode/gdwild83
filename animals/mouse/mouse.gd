@@ -1,8 +1,8 @@
-extends CharacterBody2D
-class_name Animal
+extends Animal
+class_name Mouse
 
 
-@export var health: int = 10
+@export var health: int = 5
 @export var restore_health_value: int = 1
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -18,6 +18,7 @@ var previously_collided: bool = false
 
 @onready var sight_detector: Area2D = $SightDetection
 var player_sighted: bool = false
+var looking_for_player: bool = false
 var player: Player = null
 
 
@@ -50,10 +51,10 @@ enum STATE {
 
 func _ready() -> void:
 	animated_sprite_2d.play()
+	player = get_tree().get_first_node_in_group("Player")
 
 func _physics_process(delta: float) -> void:
 	run_state_machine(delta)
-	print(current_state)
 	collided = move_and_slide()
 
 	_idle_upon_obstacle_collision()
@@ -71,7 +72,7 @@ func run_state_machine(delta: float) -> void:
 		STATE.FLEE:
 			_flee_state(delta)
 		STATE.LOOK:
-			_look_state(delta)
+			_look_state()
 
 
 func _idle_upon_obstacle_collision() -> void:
@@ -86,7 +87,7 @@ func _idle_upon_obstacle_collision() -> void:
 
 
 func _flee_upon_player_sighted() -> void:
-	if player_sighted and current_state != STATE.FLEE:
+	if current_state != STATE.FLEE and player_sighted:
 		current_state = STATE.FLEE
 		_flee_state(get_physics_process_delta_time())
 
@@ -155,35 +156,45 @@ func _flee_state(delta: float) -> void:
 	can_transition = true
 
 
-func _look_state(delta: float) -> void:
+func _look_state() -> void:
 	if not can_transition: return
+	if looking_for_player == true: return
+
 	can_transition = false
+	looking_for_player = true
 
 	var facing_direction = velocity.normalized()
 	sight_detector.rotation = get_angle_to(player.position)
 	velocity = Vector2.ZERO
 
-	var random_look_time: float = randf_range(0.3,1.0)
+	var random_look_time: float = randf_range(0.6,1.0)
 	await get_tree().create_timer(random_look_time).timeout
 
-	if current_state == STATE.FLEE: return
+	if current_state != STATE.LOOK:
+		looking_for_player = false
+		return
 
-	sight_detector.rotation = facing_direction.angle()
+	if looking_for_player:
+		sight_detector.rotation = facing_direction.angle()
 
-	random_look_time = randf_range(0.3,1.0)
+	random_look_time = randf_range(0.6,1.0)
 	await get_tree().create_timer(random_look_time).timeout
 
-	if current_state == STATE.FLEE: return
+	if current_state != STATE.LOOK:
+		looking_for_player = false
+		return
 
-	sight_detector.rotation = Vector2(-facing_direction.x,facing_direction.y).angle()
+	if looking_for_player:
+		sight_detector.rotation = Vector2(-facing_direction.x,facing_direction.y).angle()
 
 	if player_sighted and not current_state == STATE.FLEE:
 		current_state = STATE.FLEE
-		can_transition = true
 	elif current_state != STATE.IDLE and not current_state == STATE.FLEE:
 		velocity = Vector2.ZERO
 		current_state = STATE.IDLE
-		can_transition = true
+
+	can_transition = true
+	looking_for_player = false
 
 
 func take_damage(damage_amount: int, attack_modifier) -> void:
@@ -204,6 +215,9 @@ func take_damage(damage_amount: int, attack_modifier) -> void:
 
 	if current_status == STATUS.DEAD:
 		queue_free.call_deferred()
+
+	player_sighted = true
+	_flee_upon_player_sighted()
 
 
 func _on_sight_detection_body_entered(node: Node) -> void:

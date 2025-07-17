@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8b6qnp400wcf"]
+[gd_scene load_steps=8 format=3 uid="uid://c8b6qnp400wcf"]
 
 [ext_resource type="Script" uid="uid://bep15pwdio6yf" path="res://ui/stats_panel.gd" id="1_f2txt"]
 [ext_resource type="PackedScene" uid="uid://ns1cyrf2ln52" path="res://player.tscn" id="1_u52ul"]
 [ext_resource type="Script" uid="uid://ccngsd6hxa6nu" path="res://ui/upgrade_panel.gd" id="2_1ainy"]
 [ext_resource type="PackedScene" uid="uid://vstiefs8fhix" path="res://geo/small_rock.tscn" id="2_vonw3"]
 [ext_resource type="Texture2D" uid="uid://b74edsvtyu7gi" path="res://sprites/folded_paper.png" id="3_0b4ue"]
-[ext_resource type="PackedScene" uid="uid://cfwe4cbgtoykq" path="res://animal.tscn" id="3_oi3di"]
+[ext_resource type="PackedScene" uid="uid://x1kmlegtg47p" path="res://animals/mouse/mouse.tscn" id="6_1ainy"]
+[ext_resource type="PackedScene" uid="uid://q33bmw1osj75" path="res://animals/beetle/beetle.tscn" id="7_n6hdu"]
 
 [node name="Level" type="Node2D"]
 
@@ -124,8 +125,15 @@ position = Vector2(204, 98)
 position = Vector2(146, 71)
 scale = Vector2(0.5, 0.486033)
 
-[node name="Animal" parent="." instance=ExtResource("3_oi3di")]
+[node name="Mouse" parent="." instance=ExtResource("6_1ainy")]
 position = Vector2(144, 172)
+
+[node name="Beetle" parent="." instance=ExtResource("7_n6hdu")]
+position = Vector2(315, 65)
+health = 10
+restore_health_value = 1
+dna_awarded = 15
+speed = 4000.0
 
 [connection signal="evolution_chosen" from="CanvasLayer/UpgradePanel" to="Player" method="_on_upgrade_panel_evolution_chosen"]
 [connection signal="pressed" from="CanvasLayer/UpgradePanel/MarginContainer/VBoxContainer/HBoxContainer2/Upgrade1Button" to="CanvasLayer/UpgradePanel" method="_on_upgrade_1_button_pressed"]

@@ -28,7 +28,7 @@ radius = 32.0624
 [sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
 radius = 45.0999
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_4flbx")
 current_attack_evolution = 4
 current_attack_modifier = 4
