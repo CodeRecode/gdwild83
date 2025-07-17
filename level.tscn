@@ -9,6 +9,16 @@
 
 [node name="Level" type="Node2D"]
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1500, 1500)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(577.625, 325.375)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_0b4ue")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="StatsPanel" type="PanelContainer" parent="CanvasLayer"]
@@ -108,22 +118,11 @@ text = "This is upgrade 2"
 [node name="Player" parent="." instance=ExtResource("1_u52ul")]
 position = Vector2(204, 98)
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
 [node name="SmallRock" parent="." instance=ExtResource("2_vonw3")]
 position = Vector2(146, 71)
 scale = Vector2(0.5, 0.486033)
-
-[node name="Background" type="TextureRect" parent="."]
-z_index = -100
-custom_minimum_size = Vector2(1000, 1000)
-offset_left = -426.0
-offset_top = -410.0
-offset_right = 6646.0
-offset_bottom = 4934.0
-scale = Vector2(0.25, 0.25)
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("3_0b4ue")
-stretch_mode = 1
 
 [node name="Animal" parent="." instance=ExtResource("3_oi3di")]
 position = Vector2(144, 172)
