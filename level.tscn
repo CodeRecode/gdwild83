@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8b6qnp400wcf"]
+[gd_scene load_steps=12 format=3 uid="uid://c8b6qnp400wcf"]
 
 [ext_resource type="Script" uid="uid://bep15pwdio6yf" path="res://ui/stats_panel.gd" id="1_f2txt"]
 [ext_resource type="PackedScene" uid="uid://ns1cyrf2ln52" path="res://player.tscn" id="1_u52ul"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://x1kmlegtg47p" path="res://animals/mouse/mouse.tscn" id="6_1ainy"]
 [ext_resource type="PackedScene" uid="uid://q33bmw1osj75" path="res://animals/beetle/beetle.tscn" id="7_n6hdu"]
 [ext_resource type="PackedScene" uid="uid://bdh6m07u4ngxy" path="res://animals/scorpion/scorpion.tscn" id="8_km5ld"]
+[ext_resource type="Script" uid="uid://bnm2nmfcxlwic" path="res://story_controller.gd" id="10_8cye3"]
+[ext_resource type="PackedScene" uid="uid://b51qjjopgjcy7" path="res://animals/narrator.tscn" id="11_2orkt"]
 
 [node name="Level" type="Node2D"]
 
@@ -121,6 +123,7 @@ size_flags_horizontal = 3
 text = "This is upgrade 2"
 
 [node name="DeathNotif" type="PanelContainer" parent="CanvasLayer"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -155,6 +158,36 @@ layout_mode = 2
 layout_mode = 2
 text = "Retry"
 
+[node name="VictoryScreen" type="ColorRect" parent="CanvasLayer"]
+visible = false
+z_index = 75
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="YouWinLabel" type="Label" parent="CanvasLayer/VictoryScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -11.5
+offset_right = 33.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "You Win"
+
+[node name="StoryController" type="Node2D" parent="CanvasLayer"]
+position = Vector2(144, 172)
+script = ExtResource("10_8cye3")
+
 [node name="Player" parent="." instance=ExtResource("1_u52ul")]
 position = Vector2(204, 98)
 
@@ -172,12 +205,24 @@ position = Vector2(315, 65)
 
 [node name="Scorpion" parent="." instance=ExtResource("8_km5ld")]
 position = Vector2(547, 327)
+restore_health_value = 1
+dna_awarded = 15
+attack_power = 3
+attack_delay = 2.0
+attack_speed = 15000.0
+speed = 3000.0
+
+[node name="Narrator" parent="." instance=ExtResource("11_2orkt")]
+position = Vector2(208, 442)
 
 [connection signal="evolution_chosen" from="CanvasLayer/UpgradePanel" to="Player" method="_on_upgrade_panel_evolution_chosen"]
 [connection signal="pressed" from="CanvasLayer/UpgradePanel/MarginContainer/VBoxContainer/HBoxContainer2/Upgrade1Button" to="CanvasLayer/UpgradePanel" method="_on_upgrade_1_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UpgradePanel/MarginContainer/VBoxContainer/HBoxContainer2/Upgrade2Button" to="CanvasLayer/UpgradePanel" method="_on_upgrade_2_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/DeathNotif/MarginContainer/VBoxContainer/Button" to="CanvasLayer/DeathNotif" method="_on_button_pressed"]
+[connection signal="narrator_vulnerable" from="CanvasLayer/StoryController" to="Narrator" method="_on_story_controller_narrator_vulnerable"]
 [connection signal="dna_modified" from="Player" to="CanvasLayer/StatsPanel" method="_on_player_dna_modified"]
+[connection signal="dna_modified" from="Player" to="CanvasLayer/StoryController" method="_on_player_dna_modified"]
 [connection signal="evolution_triggered" from="Player" to="CanvasLayer/UpgradePanel" method="_on_player_evolution_triggered"]
 [connection signal="health_modified" from="Player" to="CanvasLayer/StatsPanel" method="_on_player_health_modified"]
 [connection signal="player_died" from="Player" to="CanvasLayer/DeathNotif" method="_on_player_player_died"]
+[connection signal="narrator_died" from="Narrator" to="CanvasLayer/StoryController" method="_on_narrator_narrator_died"]

@@ -2,10 +2,9 @@ extends Animal
 class_name Mouse
 
 
-@export var health: int = 5
+@export var instance_health: int = 5
 @export var restore_health_value: int = 1
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 
 @export var dna_awarded: int = 15
@@ -17,21 +16,7 @@ var collision_normal: Vector2 = Vector2.ZERO
 var previously_collided: bool = false
 
 @onready var sight_detector: Area2D = $SightDetection
-var player_sighted: bool = false
 var looking_for_player: bool = false
-var player: Player = null
-
-
-var current_status: STATUS = STATUS.HEALTHY
-
-
-enum STATUS {
-	HEALTHY = 1,
-	SLOWED = 2,
-	POISONED = 3,
-	DEAD = 4
-}
-
 
 var current_state: STATE = STATE.IDLE
 var min_time: float = 1.0
@@ -40,18 +25,9 @@ var state_time: float
 var can_transition: bool = true
 
 
-enum STATE {
-	IDLE,
-	WANDER,
-	FLEE,
-	LOOK,
-	CHASE,
-	ATTACK
-}
-
 func _ready() -> void:
-	animated_sprite_2d.play()
-	player = get_tree().get_first_node_in_group("Player")
+	super._ready()
+	health = instance_health
 
 func _physics_process(delta: float) -> void:
 	run_state_machine(delta)
@@ -196,27 +172,7 @@ func _look_state() -> void:
 	can_transition = true
 	looking_for_player = false
 
-
-func take_damage(damage_amount: int, attack_modifier) -> void:
-	health -= damage_amount
-
-	match  attack_modifier:
-		STATUS.HEALTHY:
-			current_status = STATUS.HEALTHY
-		STATUS.SLOWED:
-			current_status = STATUS.SLOWED
-		STATUS.POISONED:
-			current_status = STATUS.POISONED
-		STATUS.DEAD:
-			current_status = STATUS.DEAD
-
-	if health <= 0:
-		current_status = STATUS.DEAD
-
-	if current_status == STATUS.DEAD:
-		queue_free.call_deferred()
-
-	player_sighted = true
+func _respond_to_damage():
 	_flee_upon_player_sighted()
 
 

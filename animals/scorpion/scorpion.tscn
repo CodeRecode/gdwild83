@@ -30,6 +30,12 @@ radius = 128.25
 
 [node name="Scorpion" type="CharacterBody2D"]
 script = ExtResource("1_fvk6i")
+restore_health_value = null
+dna_awarded = null
+attack_power = null
+attack_delay = null
+attack_speed = null
+speed = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_j7cay")

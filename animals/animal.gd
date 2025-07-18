@@ -1,11 +1,14 @@
 extends CharacterBody2D
 class_name Animal
 
-#
-#@export var health: int = 10
+var health: int = 5
 #@export var restore_health_value: int = 1
 #
-#@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
+var player: Player = null
+var player_attacked_me: bool = false
+var player_sighted: bool = false
 #
 #
 #@export var dna_awarded: int = 15
@@ -18,18 +21,17 @@ class_name Animal
 #
 #@onready var sight_detector: Area2D = $SightDetection
 #var player_sighted: bool = false
-#var player: Player = null
 #
 #
-#var current_status: STATUS = STATUS.HEALTHY
+var current_status: STATUS = STATUS.HEALTHY
 #
 #
-#enum STATUS {
-	#HEALTHY = 1,
-	#SLOWED = 2,
-	#POISONED = 3,
-	#DEAD = 4
-#}
+enum STATUS {
+	HEALTHY = 1,
+	SLOWED = 2,
+	POISONED = 3,
+	DEAD = 4
+}
 #
 #
 #var current_state: STATE = STATE.IDLE
@@ -39,19 +41,46 @@ class_name Animal
 #var can_transition: bool = true
 #
 #
-#enum STATE {
-	#IDLE,
-	#WANDER,
-	#FLEE,
-	#LOOK,
-	#CHASE,
-	#ATTACK
-#}
+
+enum STATE {
+	IDLE,
+	WANDER,
+	FLEE,
+	LOOK,
+	CHASE,
+	ATTACK
+}
 #
-#func _ready() -> void:
-	#animated_sprite_2d.play()
-	#player = get_tree().get_first_node_in_group("Player")
-#
+func _ready() -> void:
+	animated_sprite_2d.play()
+	player = get_tree().get_first_node_in_group("Player")
+
+func take_damage(damage_amount: int, attack_modifier) -> void:
+	player_attacked_me = true
+	health -= damage_amount
+
+	match  attack_modifier:
+		STATUS.HEALTHY:
+			current_status = STATUS.HEALTHY
+		STATUS.SLOWED:
+			current_status = STATUS.SLOWED
+		STATUS.POISONED:
+			current_status = STATUS.POISONED
+		STATUS.DEAD:
+			current_status = STATUS.DEAD
+
+	if health <= 0:
+		current_status = STATUS.DEAD
+
+	if current_status == STATUS.DEAD:
+		queue_free.call_deferred()
+
+	player_sighted = true
+
+#abstract func
+func _respond_to_damage():
+	pass
+
 #func _physics_process(delta: float) -> void:
 	#run_state_machine(delta)
 	#collided = move_and_slide()
