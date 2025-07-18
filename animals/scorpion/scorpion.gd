@@ -1,5 +1,5 @@
 extends Animal
-class_name Beetle
+class_name Scorpion
 
 
 @export var health: int = 10
@@ -7,16 +7,19 @@ class_name Beetle
 
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-
+var projectile = preload("res://enemy_projectile.tscn")
 
 @export var dna_awarded: int = 15
 
 
-@export var attack_power: int = 2
-@export var attack_delay: float = 1.0
+@export var attack_power: int = 3
+@export var attack_delay: float = 2.0
+@export var attack_speed: float = 15000.0
 var attacking: bool = false
+@onready var attack_range: CollisionShape2D = $AttackRangeArea2D/AttackRange
 
-@export var speed: float = 4000.0
+
+@export var speed: float = 3000.0
 var collided: bool = false
 var collision_normal: Vector2 = Vector2.ZERO
 var previously_collided: bool = false
@@ -66,11 +69,12 @@ func _physics_process(delta: float) -> void:
 	collided = move_and_slide()
 
 	_idle_upon_obstacle_collision()
-	_flee_upon_player_sighted()
+	#_flee_upon_player_sighted()
 	_caught_up_to_player()
 	_attack_if_attacked()
 
 
+#region State Machine
 func run_state_machine(delta: float) -> void:
 	if not can_transition: return
 
@@ -100,10 +104,10 @@ func _idle_upon_obstacle_collision() -> void:
 		collided = false
 
 
-func _flee_upon_player_sighted() -> void:
-	if current_state != STATE.FLEE and player_sighted and health <= 3:
-		current_state = STATE.FLEE
-		_flee_state(get_physics_process_delta_time())
+#func _flee_upon_player_sighted() -> void:
+	#if current_state != STATE.FLEE and player_sighted and health <= 3:
+		#current_state = STATE.FLEE
+		#_flee_state(get_physics_process_delta_time())
 
 
 func _attack_if_attacked() -> void:
@@ -125,12 +129,14 @@ func _idle_state() -> void:
 	state_time = randf_range(min_time,max_time)
 	await get_tree().create_timer(state_time).timeout
 
-	if player_sighted and health <= 3:
-		current_state = STATE.FLEE
-	elif player_attacked_me and health > 3:
+	if player_sighted and player_in_range:
+		current_state = STATE.ATTACK
+	elif player_sighted and not player_in_range:
 		current_state = STATE.CHASE
 	elif player_attacked_me and player_in_range:
 		current_state = STATE.ATTACK
+	elif player_attacked_me and not player_in_range:
+		current_state = STATE.CHASE
 	else:
 		current_state = STATE.WANDER
 
@@ -161,15 +167,16 @@ func _wander_state(delta: float) -> void:
 	if player_sighted and health <= 3:
 		current_state = STATE.FLEE
 
-	elif current_state != STATE.IDLE and not player_attacked_me:
+	elif current_state != STATE.IDLE and not player_attacked_me and not player_sighted:
 		velocity = Vector2.ZERO
 		current_state = STATE.IDLE
-	elif player_attacked_me and health > 3 and not player_in_range:
+	elif player_attacked_me and not player_in_range:
 		current_state = STATE.CHASE
-	elif player_in_range:
+	elif player_in_range and player_sighted:
 		current_state = STATE.ATTACK
 	else:
 		velocity = Vector2.ZERO
+		current_state = STATE.LOOK
 
 	can_transition = true
 
@@ -202,6 +209,15 @@ func _look_state() -> void:
 	sight_detector.rotation = get_angle_to(player.position)
 	velocity = Vector2.ZERO
 
+	if player_sighted and not player_in_range:
+		current_state = STATE.CHASE
+		can_transition = true
+		return
+	elif player_sighted and player_in_range:
+		current_state = STATE.ATTACK
+		can_transition = true
+		return
+
 	var random_look_time: float = randf_range(0.3,1.0)
 	await get_tree().create_timer(random_look_time).timeout
 
@@ -211,6 +227,15 @@ func _look_state() -> void:
 
 	if looking_for_player:
 		sight_detector.rotation = facing_direction.angle()
+
+	if player_sighted and not player_in_range:
+		current_state = STATE.CHASE
+		can_transition = true
+		return
+	elif player_sighted and player_in_range:
+		current_state = STATE.ATTACK
+		can_transition = true
+		return
 
 	random_look_time = randf_range(0.3,1.0)
 	await get_tree().create_timer(random_look_time).timeout
@@ -222,10 +247,11 @@ func _look_state() -> void:
 	if looking_for_player:
 		sight_detector.rotation = Vector2(-facing_direction.x,facing_direction.y).angle()
 
-	if player_sighted and not current_state == STATE.FLEE and health <= 3:
-		current_state = STATE.FLEE
-		can_transition = true
-	elif current_state != STATE.IDLE and not current_state == STATE.FLEE:
+	if player_sighted and not player_in_range:
+		current_state = STATE.CHASE
+	elif player_sighted and player_in_range:
+		current_state = STATE.ATTACK
+	elif current_state != STATE.IDLE:
 		velocity = Vector2.ZERO
 		current_state = STATE.IDLE
 
@@ -238,18 +264,16 @@ func _attack_state() -> void:
 	can_transition = false
 
 	if not attacking:
-		player.take_damage(attack_power, 0)
+		_fire_projectile()
 		attacking = true
 
 	await get_tree().create_timer(attack_delay).timeout
 
 	attacking = false
 
-	if player_in_range and health > 3: #run away if low health
+	if player_in_range:
 		current_state = STATE.ATTACK
-	elif health <= 3:
-		current_state = STATE.FLEE
-	elif not player_in_range and health > 3:
+	elif not player_in_range:
 		current_state = STATE.CHASE
 	else:
 		current_state = STATE.LOOK
@@ -263,17 +287,34 @@ func _chase_state(delta: float) -> void:
 	var chase_vector: Vector2 = (player.position - position).normalized()
 	velocity = chase_vector * speed * delta
 
+	if player_sighted:
+		var facing_direction = velocity.normalized()
+		sight_detector.rotation = get_angle_to(player.position)
+
 	await get_tree().create_timer(2).timeout
 
-	if player_in_range:
+	if player_in_range and player_sighted:
 		current_state = STATE.ATTACK
-	elif not player_in_range and player_attacked_me and health > 3:
+	elif player_sighted and not player_in_range:
 		current_state = STATE.CHASE
 	else:
 		current_state = STATE.LOOK
 
 
 	can_transition = true
+#endregion
+
+
+func _fire_projectile() -> void:
+	var projectile_instance: Projectile = projectile.instantiate()
+
+	projectile_instance.global_position = global_position
+
+	var attack_vector: Vector2 = player.global_position - global_position
+	var projectile_velocity: Vector2 = attack_vector.normalized() * attack_speed
+
+	projectile_instance.spawn(attack_power, attack_range.shape.radius, projectile_velocity, 0)
+	get_tree().root.add_child(projectile_instance)
 
 
 func take_damage(damage_amount: int, attack_modifier) -> void:
@@ -297,8 +338,8 @@ func take_damage(damage_amount: int, attack_modifier) -> void:
 		queue_free.call_deferred()
 
 	player_sighted = true
-	if health <= 3: _flee_upon_player_sighted()
-	else: _attack_if_attacked()
+	_attack_if_attacked()
+	#_flee_upon_player_sighted()
 
 
 func _on_sight_detection_body_entered(node: Node) -> void:
@@ -309,8 +350,10 @@ func _on_sight_detection_body_entered(node: Node) -> void:
 		player = node
 
 
-#func _on_sight_detection_body_exited(player: Player) -> void:
-	#player_sighted = false
+func _on_sight_detection_body_exited(node2D: Node) -> void:
+	if node2D is not Player:
+		return
+	player_sighted = false
 
 
 func _on_attack_range_area_2d_body_entered(node2D: Node2D) -> void:

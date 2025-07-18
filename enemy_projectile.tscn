@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cs37hrdjwko1b"]
+
+[ext_resource type="Texture2D" uid="uid://dawjarjkcwxcu" path="res://icon.svg" id="1_ff34o"]
+[ext_resource type="Script" uid="uid://dc6o51utbefja" path="res://enemy_projectile.gd" id="1_vpq67"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vpq67"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ccnu0"]
+radius = 8.0
+
+[node name="Projectile" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_vpq67")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-4.76837e-07, 4.76837e-07)
+scale = Vector2(0.109375, 0.109375)
+texture = ExtResource("1_ff34o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vpq67")
+disabled = true
+
+[node name="TargetDetector" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetDetector"]
+shape = SubResource("CircleShape2D_ccnu0")
+
+[connection signal="body_entered" from="TargetDetector" to="." method="_on_target_detector_body_entered"]

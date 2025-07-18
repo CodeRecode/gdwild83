@@ -225,7 +225,7 @@ func _consume_resources(animal: Animal) -> void:
 	_modify_dna(animal.dna_awarded)
 
 
-func take_damage(damage_amount: float) -> void:
+func take_damage(damage_amount: float, damage_modifier: int) -> void:
 	_modify_health(-1 * damage_amount * armor_multiplier)
 
 func _regen_health() -> void:
