@@ -9,6 +9,7 @@ const ARMOR_DAMAGE_REDUCTION: float = 0.7
 signal health_modified(new_value: float)
 signal dna_modified(new_value: int)
 signal evolution_triggered(name1: String, name2: String)
+signal player_died()
 
 var current_speed: int = 5000
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -243,7 +244,8 @@ func _modify_health(delta: float) -> void:
 	health_modified.emit(health)
 
 	if health <= 0:
-		print("Player died")
+		get_tree().paused = true
+		player_died.emit()
 
 func _modify_dna(delta: int) -> void:
 	stored_dna += delta
