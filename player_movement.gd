@@ -27,7 +27,7 @@ var armor_multiplier: float = 1.0
 
 @export var stored_dna: int = 0
 @export var evolution_thresholds: Array[int] = [10, 50, 250, 1000]
-@export var evolution_scales: Array[int] = [1.0, 1.5, 2.0, 3.0, 5.0]
+@export var evolution_scales: Array[float] = [1.0, 1.5, 2.0, 3.0, 5.0]
 var evolution_level: int = 0
 var choosing_evolution: bool = false
 
@@ -135,6 +135,7 @@ func _update_attack(new_attack_evolution: Attack_Evolution) -> void:
 			current_damage = 3
 			damage_delay = 0.5
 		Attack_Evolution.SPRAY:
+			weapon_sprite.play("spray")
 			current_attack_evolution =Attack_Evolution.SPRAY
 			_update_attack_radius(DEFAULT_ATTACK_RADIUS + 16)
 			current_damage = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ns1cyrf2ln52"]
+[gd_scene load_steps=22 format=3 uid="uid://ns1cyrf2ln52"]
 
 [ext_resource type="Script" uid="uid://gq6xa2l3g66g" path="res://player_movement.gd" id="1_4flbx"]
 [ext_resource type="Shader" uid="uid://3h883wfcxp6t" path="res://shaders/blend.gdshader" id="2_hqtel"]
@@ -13,32 +13,31 @@
 [ext_resource type="Texture2D" uid="uid://brkcf5xykejeh" path="res://sprites/creature/Tentacles_0001.png" id="10_ivps1"]
 [ext_resource type="Texture2D" uid="uid://i7j7lvbufc8m" path="res://sprites/creature/Claws_0000.png" id="12_urp6f"]
 [ext_resource type="Texture2D" uid="uid://cetnyi6sx7bl8" path="res://sprites/creature/Claws_0001.png" id="13_bwjto"]
+[ext_resource type="Texture2D" uid="uid://bo72bmw4rmppx" path="res://sprites/creature/Cannons_0000.png" id="14_606se"]
+[ext_resource type="Texture2D" uid="uid://c5bvkc1i71nmx" path="res://sprites/creature/Cannons_0001.png" id="15_u1c27"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sweqy"]
-shader = ExtResource("2_hqtel")
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4flbx"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_nvl01"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_i3pqv")
+"texture": ExtResource("12_urp6f")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_hqtel")
+"texture": ExtResource("13_bwjto")
 }],
 "loop": true,
-"name": &"basic",
+"name": &"claws",
 "speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_1jxqw")
+"texture": ExtResource("14_606se")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_2hs0m")
+"texture": ExtResource("15_u1c27")
 }],
 "loop": true,
-"name": &"body",
+"name": &"spray",
 "speed": 8.0
 }]
 
@@ -78,18 +77,32 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_nvl01"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sweqy"]
+shader = ExtResource("2_hqtel")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4flbx"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("12_urp6f")
+"texture": ExtResource("2_i3pqv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_bwjto")
+"texture": ExtResource("3_hqtel")
 }],
 "loop": true,
-"name": &"claws",
-"speed": 5.0
+"name": &"basic",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_1jxqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2hs0m")
+}],
+"loop": true,
+"name": &"body",
+"speed": 8.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5xgho"]
@@ -104,11 +117,11 @@ current_attack_evolution = 4
 current_attack_modifier = 4
 current_movement_evolution = 7500
 
-[node name="BodySprite" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_sweqy")
+[node name="WeaponSprite" type="AnimatedSprite2D" parent="."]
+visible = false
 scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_4flbx")
-animation = &"basic"
+sprite_frames = SubResource("SpriteFrames_nvl01")
+animation = &"spray"
 
 [node name="LegsSprite" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -116,11 +129,11 @@ scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
 animation = &"tentacles"
 
-[node name="WeaponSprite" type="AnimatedSprite2D" parent="."]
-visible = false
+[node name="BodySprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_sweqy")
 scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_nvl01")
-animation = &"claws"
+sprite_frames = SubResource("SpriteFrames_4flbx")
+animation = &"basic"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
