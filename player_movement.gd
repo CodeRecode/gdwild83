@@ -1,15 +1,19 @@
 extends CharacterBody2D
 class_name Player
 
-const DEFAULT_SPEED: int = 5000
+
+const DEFAULT_SPEED: int = 6000
 const DEFAULT_ATTACK_RADIUS: int = 16
 const ARMOR_DEFAULT: float = 1.0
 const ARMOR_DAMAGE_REDUCTION: float = 0.7
+
 
 signal health_modified(new_value: float)
 signal dna_modified(new_value: int)
 signal evolution_triggered(name1: String, name2: String)
 signal player_died()
+signal player_took_damage()
+
 
 var current_speed: int = 5000
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -17,6 +21,7 @@ var current_speed: int = 5000
 @onready var body_sprite: AnimatedSprite2D = $BodySprite
 @onready var legs_sprite: AnimatedSprite2D = $LegsSprite
 @onready var weapon_sprite: AnimatedSprite2D = $WeaponSprite
+
 
 @export var health: float = 10.0
 @export var regen_amount: int = 1
@@ -31,8 +36,13 @@ var armor_multiplier: float = 1.0
 var evolution_level: int = 0
 var choosing_evolution: bool = false
 
+
+var projectile = preload("res://projectile.tscn")
+
+
 @export var current_damage: int = 1
 @export var damage_delay: float = 0.5
+@export var attack_speed: float = 17500.0
 var can_deal_damage: bool = false
 var animals_in_range: Array[Animal] = []
 
@@ -62,8 +72,8 @@ enum Attack_Modifier {
 
 enum Movement_Evolution {
 	NONE = DEFAULT_SPEED,
-	LEGS_BASIC = 10000,
-	TENTACLES_BASIC = 7500
+	LEGS_BASIC = 12500,
+	TENTACLES_BASIC = 9000
 }
 
 
@@ -112,16 +122,17 @@ func _physics_process(delta: float) -> void:
 func _update_attack_radius(new_radius: float) -> void:
 	current_attack_range_CS2D.shape.radius =  collision_shape_2d.shape.radius + new_radius
 
+
 func _update_attack(new_attack_evolution: Attack_Evolution) -> void:
 	if  new_attack_evolution == Attack_Evolution.NONE:
 		current_attack_evolution = Attack_Evolution.NONE
 		_update_attack_radius(DEFAULT_ATTACK_RADIUS)
 		return
-	
+
 	var new_scale = evolution_scales[evolution_level + 1]
 	scale = Vector2(new_scale, new_scale)
 	weapon_sprite.show()
-	
+
 	match new_attack_evolution:
 #		Attack_Evolution.TEETH:
 #			current_attack_evolution = Attack_Evolution.TEETH
@@ -136,7 +147,7 @@ func _update_attack(new_attack_evolution: Attack_Evolution) -> void:
 			damage_delay = 0.5
 		Attack_Evolution.SPRAY:
 			current_attack_evolution =Attack_Evolution.SPRAY
-			_update_attack_radius(DEFAULT_ATTACK_RADIUS + 16)
+			_update_attack_radius(DEFAULT_ATTACK_RADIUS + 64)
 			current_damage = 1
 			damage_delay = 2
 
@@ -158,12 +169,12 @@ func _update_movement(new_movement_evolution: Movement_Evolution) -> void:
 	if new_movement_evolution == Movement_Evolution.NONE:
 		current_speed = DEFAULT_SPEED
 		return
-		
+
 	var new_scale = evolution_scales[evolution_level + 1]
 	scale = Vector2(new_scale, new_scale)
 	body_sprite.play("body")
 	legs_sprite.show()
-	
+
 	match  new_movement_evolution:
 		Movement_Evolution.LEGS_BASIC:
 			legs_sprite.play("default")
@@ -220,7 +231,6 @@ func _on_upgrade_panel_evolution_chosen(choice: int) -> void:
 func _on_attack_range_area_2d_body_entered(body: CharacterBody2D) -> void:
 	if body is Animal:
 		animals_in_range.append(body)
-		can_deal_damage = true
 
 
 func _on_attack_range_area_2d_body_exited(body: CharacterBody2D) -> void:
@@ -228,30 +238,64 @@ func _on_attack_range_area_2d_body_exited(body: CharacterBody2D) -> void:
 		animals_in_range.erase(body)
 
 		if animals_in_range.size() <= 0:
-			can_deal_damage = false
+			animals_in_range.resize(0)
 
 
 func _deal_damage() -> void:
-	if can_deal_damage:
+	if animals_in_range.size() <= 0:
+		can_deal_damage = true
+
+	if animals_in_range.size() > 0 and can_deal_damage:
 		can_deal_damage = false
 
 		for animal in animals_in_range:
-			animal.take_damage(current_damage, current_attack_modifier)
+			if current_attack_evolution != Attack_Evolution.SPRAY:
+				animal.take_damage(current_damage, current_attack_modifier)
+			else:
+				_fire_projectile(animal)
 
-			if animal.current_status == animal.STATUS.DEAD:
+			if animal.current_status == animal.STATUS.DEAD and current_attack_evolution != Attack_Evolution.SPRAY:
 				_consume_resources(animal)
 
 		await get_tree().create_timer(damage_delay).timeout
 		can_deal_damage = true
 
 
+func _fire_projectile(animal: Animal) -> void:
+	var projectile_instance: Projectile = projectile.instantiate()
+
+	projectile_instance.global_position = global_position
+
+	var attack_vector: Vector2 = animal.global_position - global_position
+	var projectile_velocity: Vector2 = attack_vector.normalized() * attack_speed
+
+	projectile_instance.spawn(current_damage, current_attack_range_CS2D.shape.radius * self.scale.x, projectile_velocity, 1)
+	get_tree().root.add_child(projectile_instance)
+
+
 func _consume_resources(animal: Animal) -> void:
 	_modify_health(animal.restore_health_value)
 	_modify_dna(animal.dna_awarded)
 
+	var current_scale = self.scale
+	var consume_tween = create_tween().tween_property(self, "scale", self.scale*Vector2(.7,1.3), 0.075)
+	await consume_tween.finished
+	var return_tween = create_tween().tween_property(self, "scale", current_scale, 0.05)
+
 
 func take_damage(damage_amount: float, damage_modifier: int) -> void:
 	_modify_health(-1 * damage_amount * armor_multiplier)
+	player_took_damage.emit()
+
+	var original_color: Color = body_sprite.modulate
+
+	var tween = create_tween().tween_property(self, "modulate", Color.RED, 1)
+
+	await tween.finished
+
+	create_tween().tween_property(self, "modulate", original_color, 0.2)
+
+
 
 func _regen_health() -> void:
 	if can_regen:
@@ -262,6 +306,7 @@ func _regen_health() -> void:
 
 		can_regen = true
 
+
 func _modify_health(delta: float) -> void:
 	health += delta
 
@@ -270,6 +315,7 @@ func _modify_health(delta: float) -> void:
 	if health <= 0:
 		get_tree().paused = true
 		player_died.emit()
+
 
 func _modify_dna(delta: int) -> void:
 	stored_dna += delta

@@ -5,7 +5,7 @@ class_name Scorpion
 @export var instance_health: int = 10
 @export var restore_health_value: int = 1
 
-var projectile = preload("res://enemy_projectile.tscn")
+var projectile = preload("res://projectile.tscn")
 
 @export var dna_awarded: int = 15
 

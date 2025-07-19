@@ -2,6 +2,9 @@ extends CharacterBody2D
 class_name Projectile
 
 
+var player: Player
+
+
 var damage: int = 0
 var projectile_range: float = 0.0
 var projectile_velocity: Vector2 = Vector2.ZERO
@@ -17,6 +20,10 @@ enum TARGET {
 	PLAYER = 0,
 	ANIMAL = 1
 }
+
+
+func _ready() -> void:
+	player = get_tree().get_first_node_in_group("Player")
 
 
 func spawn(new_damage: int, new_range: float, new_velocity: Vector2, new_target_type: int) -> void:
@@ -50,4 +57,8 @@ func _on_target_detector_body_entered(body: Node2D) -> void:
 		TARGET.ANIMAL:
 			if body is Animal:
 				body.take_damage(damage, 0)
+
+				if body.health <= 0 and player != null:
+					player._consume_resources(body)
+
 				queue_free()
