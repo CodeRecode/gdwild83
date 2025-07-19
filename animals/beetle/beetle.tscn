@@ -30,6 +30,10 @@ radius = 50.0
 
 [node name="Beetle" type="CharacterBody2D"]
 script = ExtResource("1_bj3vx")
+instance_health = 4
+restore_health_value = 3
+dna_awarded = 6
+speed = 3000.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_j7cay")

@@ -23,10 +23,13 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0b4ue"]
-radius = 30.0
+radius = 21.0
 
 [node name="Mouse" type="CharacterBody2D"]
 script = ExtResource("1_7hfej")
+instance_health = 3
+dna_awarded = 3
+speed = 4500.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_riyer")
