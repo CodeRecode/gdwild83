@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c8b6qnp400wcf"]
+[gd_scene load_steps=15 format=3 uid="uid://c8b6qnp400wcf"]
 
 [ext_resource type="Script" uid="uid://bep15pwdio6yf" path="res://ui/stats_panel.gd" id="1_f2txt"]
 [ext_resource type="PackedScene" uid="uid://ns1cyrf2ln52" path="res://player.tscn" id="1_u52ul"]
@@ -14,7 +14,6 @@
 [ext_resource type="AudioStream" uid="uid://doqi4aguv33e7" path="res://audio/728695__minecraftgamerlr__intense-gore-sound-opening-chest-cavity.ogg" id="8_v5j5c"]
 [ext_resource type="Script" uid="uid://bnm2nmfcxlwic" path="res://story_controller.gd" id="10_8cye3"]
 [ext_resource type="PackedScene" uid="uid://b51qjjopgjcy7" path="res://animals/narrator.tscn" id="11_2orkt"]
-[ext_resource type="Script" uid="uid://obfyx8hqmdoi" path="res://camera_2d.gd" id="11_aicyk"]
 
 [node name="Level" type="Node2D"]
 
@@ -247,9 +246,6 @@ position = Vector2(206, 343)
 [node name="Player" parent="." instance=ExtResource("1_u52ul")]
 position = Vector2(204, 98)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-script = ExtResource("11_aicyk")
-
 [node name="Obstacles" type="Node" parent="."]
 
 [node name="SmallRock" parent="Obstacles" instance=ExtResource("2_vonw3")]
@@ -279,4 +275,3 @@ scale = Vector2(0.5, 0.486033)
 [connection signal="evolution_triggered" from="Player" to="CanvasLayer/UpgradePanel" method="_on_player_evolution_triggered"]
 [connection signal="health_modified" from="Player" to="CanvasLayer/StatsPanel" method="_on_player_health_modified"]
 [connection signal="player_died" from="Player" to="CanvasLayer/DeathNotif" method="_on_player_player_died"]
-[connection signal="player_took_damage" from="Player" to="Player/Camera2D" method="_on_player_player_took_damage"]

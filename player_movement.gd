@@ -294,13 +294,17 @@ func take_damage(damage_amount: float, damage_modifier: int) -> void:
 	hit_fx_player.play()
 	player_took_damage.emit()
 
-	var original_color: Color = body_sprite.modulate
-
-	var tween = create_tween().tween_property(self, "modulate", Color.RED, 1)
-
+	# Additive color, set factor 0-1 to increase/decrease the redness
+	var red_factor = .1
+	var tween_in_time = .1
+	var tween_out_time = .1
+	var tween = create_tween().tween_property(body_sprite, "material:shader_parameter/hit_color", Color.RED * red_factor, tween_in_time)
+	create_tween().tween_property(legs_sprite, "material:shader_parameter/hit_color", Color.RED * red_factor, tween_in_time) 
+	create_tween().tween_property(weapon_sprite, "material:shader_parameter/hit_color", Color.RED * red_factor, tween_in_time) 
 	await tween.finished
-
-	create_tween().tween_property(self, "modulate", original_color, 0.2)
+	create_tween().tween_property(body_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time) 
+	create_tween().tween_property(legs_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time) 
+	create_tween().tween_property(weapon_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time) 
 
 
 
