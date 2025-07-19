@@ -13,15 +13,19 @@ signal dna_modified(new_value: int)
 signal evolution_triggered(name1: String, name2: String)
 signal player_died()
 signal player_took_damage()
-
+signal zoom_camera(new_value: float)
 
 var current_speed: int = 5000
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-@onready var current_attack_range_CS2D = $AttackRangeArea2D/AttackRange
-@onready var body_sprite: AnimatedSprite2D = $BodySprite
-@onready var legs_sprite: AnimatedSprite2D = $LegsSprite
-@onready var weapon_sprite: AnimatedSprite2D = $WeaponSprite
+@onready var current_attack_range_CS2D = $Scalars/AttackRangeArea2D/AttackRange
+
+@onready var scalars: Node2D = $Scalars
+@onready var body_sprite: AnimatedSprite2D = $Scalars/BodySprite
+@onready var legs_sprite: AnimatedSprite2D = $Scalars/LegsSprite
+@onready var weapon_sprite: AnimatedSprite2D = $Scalars/WeaponSprite
+
 @onready var hit_fx_player: AudioStreamPlayer2D = $HitFxPlayer
+@onready var background: Sprite2D = $Background
 
 
 @export var health: float = 10.0
@@ -34,6 +38,7 @@ var armor_multiplier: float = 1.0
 @export var stored_dna: int = 0
 @export var evolution_thresholds: Array[int] = [10, 50, 250, 1000]
 @export var evolution_scales: Array[float] = [1.0, 1.5, 2.0, 3.0, 5.0]
+@export var camera_scales: Array[float] = [1.0, .8, .6, .4, .3]
 var evolution_level: int = 0
 var choosing_evolution: bool = false
 
@@ -117,6 +122,8 @@ func _physics_process(delta: float) -> void:
 	_deal_damage()
 	_check_evolve()
 	_regen_health()
+	
+	background.material.set("shader_parameter/player_position", global_position)
 
 #region Evolution
 
@@ -130,8 +137,7 @@ func _update_attack(new_attack_evolution: Attack_Evolution) -> void:
 		_update_attack_radius(DEFAULT_ATTACK_RADIUS)
 		return
 
-	var new_scale = evolution_scales[evolution_level + 1]
-	scale = Vector2(new_scale, new_scale)
+	_scale_evolve()
 	weapon_sprite.show()
 
 	match new_attack_evolution:
@@ -172,8 +178,7 @@ func _update_movement(new_movement_evolution: Movement_Evolution) -> void:
 		current_speed = DEFAULT_SPEED
 		return
 
-	var new_scale = evolution_scales[evolution_level + 1]
-	scale = Vector2(new_scale, new_scale)
+	_scale_evolve()
 	body_sprite.play("body")
 	legs_sprite.show()
 
@@ -271,22 +276,30 @@ func _fire_projectile(animal: Animal) -> void:
 	var attack_vector: Vector2 = animal.global_position - global_position
 	var projectile_velocity: Vector2 = attack_vector.normalized() * attack_speed
 
-	projectile_instance.spawn(current_damage, current_attack_range_CS2D.shape.radius * self.scale.x, projectile_velocity, 1)
+	projectile_instance.spawn(current_damage, current_attack_range_CS2D.shape.radius * scalars.scale.x, projectile_velocity, 1)
 	get_tree().root.add_child(projectile_instance)
 
-
+var consume_tweening = false
 func _consume_resources(animal: Animal) -> void:
 	_modify_health(animal.restore_health_value)
 	_modify_dna(animal.dna_awarded)
 
-	# don't set scale if we're going to evolved
+	# Don't set scale if we're going to evolve
 	if evolution_level < evolution_thresholds.size() and stored_dna > evolution_thresholds[evolution_level]:
 		return
+	
+	# don't double play
+	if consume_tweening:
+		return
 
-	var current_scale = self.scale
-	var consume_tween = create_tween().tween_property(self, "scale", self.scale*Vector2(.7,1.3), 0.075)
-	await consume_tween.finished
-	var return_tween = create_tween().tween_property(self, "scale", current_scale, 0.05)
+	consume_tweening = true
+	var current_scale = scalars.scale
+	var tween = create_tween()
+	tween.tween_property(scalars, "scale", scalars.scale*Vector2(.7,1.3), 0.075)
+	tween.tween_property(scalars, "scale", current_scale, 0.05)
+	
+	await tween.finished
+	consume_tweening = false
 
 
 func take_damage(damage_amount: float, damage_modifier: int) -> void:
@@ -298,15 +311,23 @@ func take_damage(damage_amount: float, damage_modifier: int) -> void:
 	var red_factor = .1
 	var tween_in_time = .1
 	var tween_out_time = .1
+	
 	var tween = create_tween().tween_property(body_sprite, "material:shader_parameter/hit_color", Color.RED * red_factor, tween_in_time)
 	create_tween().tween_property(legs_sprite, "material:shader_parameter/hit_color", Color.RED * red_factor, tween_in_time) 
 	create_tween().tween_property(weapon_sprite, "material:shader_parameter/hit_color", Color.RED * red_factor, tween_in_time) 
+	
 	await tween.finished
+	
 	create_tween().tween_property(body_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time) 
 	create_tween().tween_property(legs_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time) 
 	create_tween().tween_property(weapon_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time) 
 
-
+func _scale_evolve() -> void:
+	var new_scale = evolution_scales[evolution_level + 1]
+	collision_shape_2d.scale = Vector2(new_scale, new_scale)
+	scalars.scale = Vector2(new_scale, new_scale)
+	
+	zoom_camera.emit(camera_scales[evolution_level + 1])
 
 func _regen_health() -> void:
 	if can_regen:

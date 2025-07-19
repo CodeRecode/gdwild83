@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://c8b6qnp400wcf"]
+[gd_scene load_steps=14 format=3 uid="uid://c8b6qnp400wcf"]
 
 [ext_resource type="Script" uid="uid://bep15pwdio6yf" path="res://ui/stats_panel.gd" id="1_f2txt"]
 [ext_resource type="PackedScene" uid="uid://ns1cyrf2ln52" path="res://player.tscn" id="1_u52ul"]
 [ext_resource type="Script" uid="uid://ccngsd6hxa6nu" path="res://ui/upgrade_panel.gd" id="2_1ainy"]
 [ext_resource type="PackedScene" uid="uid://vstiefs8fhix" path="res://geo/small_rock.tscn" id="2_vonw3"]
-[ext_resource type="Texture2D" uid="uid://b74edsvtyu7gi" path="res://sprites/folded_paper.png" id="3_0b4ue"]
 [ext_resource type="Script" uid="uid://jp45kmq4jnqp" path="res://death_notif.gd" id="4_i2t4f"]
 [ext_resource type="PackedScene" uid="uid://x1kmlegtg47p" path="res://animals/mouse/mouse.tscn" id="6_1ainy"]
 [ext_resource type="AudioStream" uid="uid://crgy28sfucehn" path="res://audio/music/719675__setuniman__light-1v43.ogg" id="6_8b0r0"]
@@ -17,18 +16,9 @@
 
 [node name="Level" type="Node2D"]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1500, 1500)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(577.625, 325.375)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_0b4ue")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
+follow_viewport_scale = 0.0
 
 [node name="StatsPanel" type="PanelContainer" parent="CanvasLayer"]
 z_index = 50

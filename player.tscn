@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ns1cyrf2ln52"]
+[gd_scene load_steps=29 format=3 uid="uid://ns1cyrf2ln52"]
 
 [ext_resource type="Script" uid="uid://gq6xa2l3g66g" path="res://player_movement.gd" id="1_4flbx"]
 [ext_resource type="Shader" uid="uid://3h883wfcxp6t" path="res://shaders/blend.gdshader" id="2_hqtel"]
@@ -17,6 +17,45 @@
 [ext_resource type="Texture2D" uid="uid://bo72bmw4rmppx" path="res://sprites/creature/Cannons_0000.png" id="14_606se"]
 [ext_resource type="Texture2D" uid="uid://c5bvkc1i71nmx" path="res://sprites/creature/Cannons_0001.png" id="15_u1c27"]
 [ext_resource type="PackedScene" uid="uid://8xhu0alqge3g" path="res://audio/hit_fx_player.tscn" id="16_u1c27"]
+[ext_resource type="Shader" uid="uid://d27241p7req7j" path="res://shaders/background.gdshader" id="18_pylmc"]
+[ext_resource type="Texture2D" uid="uid://b74edsvtyu7gi" path="res://sprites/folded_paper.png" id="19_pbfsw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5tmop"]
+shader = ExtResource("18_pylmc")
+shader_parameter/player_position = Vector2(0, 0)
+shader_parameter/repeat_scale = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5xgho"]
+radius = 23.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sweqy"]
+shader = ExtResource("2_hqtel")
+shader_parameter/hit_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4flbx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i3pqv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hqtel")
+}],
+"loop": true,
+"name": &"basic",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_1jxqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2hs0m")
+}],
+"loop": true,
+"name": &"body",
+"speed": 8.0
+}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_op7ga"]
 shader = ExtResource("2_hqtel")
@@ -87,38 +126,6 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sweqy"]
-shader = ExtResource("2_hqtel")
-shader_parameter/hit_color = Color(0, 0, 0, 1)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4flbx"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_i3pqv")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_hqtel")
-}],
-"loop": true,
-"name": &"basic",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_1jxqw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_2hs0m")
-}],
-"loop": true,
-"name": &"body",
-"speed": 8.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_5xgho"]
-radius = 23.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_4flbx"]
 radius = 45.0999
 
@@ -131,43 +138,53 @@ current_movement_evolution = 7500
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("2_op7ga")
 
-[node name="WeaponSprite" type="AnimatedSprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+material = SubResource("ShaderMaterial_5tmop")
+position = Vector2(-37.4998, -119)
+scale = Vector2(5, 5)
+texture = ExtResource("19_pbfsw")
+
+[node name="HitFxPlayer" parent="." instance=ExtResource("16_u1c27")]
+volume_db = -5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5xgho")
+
+[node name="Scalars" type="Node2D" parent="."]
+
+[node name="BodySprite" type="AnimatedSprite2D" parent="Scalars"]
+material = SubResource("ShaderMaterial_sweqy")
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_4flbx")
+animation = &"basic"
+
+[node name="WeaponSprite" type="AnimatedSprite2D" parent="Scalars"]
 visible = false
 material = SubResource("ShaderMaterial_op7ga")
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_nvl01")
 animation = &"spray"
 
-[node name="LegsSprite" type="AnimatedSprite2D" parent="."]
+[node name="LegsSprite" type="AnimatedSprite2D" parent="Scalars"]
 visible = false
 material = SubResource("ShaderMaterial_q13i1")
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
 animation = &"tentacles"
 
-[node name="BodySprite" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_sweqy")
-scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_4flbx")
-animation = &"basic"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_5xgho")
-
-[node name="AttackRangeArea2D" type="Area2D" parent="."]
+[node name="AttackRangeArea2D" type="Area2D" parent="Scalars"]
 visible = false
 collision_layer = 0
 monitorable = false
 
-[node name="AttackRange" type="CollisionShape2D" parent="AttackRangeArea2D"]
+[node name="AttackRange" type="CollisionShape2D" parent="Scalars/AttackRangeArea2D"]
 visible = false
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_4flbx")
 debug_color = Color(0.962607, 0, 0.503595, 0.42)
 
-[node name="HitFxPlayer" parent="." instance=ExtResource("16_u1c27")]
-volume_db = -5.0
-
 [connection signal="player_took_damage" from="." to="Camera2D" method="_on_player_player_took_damage"]
-[connection signal="body_entered" from="AttackRangeArea2D" to="." method="_on_attack_range_area_2d_body_entered"]
-[connection signal="body_exited" from="AttackRangeArea2D" to="." method="_on_attack_range_area_2d_body_exited"]
+[connection signal="zoom_camera" from="." to="Camera2D" method="_on_player_zoom_camera"]
+[connection signal="body_entered" from="Scalars/AttackRangeArea2D" to="." method="_on_attack_range_area_2d_body_entered"]
+[connection signal="body_exited" from="Scalars/AttackRangeArea2D" to="." method="_on_attack_range_area_2d_body_exited"]
