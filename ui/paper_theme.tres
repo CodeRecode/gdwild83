@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bca7bmrwcv4bs"]
+
+[ext_resource type="Texture2D" uid="uid://bgh38d2cdo7yv" path="res://sprites/paper_bg.png" id="1_ktvv3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c0tnu"]
+texture = ExtResource("1_ktvv3")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktvv3"]
+bg_color = Color(0.91664, 0.91664, 0.91664, 1)
+shadow_size = 2
+shadow_offset = Vector2(1, 1)
+
+[resource]
+Label/colors/font_color = Color(0, 0, 0, 1)
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
+Panel/styles/panel = SubResource("StyleBoxTexture_c0tnu")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_ktvv3")
