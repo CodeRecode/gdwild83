@@ -14,7 +14,8 @@ signal player_died()
 var current_speed: int = 5000
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var current_attack_range_CS2D = $AttackRangeArea2D/AttackRange
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var body_sprite: AnimatedSprite2D = $BodySprite
+@onready var legs_sprite: AnimatedSprite2D = $LegsSprite
 
 @export var health: float = 10.0
 @export var regen_amount: int = 1
@@ -82,7 +83,7 @@ func _ready() -> void:
 	current_movement_evolution = Movement_Evolution.NONE
 	current_health_evolution = Health_Evolution.NONE
 
-	animated_sprite_2d.play()
+	body_sprite.play("basic")
 
 	# update ui values
 	_modify_health(0)
@@ -92,6 +93,12 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = input_dir.normalized() * current_speed * delta
+
+	if current_movement_evolution == Movement_Evolution.LEGS_BASIC:
+		if velocity.length_squared() > 0:
+			legs_sprite.play("walk")
+		else:
+			legs_sprite.play("default")
 
 	move_and_slide()
 	_deal_damage()
@@ -137,26 +144,31 @@ func _update_modifier(new_attack_modifier: Attack_Modifier) -> void:
 			current_attack_modifier = Attack_Modifier.ONESHOT
 
 
-func _update_movement(new_movemoent_evolution: Movement_Evolution) -> void:
-	match  new_movemoent_evolution:
+func _update_movement(new_movement_evolution: Movement_Evolution) -> void:
+	current_movement_evolution = new_movement_evolution
+	
+	match  new_movement_evolution:
 		Movement_Evolution.NONE:
 			current_speed = DEFAULT_SPEED
 		Movement_Evolution.LEGS_BASIC:
+			scale = Vector2(1.5, 1.5)
+			body_sprite.play("body")
+			legs_sprite.play("default")
+			legs_sprite.show()
 			current_speed = Movement_Evolution.LEGS_BASIC
 		Movement_Evolution.TENTACLES_BASIC:
+			body_sprite.play("body")
 			current_speed = Movement_Evolution.TENTACLES_BASIC
 
 
 func _update_health(new_health_evolution: Health_Evolution) -> void:
+	current_health_evolution = new_health_evolution
 	match new_health_evolution:
 		Health_Evolution.NONE:
-			current_health_evolution = Health_Evolution.NONE
 			armor_multiplier = ARMOR_DEFAULT
 		Health_Evolution.ARMOR:
-			current_health_evolution = Health_Evolution.ARMOR
 			armor_multiplier *= ARMOR_DAMAGE_REDUCTION
 		Health_Evolution.REGEN:
-			current_health_evolution = Health_Evolution.REGEN
 			can_regen = true
 
 
