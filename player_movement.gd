@@ -153,11 +153,13 @@ func _update_movement(new_movement_evolution: Movement_Evolution) -> void:
 		Movement_Evolution.LEGS_BASIC:
 			scale = Vector2(1.5, 1.5)
 			body_sprite.play("body")
-			legs_sprite.play("default")
 			legs_sprite.show()
+			legs_sprite.play("default")
 			current_speed = Movement_Evolution.LEGS_BASIC
 		Movement_Evolution.TENTACLES_BASIC:
 			body_sprite.play("body")
+			legs_sprite.show()
+			legs_sprite.play("tentacles")
 			current_speed = Movement_Evolution.TENTACLES_BASIC
 
 

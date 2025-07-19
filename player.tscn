@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ns1cyrf2ln52"]
+[gd_scene load_steps=17 format=3 uid="uid://ns1cyrf2ln52"]
 
 [ext_resource type="Script" uid="uid://gq6xa2l3g66g" path="res://player_movement.gd" id="1_4flbx"]
 [ext_resource type="Shader" uid="uid://3h883wfcxp6t" path="res://shaders/blend.gdshader" id="2_hqtel"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://oedtgt0dinoi" path="res://sprites/creature/Creature_Body_0001.png" id="6_2hs0m"]
 [ext_resource type="Texture2D" uid="uid://ioo4vv6pybj0" path="res://sprites/creature/Creature_Legs_0002.png" id="8_dw050"]
 [ext_resource type="Texture2D" uid="uid://chdvn45t48m4v" path="res://sprites/creature/Creature_Legs_0001.png" id="9_b26j0"]
+[ext_resource type="Texture2D" uid="uid://blle38porlgti" path="res://sprites/creature/Tentacles_0000.png" id="9_nvl01"]
+[ext_resource type="Texture2D" uid="uid://brkcf5xykejeh" path="res://sprites/creature/Tentacles_0001.png" id="10_ivps1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sweqy"]
 shader = ExtResource("2_hqtel")
@@ -53,6 +55,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("9_nvl01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ivps1")
+}],
+"loop": true,
+"name": &"tentacles",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("5_2hs0m")
 }, {
 "duration": 1.0,
@@ -85,7 +98,7 @@ animation = &"basic"
 visible = false
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
-animation = &"walk"
+animation = &"tentacles"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
