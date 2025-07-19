@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://x1kmlegtg47p"]
+[gd_scene load_steps=9 format=3 uid="uid://x1kmlegtg47p"]
 
 [ext_resource type="Script" uid="uid://bvf5vr2an0ok0" path="res://animals/mouse/mouse.gd" id="1_7hfej"]
 [ext_resource type="Shader" uid="uid://3h883wfcxp6t" path="res://shaders/blend.gdshader" id="2_pyxpy"]
 [ext_resource type="Texture2D" uid="uid://ci6v52jel2504" path="res://sprites/animals/Mouse_0000.png" id="3_hfx0i"]
 [ext_resource type="Texture2D" uid="uid://bcn3wyi4c0hae" path="res://sprites/animals/Mouse_0001.png" id="4_fyin8"]
+[ext_resource type="PackedScene" uid="uid://8xhu0alqge3g" path="res://audio/hit_fx_player.tscn" id="5_dmu72"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_riyer"]
 shader = ExtResource("2_pyxpy")
@@ -46,6 +47,8 @@ collision_layer = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SightDetection"]
 polygon = PackedVector2Array(80, 60, 80, -60, 0, 0)
+
+[node name="HitFxPlayer" parent="." instance=ExtResource("5_dmu72")]
 
 [connection signal="body_entered" from="SightDetection" to="." method="_on_sight_detection_body_entered"]
 [connection signal="body_exited" from="SightDetection" to="." method="_on_sight_detection_body_exited"]

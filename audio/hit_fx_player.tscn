@@ -1,0 +1,25 @@
+[gd_scene load_steps=10 format=3 uid="uid://8xhu0alqge3g"]
+
+[ext_resource type="AudioStream" uid="uid://d1nh0l4ew2qqi" path="res://audio/hitfx/stab1.ogg" id="1_q10lb"]
+[ext_resource type="AudioStream" uid="uid://dhj7xb1iprqdb" path="res://audio/hitfx/stab2.ogg" id="2_bf2cf"]
+[ext_resource type="AudioStream" uid="uid://b6fectvqm8dlp" path="res://audio/hitfx/stab3.ogg" id="3_wtba0"]
+[ext_resource type="AudioStream" uid="uid://lk8ul0bgfkcb" path="res://audio/hitfx/stab4.ogg" id="4_1ss33"]
+[ext_resource type="AudioStream" uid="uid://uvtleehx8dv5" path="res://audio/hitfx/stab5.ogg" id="5_glg1s"]
+[ext_resource type="AudioStream" uid="uid://dyesv0tee8aw3" path="res://audio/hitfx/stab6.ogg" id="6_8llh0"]
+[ext_resource type="AudioStream" uid="uid://c6i4410ydu7mo" path="res://audio/hitfx/stab7.ogg" id="7_83srw"]
+[ext_resource type="AudioStream" uid="uid://bgovayalwjwm1" path="res://audio/hitfx/stab8.ogg" id="8_0675g"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6nj44"]
+random_pitch = 1.5
+streams_count = 8
+stream_0/stream = ExtResource("1_q10lb")
+stream_1/stream = ExtResource("2_bf2cf")
+stream_2/stream = ExtResource("3_wtba0")
+stream_3/stream = ExtResource("4_1ss33")
+stream_4/stream = ExtResource("5_glg1s")
+stream_5/stream = ExtResource("6_8llh0")
+stream_6/stream = ExtResource("7_83srw")
+stream_7/stream = ExtResource("8_0675g")
+
+[node name="HitFxPlayer" type="AudioStreamPlayer2D"]
+stream = SubResource("AudioStreamRandomizer_6nj44")

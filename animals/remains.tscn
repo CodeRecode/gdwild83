@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj8kpohjqebeu"]
+
+[ext_resource type="Script" uid="uid://cwveiehoemyyx" path="res://animals/remains.gd" id="1_413kl"]
+[ext_resource type="PackedScene" uid="uid://btteh2adhk7tf" path="res://audio/death_player.tscn" id="1_imlt6"]
+
+[node name="Remains" type="Node2D"]
+script = ExtResource("1_413kl")
+
+[node name="DeathPlayer" parent="." instance=ExtResource("1_imlt6")]

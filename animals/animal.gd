@@ -4,7 +4,11 @@ class_name Animal
 var health: int = 5
 #@export var restore_health_value: int = 1
 #
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
+@onready var hit_fx_player: AudioStreamPlayer2D = $HitFxPlayer
+var remains = preload("res://animals/remains.tscn")
 
 var player: Player = null
 var player_attacked_me: bool = false
@@ -58,6 +62,7 @@ func _ready() -> void:
 func take_damage(damage_amount: int, attack_modifier) -> void:
 	player_attacked_me = true
 	health -= damage_amount
+	hit_fx_player.play()
 
 	match  attack_modifier:
 		STATUS.HEALTHY:
@@ -73,9 +78,16 @@ func take_damage(damage_amount: int, attack_modifier) -> void:
 		current_status = STATUS.DEAD
 
 	if current_status == STATUS.DEAD:
-		queue_free.call_deferred()
+		_die()
 
 	player_sighted = true
+
+func _die():
+	var instance = remains.instantiate()
+	instance.global_position = global_position
+	get_tree().root.add_child(instance)
+	queue_free.call_deferred()
+	
 
 #abstract func
 func _respond_to_damage():

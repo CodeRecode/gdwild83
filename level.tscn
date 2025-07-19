@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8b6qnp400wcf"]
+[gd_scene load_steps=16 format=3 uid="uid://c8b6qnp400wcf"]
 
 [ext_resource type="Script" uid="uid://bep15pwdio6yf" path="res://ui/stats_panel.gd" id="1_f2txt"]
 [ext_resource type="PackedScene" uid="uid://ns1cyrf2ln52" path="res://player.tscn" id="1_u52ul"]
@@ -7,8 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://b74edsvtyu7gi" path="res://sprites/folded_paper.png" id="3_0b4ue"]
 [ext_resource type="Script" uid="uid://jp45kmq4jnqp" path="res://death_notif.gd" id="4_i2t4f"]
 [ext_resource type="PackedScene" uid="uid://x1kmlegtg47p" path="res://animals/mouse/mouse.tscn" id="6_1ainy"]
+[ext_resource type="AudioStream" uid="uid://crgy28sfucehn" path="res://audio/music/719675__setuniman__light-1v43.ogg" id="6_8b0r0"]
+[ext_resource type="AudioStream" uid="uid://cte26qs65crpi" path="res://audio/505932__pfranzen__shapeshifter-shifting-shapes.ogg" id="7_h6smj"]
 [ext_resource type="PackedScene" uid="uid://q33bmw1osj75" path="res://animals/beetle/beetle.tscn" id="7_n6hdu"]
 [ext_resource type="PackedScene" uid="uid://bdh6m07u4ngxy" path="res://animals/scorpion/scorpion.tscn" id="8_km5ld"]
+[ext_resource type="AudioStream" uid="uid://doqi4aguv33e7" path="res://audio/728695__minecraftgamerlr__intense-gore-sound-opening-chest-cavity.ogg" id="8_v5j5c"]
 [ext_resource type="Script" uid="uid://bnm2nmfcxlwic" path="res://story_controller.gd" id="10_8cye3"]
 [ext_resource type="PackedScene" uid="uid://b51qjjopgjcy7" path="res://animals/narrator.tscn" id="11_2orkt"]
 [ext_resource type="Script" uid="uid://obfyx8hqmdoi" path="res://camera_2d.gd" id="11_aicyk"]
@@ -123,6 +126,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "This is upgrade 2"
 
+[node name="EvolutionPlayer" type="AudioStreamPlayer" parent="CanvasLayer/UpgradePanel"]
+stream = ExtResource("7_h6smj")
+volume_db = -5.0
+
 [node name="DeathNotif" type="PanelContainer" parent="CanvasLayer"]
 visible = false
 anchors_preset = 8
@@ -188,6 +195,13 @@ text = "You Win"
 [node name="StoryController" type="Node2D" parent="CanvasLayer"]
 position = Vector2(144, 172)
 script = ExtResource("10_8cye3")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="CanvasLayer/StoryController"]
+stream = ExtResource("6_8b0r0")
+parameters/looping = true
+
+[node name="NarratorDeathPlayer" type="AudioStreamPlayer" parent="CanvasLayer/StoryController"]
+stream = ExtResource("8_v5j5c")
 
 [node name="Animals" type="Node" parent="."]
 

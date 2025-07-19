@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ns1cyrf2ln52"]
+[gd_scene load_steps=23 format=3 uid="uid://ns1cyrf2ln52"]
 
 [ext_resource type="Script" uid="uid://gq6xa2l3g66g" path="res://player_movement.gd" id="1_4flbx"]
 [ext_resource type="Shader" uid="uid://3h883wfcxp6t" path="res://shaders/blend.gdshader" id="2_hqtel"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cetnyi6sx7bl8" path="res://sprites/creature/Claws_0001.png" id="13_bwjto"]
 [ext_resource type="Texture2D" uid="uid://bo72bmw4rmppx" path="res://sprites/creature/Cannons_0000.png" id="14_606se"]
 [ext_resource type="Texture2D" uid="uid://c5bvkc1i71nmx" path="res://sprites/creature/Cannons_0001.png" id="15_u1c27"]
+[ext_resource type="PackedScene" uid="uid://8xhu0alqge3g" path="res://audio/hit_fx_player.tscn" id="16_u1c27"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nvl01"]
 animations = [{
@@ -148,6 +149,9 @@ visible = false
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_4flbx")
 debug_color = Color(0.962607, 0, 0.503595, 0.42)
+
+[node name="HitFxPlayer" parent="." instance=ExtResource("16_u1c27")]
+volume_db = -5.0
 
 [connection signal="body_entered" from="AttackRangeArea2D" to="." method="_on_attack_range_area_2d_body_entered"]
 [connection signal="body_exited" from="AttackRangeArea2D" to="." method="_on_attack_range_area_2d_body_exited"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b51qjjopgjcy7"]
+[gd_scene load_steps=6 format=3 uid="uid://b51qjjopgjcy7"]
 
 [ext_resource type="Texture2D" uid="uid://dawjarjkcwxcu" path="res://icon.svg" id="1_4pnkk"]
 [ext_resource type="Script" uid="uid://ba7nylvmkcuvb" path="res://animals/narrator.gd" id="1_obntq"]
+[ext_resource type="PackedScene" uid="uid://8xhu0alqge3g" path="res://audio/hit_fx_player.tscn" id="3_wqwuo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a8py2"]
 animations = [{
@@ -32,3 +33,5 @@ collision_layer = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SightDetection"]
 polygon = PackedVector2Array(139, 131, 141, -146, 0, 0)
+
+[node name="HitFxPlayer" parent="." instance=ExtResource("3_wqwuo")]

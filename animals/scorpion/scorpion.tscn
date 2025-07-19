@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdh6m07u4ngxy"]
+[gd_scene load_steps=10 format=3 uid="uid://bdh6m07u4ngxy"]
 
 [ext_resource type="Script" uid="uid://b5e8rlh6hr31e" path="res://animals/scorpion/scorpion.gd" id="1_fvk6i"]
 [ext_resource type="Shader" uid="uid://3h883wfcxp6t" path="res://shaders/blend.gdshader" id="2_ihv2e"]
 [ext_resource type="Texture2D" uid="uid://e31yqu7amaav" path="res://sprites/animals/Scorpion_0000.png" id="3_fvk6i"]
 [ext_resource type="Texture2D" uid="uid://dieyngx3bvu5t" path="res://sprites/animals/Scorpion_0001.png" id="4_xr8pp"]
+[ext_resource type="PackedScene" uid="uid://8xhu0alqge3g" path="res://audio/hit_fx_player.tscn" id="5_xr8pp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j7cay"]
 shader = ExtResource("2_ihv2e")
@@ -58,6 +59,8 @@ monitorable = false
 [node name="AttackRange" type="CollisionShape2D" parent="AttackRangeArea2D"]
 shape = SubResource("CircleShape2D_bj3vx")
 debug_color = Color(0.962607, 0, 0.503595, 0.42)
+
+[node name="HitFxPlayer" parent="." instance=ExtResource("5_xr8pp")]
 
 [connection signal="body_entered" from="SightDetection" to="." method="_on_sight_detection_body_entered"]
 [connection signal="body_exited" from="SightDetection" to="." method="_on_sight_detection_body_exited"]

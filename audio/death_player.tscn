@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://btteh2adhk7tf"]
+
+[ext_resource type="AudioStream" uid="uid://bg2fp6qpdt384" path="res://audio/Juicy Burst_VM 03.ogg" id="1_qh4ae"]
+
+[node name="DeathPlayer" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_qh4ae")

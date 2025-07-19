@@ -21,6 +21,7 @@ var current_speed: int = 5000
 @onready var body_sprite: AnimatedSprite2D = $BodySprite
 @onready var legs_sprite: AnimatedSprite2D = $LegsSprite
 @onready var weapon_sprite: AnimatedSprite2D = $WeaponSprite
+@onready var hit_fx_player: AudioStreamPlayer2D = $HitFxPlayer
 
 
 @export var health: float = 10.0
@@ -278,6 +279,10 @@ func _consume_resources(animal: Animal) -> void:
 	_modify_health(animal.restore_health_value)
 	_modify_dna(animal.dna_awarded)
 
+	# don't set scale if we're going to evolved
+	if evolution_level < evolution_thresholds.size() and stored_dna > evolution_thresholds[evolution_level]:
+		return
+
 	var current_scale = self.scale
 	var consume_tween = create_tween().tween_property(self, "scale", self.scale*Vector2(.7,1.3), 0.075)
 	await consume_tween.finished
@@ -286,6 +291,7 @@ func _consume_resources(animal: Animal) -> void:
 
 func take_damage(damage_amount: float, damage_modifier: int) -> void:
 	_modify_health(-1 * damage_amount * armor_multiplier)
+	hit_fx_player.play()
 	player_took_damage.emit()
 
 	var original_color: Color = body_sprite.modulate
