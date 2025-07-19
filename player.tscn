@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ns1cyrf2ln52"]
+[gd_scene load_steps=20 format=3 uid="uid://ns1cyrf2ln52"]
 
 [ext_resource type="Script" uid="uid://gq6xa2l3g66g" path="res://player_movement.gd" id="1_4flbx"]
 [ext_resource type="Shader" uid="uid://3h883wfcxp6t" path="res://shaders/blend.gdshader" id="2_hqtel"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://chdvn45t48m4v" path="res://sprites/creature/Creature_Legs_0001.png" id="9_b26j0"]
 [ext_resource type="Texture2D" uid="uid://blle38porlgti" path="res://sprites/creature/Tentacles_0000.png" id="9_nvl01"]
 [ext_resource type="Texture2D" uid="uid://brkcf5xykejeh" path="res://sprites/creature/Tentacles_0001.png" id="10_ivps1"]
+[ext_resource type="Texture2D" uid="uid://i7j7lvbufc8m" path="res://sprites/creature/Claws_0000.png" id="12_urp6f"]
+[ext_resource type="Texture2D" uid="uid://cetnyi6sx7bl8" path="res://sprites/creature/Claws_0001.png" id="13_bwjto"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sweqy"]
 shader = ExtResource("2_hqtel")
@@ -76,6 +78,20 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_nvl01"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_urp6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_bwjto")
+}],
+"loop": true,
+"name": &"claws",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_5xgho"]
 radius = 32.0624
 
@@ -99,6 +115,12 @@ visible = false
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
 animation = &"tentacles"
+
+[node name="WeaponSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_nvl01")
+animation = &"claws"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)

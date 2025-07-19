@@ -200,6 +200,12 @@ scale = Vector2(0.5, 0.486033)
 [node name="Mouse" parent="." instance=ExtResource("6_1ainy")]
 position = Vector2(144, 172)
 
+[node name="Mouse2" parent="." instance=ExtResource("6_1ainy")]
+position = Vector2(27, 181)
+
+[node name="Mouse3" parent="." instance=ExtResource("6_1ainy")]
+position = Vector2(-3, 289)
+
 [node name="Beetle" parent="." instance=ExtResource("7_n6hdu")]
 position = Vector2(315, 65)
 

@@ -16,6 +16,7 @@ var current_speed: int = 5000
 @onready var current_attack_range_CS2D = $AttackRangeArea2D/AttackRange
 @onready var body_sprite: AnimatedSprite2D = $BodySprite
 @onready var legs_sprite: AnimatedSprite2D = $LegsSprite
+@onready var weapon_sprite: AnimatedSprite2D = $WeaponSprite
 
 @export var health: float = 10.0
 @export var regen_amount: int = 1
@@ -26,6 +27,7 @@ var armor_multiplier: float = 1.0
 
 @export var stored_dna: int = 0
 @export var evolution_thresholds: Array[int] = [10, 50, 250, 1000]
+@export var evolution_scales: Array[int] = [1.0, 1.5, 2.0, 3.0, 5.0]
 var evolution_level: int = 0
 var choosing_evolution: bool = false
 
@@ -111,16 +113,23 @@ func _update_attack_radius(new_radius: float) -> void:
 	current_attack_range_CS2D.shape.radius =  collision_shape_2d.shape.radius + new_radius
 
 func _update_attack(new_attack_evolution: Attack_Evolution) -> void:
+	if  new_attack_evolution == Attack_Evolution.NONE:
+		current_attack_evolution = Attack_Evolution.NONE
+		_update_attack_radius(DEFAULT_ATTACK_RADIUS)
+		return
+	
+	var new_scale = evolution_scales[evolution_level + 1]
+	scale = Vector2(new_scale, new_scale)
+	weapon_sprite.show()
+	
 	match new_attack_evolution:
-		Attack_Evolution.NONE:
-			current_attack_evolution = Attack_Evolution.NONE
-			_update_attack_radius(DEFAULT_ATTACK_RADIUS)
-		Attack_Evolution.TEETH:
-			current_attack_evolution = Attack_Evolution.TEETH
-			_update_attack_radius(DEFAULT_ATTACK_RADIUS)
-			current_damage = 2
-			damage_delay = 1
+#		Attack_Evolution.TEETH:
+#			current_attack_evolution = Attack_Evolution.TEETH
+#			_update_attack_radius(DEFAULT_ATTACK_RADIUS)
+#			current_damage = 2
+#			damage_delay = 1
 		Attack_Evolution.CLAWS:
+			weapon_sprite.play("claws")
 			current_attack_evolution = Attack_Evolution.CLAWS
 			_update_attack_radius(DEFAULT_ATTACK_RADIUS + 4)
 			current_damage = 3
@@ -146,19 +155,20 @@ func _update_modifier(new_attack_modifier: Attack_Modifier) -> void:
 
 func _update_movement(new_movement_evolution: Movement_Evolution) -> void:
 	current_movement_evolution = new_movement_evolution
+	if new_movement_evolution == Movement_Evolution.NONE:
+		current_speed = DEFAULT_SPEED
+		return
+		
+	var new_scale = evolution_scales[evolution_level + 1]
+	scale = Vector2(new_scale, new_scale)
+	body_sprite.play("body")
+	legs_sprite.show()
 	
 	match  new_movement_evolution:
-		Movement_Evolution.NONE:
-			current_speed = DEFAULT_SPEED
 		Movement_Evolution.LEGS_BASIC:
-			scale = Vector2(1.5, 1.5)
-			body_sprite.play("body")
-			legs_sprite.show()
 			legs_sprite.play("default")
 			current_speed = Movement_Evolution.LEGS_BASIC
 		Movement_Evolution.TENTACLES_BASIC:
-			body_sprite.play("body")
-			legs_sprite.show()
 			legs_sprite.play("tentacles")
 			current_speed = Movement_Evolution.TENTACLES_BASIC
 
