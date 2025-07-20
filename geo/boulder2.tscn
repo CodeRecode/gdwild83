@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://thk0hrtit2y4"]
+
+[ext_resource type="Shader" uid="uid://3h883wfcxp6t" path="res://shaders/blend.gdshader" id="1_l0cvw"]
+[ext_resource type="Texture2D" uid="uid://dfm365v5vgneg" path="res://sprites/geo/Boulders.png" id="2_3mmce"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_42jhy"]
+shader = ExtResource("1_l0cvw")
+shader_parameter/hit_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b8khj"]
+shader = ExtResource("1_l0cvw")
+shader_parameter/hit_color = Color(0, 0, 0, 1)
+
+[node name="Boulder2" type="StaticBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+material = SubResource("ShaderMaterial_42jhy")
+polygon = PackedVector2Array(-114, -249, 30, -231, 199, -80, 248, 135, 182, 229, 91, 263, -222, 215, -250, 116, -184, -151)
+
+[node name="Boulders" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_b8khj")
+position = Vector2(-1, 2)
+texture = ExtResource("2_3mmce")
+region_enabled = true
+region_rect = Rect2(522.6, 253.9, 491.549, 519.2)

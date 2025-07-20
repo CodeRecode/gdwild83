@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddqoyn7ybpgkp"]
+
+[ext_resource type="Shader" uid="uid://3h883wfcxp6t" path="res://shaders/blend.gdshader" id="1_bcgja"]
+[ext_resource type="Texture2D" uid="uid://vgdtjp3oq4vs" path="res://sprites/geo/Fences.png" id="2_bcgja"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_42jhy"]
+shader = ExtResource("1_bcgja")
+shader_parameter/hit_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b8khj"]
+shader = ExtResource("1_bcgja")
+shader_parameter/hit_color = Color(0, 0, 0, 1)
+
+[node name="Fence1" type="StaticBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+material = SubResource("ShaderMaterial_42jhy")
+polygon = PackedVector2Array(237, -137, 261, -24, 251, 146, -234, 152, -252, -150)
+
+[node name="Fence" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_b8khj")
+position = Vector2(-1, 2)
+texture = ExtResource("2_bcgja")
+region_enabled = true
+region_rect = Rect2(80.5018, 328.284, 528.54, 314.782)
