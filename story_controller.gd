@@ -6,6 +6,9 @@ extends Node2D
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
 @onready var narrator_death_player: AudioStreamPlayer = $NarratorDeathPlayer
 
+@onready var dialog_subtitles: PanelContainer = $"../DialogSubtitles"
+@onready var subtitles_label: Label = $"../DialogSubtitles/MarginContainer/SubtitlesLabel"
+
 signal narrator_vulnerable()
 
 func _ready() -> void:
@@ -26,3 +29,13 @@ func _on_narrator_narrator_died() -> void:
 func _on_player_dna_modified(new_value: int) -> void:
 	if new_value > 10:
 		narrator_vulnerable.emit()
+
+
+func _on_main_menu_game_begin() -> void:
+	await get_tree().create_timer(1.0).timeout
+	dialog_subtitles.show()
+	subtitles_label.text = "The Keplerian slime is a recent transplant to earth, but no stranger to astrobiologists."
+	await get_tree().create_timer(5.0).timeout
+	subtitles_label.text = "On its home planet in Kepler, it is an obligate herbivore."
+	await get_tree().create_timer(5.0).timeout
+	dialog_subtitles.hide()

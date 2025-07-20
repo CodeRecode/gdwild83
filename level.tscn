@@ -1,10 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://c8b6qnp400wcf"]
+[gd_scene load_steps=37 format=3 uid="uid://c8b6qnp400wcf"]
 
 [ext_resource type="Script" uid="uid://bep15pwdio6yf" path="res://ui/stats_panel.gd" id="1_f2txt"]
 [ext_resource type="Theme" uid="uid://b6lxexhwgldwe" path="res://ui/paper_theme.tres" id="1_h6smj"]
 [ext_resource type="PackedScene" uid="uid://ns1cyrf2ln52" path="res://player.tscn" id="1_u52ul"]
 [ext_resource type="Script" uid="uid://ccngsd6hxa6nu" path="res://ui/upgrade_panel.gd" id="2_1ainy"]
 [ext_resource type="PackedScene" uid="uid://vstiefs8fhix" path="res://geo/small_rock.tscn" id="2_vonw3"]
+[ext_resource type="AudioStream" uid="uid://cllgjxs6o2uxf" path="res://audio/147285__frank1100__fh_paper_swipe_surface2_short_01.ogg" id="3_sl4om"]
 [ext_resource type="Script" uid="uid://jp45kmq4jnqp" path="res://death_notif.gd" id="4_i2t4f"]
 [ext_resource type="PackedScene" uid="uid://x1kmlegtg47p" path="res://animals/mouse/mouse.tscn" id="6_1ainy"]
 [ext_resource type="AudioStream" uid="uid://crgy28sfucehn" path="res://audio/music/719675__setuniman__light-1v43.ogg" id="6_8b0r0"]
@@ -12,8 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://q33bmw1osj75" path="res://animals/beetle/beetle.tscn" id="7_n6hdu"]
 [ext_resource type="PackedScene" uid="uid://bdh6m07u4ngxy" path="res://animals/scorpion/scorpion.tscn" id="8_km5ld"]
 [ext_resource type="AudioStream" uid="uid://doqi4aguv33e7" path="res://audio/728695__minecraftgamerlr__intense-gore-sound-opening-chest-cavity.ogg" id="8_v5j5c"]
+[ext_resource type="Script" uid="uid://462jbd67w3k" path="res://ui/main_menu.gd" id="9_mleqk"]
+[ext_resource type="Script" uid="uid://bodck3vjfee1a" path="res://ui/credits_menu.gd" id="10_6btg4"]
 [ext_resource type="Script" uid="uid://bnm2nmfcxlwic" path="res://story_controller.gd" id="10_8cye3"]
 [ext_resource type="PackedScene" uid="uid://b51qjjopgjcy7" path="res://animals/narrator.tscn" id="11_2orkt"]
+[ext_resource type="AudioStream" uid="uid://m3pn0uv5hwe" path="res://audio/paper_swipe_reverse.ogg" id="12_dtg4e"]
 [ext_resource type="PackedScene" uid="uid://cqstf0tld7iwa" path="res://geo/medium_rock2.tscn" id="15_fedht"]
 [ext_resource type="PackedScene" uid="uid://b0kk73qe0npcf" path="res://geo/medium_rock.tscn" id="16_4c15r"]
 [ext_resource type="PackedScene" uid="uid://d2hamw32qfl0v" path="res://geo/large_rock.tscn" id="17_ait7k"]
@@ -30,6 +34,11 @@
 [ext_resource type="PackedScene" uid="uid://ccwqrbj76doos" path="res://animals/raccoon/raccoon.tscn" id="28_hvubb"]
 [ext_resource type="PackedScene" uid="uid://c3jn0djs8vywe" path="res://animals/fox/fox.tscn" id="29_aoqsc"]
 
+[sub_resource type="SystemFont" id="SystemFont_6btg4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sl4om"]
+bg_color = Color(0.137255, 0.137255, 0.137255, 0.756863)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fedht"]
 
 [node name="Level" type="Node2D"]
@@ -37,6 +46,62 @@
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
 follow_viewport_scale = 0.0
+
+[node name="MainMenu" type="PanelContainer" parent="CanvasLayer"]
+z_index = 100
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.5
+offset_top = -93.0
+offset_right = 104.5
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_h6smj")
+script = ExtResource("9_mleqk")
+
+[node name="PaperSwipe" type="AudioStreamPlayer" parent="CanvasLayer/MainMenu"]
+stream = ExtResource("3_sl4om")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenu"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Untitled Game"
+
+[node name="Control2" type="Control" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="StartGameButton" type="Button" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start Game"
+
+[node name="CreditsButton" type="Button" parent="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Credits"
 
 [node name="StatsPanel" type="PanelContainer" parent="CanvasLayer"]
 z_index = 50
@@ -215,11 +280,102 @@ parameters/looping = true
 [node name="NarratorDeathPlayer" type="AudioStreamPlayer" parent="CanvasLayer/StoryController"]
 stream = ExtResource("8_v5j5c")
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+[node name="OptionsMenu" type="PanelContainer" parent="CanvasLayer"]
 visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+z_index = 110
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_h6smj")
+
+[node name="CreditsMenu" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+z_index = 110
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_h6smj")
+script = ExtResource("10_6btg4")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CreditsMenu"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CreditsMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/CreditsMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_6btg4")
+theme_override_font_sizes/font_size = 16
+text = "A game by 2Dads"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/CreditsMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_6btg4")
+theme_override_font_sizes/font_size = 16
+text = "light 1v43 by Setuniman -- https://freesound.org/s/719675/ -- License: Attribution NonCommercial 4.0
+Intense Gore Sound: Opening Chest Cavity by MinecraftGamerLR -- https://freesound.org/s/728695/ -- License: Attribution 4.0
+stabs.wav by nicktermer -- https://freesound.org/s/259542/ -- License: Creative Commons 0
+Shapeshifter shifting shapes by pfranzen -- https://freesound.org/s/505932/ -- License: Creative Commons 0
+fh_Paper_Swipe_Surface2_Short_01.wav by Frank1100 -- https://freesound.org/s/147285/ -- License: Creative Commons 0
+
+Slime Death by qubodup -- https://freesound.org/s/751340/ -- License: Creative Commons 0
+Chicken Meat Slime by qubodup -- https://freesound.org/s/211605/ -- License: Creative Commons 0
+Slime by qubodup -- https://freesound.org/s/127449/ -- License: Creative Commons 0
+
+Sonniss.com -- GDC - Game Audio Bundle -- Mechanical Wave - Vegetable Massacres Juicy Burst_VM 03.wav"
+
+[node name="Button" type="Button" parent="CanvasLayer/CreditsMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Close"
+
+[node name="PaperSwipeRev" type="AudioStreamPlayer" parent="CanvasLayer/CreditsMenu"]
+stream = ExtResource("12_dtg4e")
+
+[node name="DialogSubtitles" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+z_index = 100
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -531.0
+offset_top = -114.0
+offset_right = 531.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_sl4om")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/DialogSubtitles"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="SubtitlesLabel" type="Label" parent="CanvasLayer/DialogSubtitles/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_h6smj")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "The Keplerian slime is a recent transplant to earth, but no stranger to biologists."
+horizontal_alignment = 1
 
 [node name="Animals" type="Node" parent="."]
 
@@ -428,7 +584,7 @@ position = Vector2(-2776, 336)
 position = Vector2(255, 386)
 
 [node name="Player" parent="." instance=ExtResource("1_u52ul")]
-position = Vector2(-60, 90)
+position = Vector2(-59, 83)
 
 [node name="Obstacles" type="Node" parent="."]
 
@@ -1169,11 +1325,15 @@ collision_mask = 0
 z_index = -1
 shape = SubResource("WorldBoundaryShape2D_fedht")
 
+[connection signal="game_begin" from="CanvasLayer/MainMenu" to="CanvasLayer/StoryController" method="_on_main_menu_game_begin"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/StartGameButton" to="CanvasLayer/MainMenu" method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/CreditsButton" to="CanvasLayer/MainMenu" method="_on_credits_button_pressed"]
 [connection signal="evolution_chosen" from="CanvasLayer/UpgradePanel" to="Player" method="_on_upgrade_panel_evolution_chosen"]
 [connection signal="pressed" from="CanvasLayer/UpgradePanel/MarginContainer/VBoxContainer/HBoxContainer2/Upgrade1Button" to="CanvasLayer/UpgradePanel" method="_on_upgrade_1_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UpgradePanel/MarginContainer/VBoxContainer/HBoxContainer2/Upgrade2Button" to="CanvasLayer/UpgradePanel" method="_on_upgrade_2_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/DeathNotif/MarginContainer/VBoxContainer/Button" to="CanvasLayer/DeathNotif" method="_on_button_pressed"]
 [connection signal="narrator_vulnerable" from="CanvasLayer/StoryController" to="Animals/Narrator" method="_on_story_controller_narrator_vulnerable"]
+[connection signal="pressed" from="CanvasLayer/CreditsMenu/MarginContainer/VBoxContainer/Button" to="CanvasLayer/CreditsMenu" method="_on_button_pressed"]
 [connection signal="narrator_died" from="Animals/Narrator" to="CanvasLayer/StoryController" method="_on_narrator_narrator_died"]
 [connection signal="dna_modified" from="Player" to="CanvasLayer/StatsPanel" method="_on_player_dna_modified"]
 [connection signal="dna_modified" from="Player" to="CanvasLayer/StoryController" method="_on_player_dna_modified"]
