@@ -13,6 +13,7 @@ func _on_player_evolution_triggered(name1: String, name2: String) -> void:
 	upgrade_1_button.text = name1
 	upgrade_2_button.text = name2
 	show()
+	upgrade_1_button.grab_focus()
 	evolution_player.play()
 	get_tree().paused = true
 

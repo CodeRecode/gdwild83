@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/719675__setuniman__light-1v43.ogg-35389cd54da
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
