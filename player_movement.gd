@@ -104,6 +104,8 @@ func _ready() -> void:
 	create_tween().tween_property(legs_sprite, "material:shader_parameter/hit_color", Color.BLACK, 0.001)
 	create_tween().tween_property(weapon_sprite, "material:shader_parameter/hit_color", Color.BLACK, 0.001)
 
+	can_deal_damage = true
+
 	current_speed = DEFAULT_SPEED
 	_update_attack_radius(DEFAULT_ATTACK_RADIUS)
 	current_attack_evolution = Attack_Evolution.NONE
@@ -268,8 +270,6 @@ func _on_upgrade_panel_evolution_chosen(choice: int) -> void:
 func _on_attack_range_area_2d_body_entered(body: CharacterBody2D) -> void:
 	if body is Animal and not animals_in_range.has(body):
 		animals_in_range.append(body)
-		if animals_in_range.size() == 1:
-			can_deal_damage = true
 
 
 func _on_attack_range_area_2d_body_exited(body: CharacterBody2D) -> void:

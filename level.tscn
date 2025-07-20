@@ -1168,7 +1168,8 @@ z_as_relative = false
 y_sort_enabled = true
 position = Vector2(2520, 1488)
 
-[node name="WesternForest" type="Node" parent="Obstacles"]
+[node name="WesternForest" type="Node2D" parent="Obstacles"]
+z_index = 1
 
 [node name="Tree_A" parent="Obstacles/WesternForest" instance=ExtResource("23_u3yai")]
 z_index = 1
@@ -1511,136 +1512,107 @@ z_as_relative = false
 y_sort_enabled = true
 position = Vector2(-2112, -1112)
 
-[node name="WesternForest2" type="Node" parent="Obstacles"]
+[node name="WesternForest2" type="Node2D" parent="Obstacles"]
+z_index = 1
 
 [node name="Tree_A" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
 z_index = 1
 position = Vector2(4224, 1128)
-scale = Vector2(-1, 1)
+rotation = -3.14159
+scale = Vector2(1, -1)
 
 [node name="Tree_A2" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
 position = Vector2(4168, -232)
-rotation = -3.14159
-scale = Vector2(-1, -1)
 
 [node name="Tree_B" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
 position = Vector2(4400, 312)
-scale = Vector2(-1, 1)
+rotation = -3.14159
+scale = Vector2(1, -1)
 
 [node name="Tree_B2" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
 z_index = -1
 position = Vector2(4376, -832)
-rotation = -3.14159
-scale = Vector2(-1, -1)
 
 [node name="Tree_A3" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
 position = Vector2(3920, -496)
-rotation = -3.14159
-scale = Vector2(-1, -1)
 
 [node name="Tree_A4" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
 z_index = -2
 position = Vector2(3864, -1856)
-rotation = -3.14159
-scale = Vector2(-1, -1)
 
 [node name="Tree_B3" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
 z_index = -2
 position = Vector2(4096, -1312)
-rotation = -3.14159
-scale = Vector2(-1, -1)
 
 [node name="Tree_B4" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
 z_index = -3
 position = Vector2(4072, -2456)
-rotation = -3.14159
-scale = Vector2(-1, -1)
 
 [node name="Tree_A5" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
 z_index = 1
 position = Vector2(3744, 1544)
-scale = Vector2(-1, 1)
+rotation = -3.14159
+scale = Vector2(1, -1)
 
 [node name="Tree_A6" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
 position = Vector2(3688, 184)
-rotation = -3.14159
-scale = Vector2(-1, -1)
 
 [node name="Tree_B5" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
 position = Vector2(3920, 728)
-scale = Vector2(-1, 1)
+rotation = -3.14159
+scale = Vector2(1, -1)
 
 [node name="Tree_B6" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
 z_index = -1
 position = Vector2(3896, -416)
-rotation = -3.14159
-scale = Vector2(-1, -1)
 
 [node name="Tree_A7" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
 position = Vector2(3440, -80)
-rotation = -3.14159
-scale = Vector2(-1, -1)
 
 [node name="Tree_A8" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
 z_index = -1
 position = Vector2(3224, -1328)
-rotation = -3.14159
-scale = Vector2(-1, -1)
 
 [node name="Tree_B7" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
 z_index = -2
 position = Vector2(3616, -896)
-rotation = -3.14159
-scale = Vector2(-1, -1)
 
 [node name="Tree_B8" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
 z_index = -3
 position = Vector2(3592, -2040)
-rotation = -3.14159
-scale = Vector2(-1, -1)
 
 [node name="Tree_A9" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
 z_index = -4
 position = Vector2(3496, -2608)
-scale = Vector2(-1, 1)
+rotation = -3.14159
+scale = Vector2(1, -1)
 
 [node name="Tree_A10" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
 position = Vector2(3328, 2104)
-rotation = -3.14159
-scale = Vector2(-1, -1)
 
 [node name="Tree_B9" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
 position = Vector2(3472, 2472)
-scale = Vector2(-1, 1)
+rotation = -3.14159
+scale = Vector2(1, -1)
 
 [node name="Tree_B10" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
 z_index = -1
 position = Vector2(3448, 1328)
-rotation = -3.14159
-scale = Vector2(-1, -1)
 
 [node name="Tree_A11" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
 position = Vector2(2992, 1664)
-rotation = -3.14159
-scale = Vector2(-1, -1)
 
 [node name="Tree_A12" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
 z_index = -2
 position = Vector2(2936, 304)
-rotation = -3.14159
-scale = Vector2(-1, -1)
 
 [node name="Tree_B11" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
 z_index = -2
 position = Vector2(3168, 848)
-rotation = -3.14159
-scale = Vector2(-1, -1)
 
 [node name="Tree_B12" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
 z_index = -3
 position = Vector2(3144, -296)
-rotation = -3.14159
-scale = Vector2(-1, -1)
 
 [node name="SmallRock5" parent="Obstacles" instance=ExtResource("2_vonw3")]
 z_as_relative = false
