@@ -38,7 +38,7 @@ var armor_multiplier: float = 1.0
 
 
 @export var stored_dna: int = 0
-@export var evolution_thresholds: Array[int] = [10, 50, 250, 500]
+@export var evolution_thresholds: Array[int] = [20, 75, 200, 350]
 @export var evolution_scales: Array[float] = [1.0, 1.5, 2.0, 3.0, 5.0]
 @export var camera_scales: Array[float] = [1.0, .8, .6, .4, .3]
 var evolution_level: int = 0

@@ -9,14 +9,14 @@ var instance_health: int = 75
 var restore_health_value: int = 15
 
 
-var dna_awarded: int = 35
+var dna_awarded: int = 50
 
 
 var projectile = preload("res://projectile.tscn")
 
-var attack_power: int = 8
+var attack_power: int = 15
 var attack_delay: float = 2.0
-var attack_speed: float = 20000.0
+var attack_speed: float = 50000.0
 var attacking: bool = false
 @onready var attack_range: CollisionShape2D = $AttackRangeArea2D/AttackRange
 

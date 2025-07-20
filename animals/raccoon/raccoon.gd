@@ -9,7 +9,7 @@ var instance_health: int = 50
 var restore_health_value: int = 10
 
 
-var dna_awarded: int = 50
+var dna_awarded: int = 35
 
 
 var attack_power: int = 8

@@ -388,258 +388,428 @@ horizontal_alignment = 1
 [node name="Animals" type="Node" parent="."]
 
 [node name="Mouse" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(11, 154)
 
 [node name="Mouse2" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(432, 270)
 
 [node name="Mouse3" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-253, 405)
 
 [node name="Mouse4" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(871, -89)
 
 [node name="Mouse5" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-459, -97)
 
 [node name="Mouse6" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-560, -320)
 
 [node name="Mouse7" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-320, -584)
 
 [node name="Mouse8" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(368, -592)
 
 [node name="Mouse11" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-560, 864)
 
 [node name="Mouse12" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-128, 851)
 
 [node name="Mouse13" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-656, 480)
 
 [node name="Mouse14" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(643, 476)
 
 [node name="Mouse15" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1195, 264)
 
 [node name="Mouse9" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(952, -520)
 
 [node name="Mouse10" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1163, -272)
 
 [node name="Beetle" parent="Animals" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(585, 46)
 
 [node name="Beetle2" parent="Animals" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-210, 98)
 
 [node name="Beetle4" parent="Animals" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-120, -456)
 
 [node name="Beetle5" parent="Animals" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(416, -424)
 
 [node name="Beetle6" parent="Animals" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(936, -320)
 
 [node name="Beetle7" parent="Animals" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1367, -368)
 
 [node name="Beetle8" parent="Animals" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1272, 80)
 
 [node name="Beetle9" parent="Animals" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1267, 504)
 
 [node name="Beetle10" parent="Animals" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(710, 752)
 
 [node name="Beetle11" parent="Animals" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-59, 696)
 
 [node name="Beetle12" parent="Animals" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-363, 928)
 
 [node name="Beetle13" parent="Animals" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-584, 732)
 
 [node name="Beetle14" parent="Animals" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1088, 964)
 
 [node name="Beetle3" parent="Animals" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(215, -224)
 
 [node name="Scorpion" parent="Animals" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(846, 476)
 
 [node name="Scorpion2" parent="Animals" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(76, 915)
 
 [node name="Scorpion3" parent="Animals" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-838, 352)
 
 [node name="Scorpion5" parent="Animals" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1010, -232)
 
 [node name="Scorpion6" parent="Animals" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(80, -672)
 
 [node name="Scorpion7" parent="Animals" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(625, -816)
 
 [node name="Scorpion8" parent="Animals" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1439, -640)
 
 [node name="Scorpion9" parent="Animals" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1624, 152)
 
 [node name="Scorpion10" parent="Animals" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1264, 732)
 
 [node name="Scorpion4" parent="Animals" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-293, -226)
 
 [node name="Rabbit" parent="Animals" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1096, 160)
 
 [node name="Rabbit2" parent="Animals" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2448, 265)
 
 [node name="Rabbit3" parent="Animals" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-432, 1272)
 
 [node name="Rabbit4" parent="Animals" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1083, 1520)
 
 [node name="Rabbit5" parent="Animals" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2296, -456)
 
 [node name="Rabbit6" parent="Animals" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2752, -1143)
 
 [node name="Rabbit7" parent="Animals" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2384, -1096)
 
 [node name="Rabbit8" parent="Animals" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1672, -1096)
 
 [node name="Rabbit9" parent="Animals" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(504, -1464)
 
 [node name="Rabbit10" parent="Animals" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-416, -1096)
 
 [node name="Rabbit11" parent="Animals" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2128, -1419)
 
 [node name="Rabbit12" parent="Animals" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1864, -576)
 
 [node name="Raccoon" parent="Animals" instance=ExtResource("28_hvubb")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(400, -856)
 
 [node name="Raccoon2" parent="Animals" instance=ExtResource("28_hvubb")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(688, 1224)
 
 [node name="Raccoon3" parent="Animals" instance=ExtResource("28_hvubb")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2040, 1312)
 
 [node name="Raccoon4" parent="Animals" instance=ExtResource("28_hvubb")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1320, 512)
 
 [node name="Raccoon5" parent="Animals" instance=ExtResource("28_hvubb")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1672, -896)
 
 [node name="Raccoon6" parent="Animals" instance=ExtResource("28_hvubb")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2232, 1640)
 
 [node name="Fox" parent="Animals" instance=ExtResource("29_aoqsc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2272, -1568)
 
 [node name="Fox2" parent="Animals" instance=ExtResource("29_aoqsc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2360, -928)
 
 [node name="Fox3" parent="Animals" instance=ExtResource("29_aoqsc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3352, 1600)
 
 [node name="Mouse16" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2376, 1160)
 
 [node name="Mouse17" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2200, 744)
 
 [node name="Mouse18" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2776, 912)
 
 [node name="Mouse19" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2448, 832)
 
 [node name="Mouse20" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3168, 1144)
 
 [node name="Rabbit13" parent="Animals" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2016, 32)
 
 [node name="Rabbit14" parent="Animals" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2776, 336)
 
 [node name="Narrator" parent="Animals" instance=ExtResource("11_2orkt")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(255, 386)
 
 [node name="Beetle15" parent="Animals" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(192, 1128)
 
 [node name="Mouse21" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-224, 1264)
 
 [node name="Mouse22" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(104, 1312)
 
 [node name="Mouse23" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-112, 1496)
 
 [node name="Fox4" parent="Animals" instance=ExtResource("29_aoqsc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-24, 1688)
 
 [node name="Fox5" parent="Animals" instance=ExtResource("29_aoqsc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1160, 1416)
 
 [node name="Beetle16" parent="Animals" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-904, 1776)
 
 [node name="Beetle17" parent="Animals" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-872, 1368)
 
 [node name="Beetle18" parent="Animals" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-504, 1680)
 
 [node name="Mouse24" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-696, 1776)
 
 [node name="Mouse25" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-864, 896)
 
 [node name="Mouse26" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1312, 1168)
 
 [node name="Mouse27" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-944, 1120)
 
 [node name="Mouse28" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1680, 936)
 
 [node name="Mouse29" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1856, 880)
 
 [node name="Beetle19" parent="Animals" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2864, -1760)
 
 [node name="Mouse30" parent="Animals" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2960, -1448)
 
 [node name="Player" parent="." instance=ExtResource("1_u52ul")]
@@ -648,246 +818,354 @@ position = Vector2(-59, 83)
 [node name="Obstacles" type="Node" parent="."]
 
 [node name="SmallRock" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(103, 41)
 scale = Vector2(0.5, 0.486033)
 
 [node name="SmallRock2" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(340, -9)
 scale = Vector2(0.5, 0.486033)
 
 [node name="SmallRock3" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(3.00003, 248)
 scale = Vector2(0.5, 0.486033)
 
 [node name="SmallRock4" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(411, 355)
 scale = Vector2(0.5, 0.486033)
 
 [node name="MediumRock2" parent="Obstacles" instance=ExtResource("15_fedht")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-342, 680)
 
 [node name="MediumRock" parent="Obstacles" instance=ExtResource("16_4c15r")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(936, 1144)
 
 [node name="World Fences" type="Node" parent="Obstacles"]
 
 [node name="Fence1" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1096, 2128)
 
 [node name="Fence11" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(3640, 2128)
 
 [node name="Fence9" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2512, 2128)
 rotation = 3.14159
 
 [node name="Fence7" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1632, 2128)
 rotation = 3.14159
 
 [node name="Fence5" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(952, 2128)
 
 [node name="Fence2" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-544, 2128)
 
 [node name="Fence10" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(3096, 2128)
 
 [node name="Fence6" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1504, 2128)
 rotation = 3.14159
 
 [node name="Fence4" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(424, 2128)
 
 [node name="Fence3" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-72, 2120)
 
 [node name="Fence12" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(4112, 2120)
 
 [node name="Fence8" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2008, 2120)
 
 [node name="Fence13" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(5152, 2128)
 
 [node name="Fence14" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2624, 2128)
 
 [node name="Fence15" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3752, 2128)
 rotation = 3.14159
 
 [node name="Fence16" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(4616, 2128)
 rotation = 3.14159
 
 [node name="Fence17" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-5312, 2128)
 
 [node name="Fence18" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(5704, 2128)
 
 [node name="Fence19" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3168, 2128)
 
 [node name="Fence20" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-4760, 2128)
 rotation = 3.14159
 
 [node name="Fence21" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-5840, 2128)
 
 [node name="Fence22" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(6176, 2120)
 
 [node name="Fence23" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2152, 2120)
 
 [node name="Fence24" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-4256, 2120)
 
 [node name="Fence25" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
 show_behind_parent = true
 z_index = -1
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1184, -2000)
 
 [node name="Fence26" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
 show_behind_parent = true
 z_index = -3
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(3552, -2000)
 
 [node name="Fence27" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
 show_behind_parent = true
 z_index = -1
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2424, -2000)
 rotation = 3.14159
 
 [node name="Fence28" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
 show_behind_parent = true
 z_index = -1
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1720, -2000)
 rotation = 3.14159
 
 [node name="Fence29" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
 show_behind_parent = true
 z_index = -1
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(864, -2000)
 
 [node name="Fence30" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
 show_behind_parent = true
 z_index = -1
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-632, -2000)
 
 [node name="Fence31" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
 show_behind_parent = true
 z_index = -1
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(3008, -2000)
 
 [node name="Fence32" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
 show_behind_parent = true
 z_index = -1
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1416, -2000)
 rotation = 3.14159
 
 [node name="Fence33" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
 show_behind_parent = true
 z_index = -1
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(336, -2000)
 
 [node name="Fence34" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
 show_behind_parent = true
 z_index = -1
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-160, -2000)
 
 [node name="Fence35" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
 show_behind_parent = true
 z_index = -2
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(4024, -2000)
 
 [node name="Fence36" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
 show_behind_parent = true
 z_index = -1
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1920, -2000)
 
 [node name="Fence37" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(5064, -2000)
 
 [node name="Fence38" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
 show_behind_parent = true
 z_index = -1
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2712, -2000)
 
 [node name="Fence39" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
 show_behind_parent = true
 z_index = -1
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3840, -2000)
 rotation = 3.14159
 
 [node name="Fence40" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(4528, -2000)
 rotation = 3.14159
 
 [node name="Fence41" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
 show_behind_parent = true
 z_index = -4
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-4400, -2000)
 
 [node name="Fence42" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(5616, -2000)
 
 [node name="Fence43" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
 show_behind_parent = true
 z_index = -1
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3256, -2000)
 
 [node name="Fence45" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
 show_behind_parent = true
 z_index = -3
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3576, -2008)
 
 [node name="Fence46" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
 show_behind_parent = true
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(6088, -2000)
 
 [node name="Fence47" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
 show_behind_parent = true
 z_index = -1
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2240, -2000)
 
 [node name="Boulder2" parent="Obstacles/World Fences" instance=ExtResource("21_ilwjd")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3053, 680)
 
 [node name="Boulder1" parent="Obstacles/World Fences" instance=ExtResource("22_y3bce")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2520, 1488)
 
 [node name="WesternForest" type="Node" parent="Obstacles"]
@@ -1009,138 +1287,228 @@ rotation = -3.14159
 scale = Vector2(1, -1)
 
 [node name="Rabbit" parent="Obstacles/WesternForest" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3256, 0)
 
 [node name="Rabbit2" parent="Obstacles/WesternForest" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2832, -440)
 
 [node name="Rabbit3" parent="Obstacles/WesternForest" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3272, -608)
 
 [node name="Rabbit4" parent="Obstacles/WesternForest" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3072, 1840)
 
 [node name="Rabbit5" parent="Obstacles/WesternForest" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1944, 1824)
 
 [node name="Scorpion" parent="Obstacles/WesternForest" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1904, 1552)
 
 [node name="Scorpion2" parent="Obstacles/WesternForest" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2456, 1488)
 
 [node name="Rabbit6" parent="Obstacles/WesternForest" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2304, 1008)
 
 [node name="Rabbit7" parent="Obstacles/WesternForest" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2864, -1230)
 
 [node name="Rabbit8" parent="Obstacles/WesternForest" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2744, -1656)
 
 [node name="Scorpion3" parent="Obstacles/WesternForest" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2936, 200)
 
 [node name="Scorpion4" parent="Obstacles/WesternForest" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2936, -192)
 
 [node name="Fox" parent="Obstacles/WesternForest" instance=ExtResource("29_aoqsc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3192, -320)
 
 [node name="Raccoon" parent="Obstacles/WesternForest" instance=ExtResource("28_hvubb")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2416, -536)
 
 [node name="Raccoon2" parent="Obstacles/WesternForest" instance=ExtResource("28_hvubb")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2424, -1312)
 
 [node name="Mouse" parent="Obstacles/WesternForest" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1976, -856)
 
 [node name="Mouse2" parent="Obstacles/WesternForest" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1392, -952)
 
 [node name="Mouse3" parent="Obstacles/WesternForest" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2784, -720)
 
 [node name="Mouse4" parent="Obstacles/WesternForest" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3080, -1184)
 
 [node name="Mouse5" parent="Obstacles/WesternForest" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2696, -1336)
 
 [node name="Mouse6" parent="Obstacles/WesternForest" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2368, -1584)
 
 [node name="Beetle" parent="Obstacles/WesternForest" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3056, 1336)
 
 [node name="Beetle2" parent="Obstacles/WesternForest" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3416, 1256)
 
 [node name="Beetle3" parent="Obstacles/WesternForest" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3272, 1008)
 
 [node name="Beetle4" parent="Obstacles/WesternForest" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2120, 1368)
 
 [node name="Beetle5" parent="Obstacles/WesternForest" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2512, 1848)
 
 [node name="Beetle6" parent="Obstacles/WesternForest" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3400, 592)
 
 [node name="Beetle7" parent="Obstacles/WesternForest" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3304, 336)
 
 [node name="Beetle8" parent="Obstacles/WesternForest" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3424, 168)
 
 [node name="Mouse7" parent="Obstacles/WesternForest" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2952, 8)
 
 [node name="Mouse8" parent="Obstacles/WesternForest" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2984, -624)
 
 [node name="Scorpion5" parent="Obstacles/WesternForest" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1888, -1064)
 
 [node name="Scorpion6" parent="Obstacles/WesternForest" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2536, -1608)
 
 [node name="Scorpion7" parent="Obstacles/WesternForest" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2968, -1448)
 
 [node name="Rabbit9" parent="Obstacles/WesternForest" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2016, -1664)
 
 [node name="Mouse9" parent="Obstacles/WesternForest" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1392, 120)
 
 [node name="Scorpion8" parent="Obstacles/WesternForest" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1360, -176)
 
 [node name="Scorpion9" parent="Obstacles/WesternForest" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2440, 264)
 
 [node name="Mouse10" parent="Obstacles/WesternForest" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2128, 224)
 
 [node name="Mouse11" parent="Obstacles/WesternForest" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1872, 240)
 
 [node name="Beetle9" parent="Obstacles/WesternForest" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2032, 456)
 
 [node name="Beetle10" parent="Obstacles/WesternForest" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1680, 480)
 
 [node name="Beetle11" parent="Obstacles/WesternForest" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2648, 648)
 
 [node name="Beetle12" parent="Obstacles/WesternForest" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2136, -672)
 
 [node name="Beetle13" parent="Obstacles/WesternForest" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2112, -1112)
 
 [node name="WesternForest2" type="Node" parent="Obstacles"]
@@ -1275,420 +1643,717 @@ rotation = -3.14159
 scale = Vector2(-1, -1)
 
 [node name="SmallRock5" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(968, 64)
 
 [node name="MediumRock3" parent="Obstacles" instance=ExtResource("16_4c15r")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1120, -64)
 
 [node name="Small_Tree_B" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(368, 1232)
 
 [node name="SmallRock6" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(647, -608)
 
 [node name="MediumRock4" parent="Obstacles" instance=ExtResource("16_4c15r")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-400, -808)
 
 [node name="LargeRock2" parent="Obstacles" instance=ExtResource("17_ait7k")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(392, -1144)
 
 [node name="Tree_A" parent="Obstacles" instance=ExtResource("23_u3yai")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-112, -1840)
 
 [node name="Boulder1" parent="Obstacles" instance=ExtResource("22_y3bce")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2096, 8)
 
 [node name="Boulder2" parent="Obstacles" instance=ExtResource("21_ilwjd")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2520, -96)
 
 [node name="Small_Tree_A" parent="Obstacles" instance=ExtResource("26_yjxuc")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1696, 176)
 
 [node name="Small_Tree_B2" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1120, -984)
 
 [node name="Small_Tree_A2" parent="Obstacles" instance=ExtResource("26_yjxuc")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2808, 1568)
 
 [node name="Small_Tree_B3" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1648, 1664)
 
 [node name="Small_Tree_A3" parent="Obstacles" instance=ExtResource("26_yjxuc")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1400, 160)
 
 [node name="Small_Tree_B4" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2040, -912)
 
 [node name="Small_Tree_A4" parent="Obstacles" instance=ExtResource("26_yjxuc")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1456, -1136)
 
 [node name="Small_Tree_B5" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3264, -1752)
 
 [node name="Small_Tree_A5" parent="Obstacles" instance=ExtResource("26_yjxuc")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-5288, 1424)
 
 [node name="Small_Tree_B6" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-4752, 624)
 
 [node name="LargeRock3" parent="Obstacles" instance=ExtResource("17_ait7k")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2360, 440)
 
 [node name="SmallRock7" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-297, 1472)
 
 [node name="SmallRock8" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-864, 608)
 
 [node name="SmallRock9" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-464, 168)
 
 [node name="LargeRock4" parent="Obstacles" instance=ExtResource("17_ait7k")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(88, -384)
 
 [node name="LargeRock5" parent="Obstacles" instance=ExtResource("17_ait7k")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(328, 600)
 
 [node name="Small_Tree_B7" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(984, 736)
 
 [node name="MediumRock5" parent="Obstacles" instance=ExtResource("15_fedht")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1501, 685)
 
 [node name="SmallRock10" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2072, 1000)
 
 [node name="Small_Tree_B8" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2416, 808)
 
 [node name="MediumRock6" parent="Obstacles" instance=ExtResource("15_fedht")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1848, -416)
 
 [node name="MediumRock7" parent="Obstacles" instance=ExtResource("16_4c15r")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1208, -504)
 
 [node name="SmallRock11" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1136, -936)
 
 [node name="Small_Tree_A6" parent="Obstacles" instance=ExtResource("26_yjxuc")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-32, -952)
 
 [node name="Small_Tree_B9" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(872, -1296)
 
 [node name="SmallRock12" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1232, -1664)
 
 [node name="Boulder3" parent="Obstacles" instance=ExtResource("22_y3bce")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2616, -1536)
 
 [node name="MediumRock8" parent="Obstacles" instance=ExtResource("15_fedht")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2536, -768)
 
 [node name="SmallRock13" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1984, -1704)
 
 [node name="Small_Tree_A7" parent="Obstacles" instance=ExtResource("26_yjxuc")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(672, 8)
 
 [node name="Small_Tree_A8" parent="Obstacles" instance=ExtResource("26_yjxuc")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-720, 1424)
 
 [node name="Small_Tree_B10" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-752, -200)
 
 [node name="MediumRock9" parent="Obstacles" instance=ExtResource("15_fedht")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(208, 1752)
 
 [node name="MediumRock10" parent="Obstacles" instance=ExtResource("16_4c15r")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1328, 1712)
 
 [node name="SmallRock14" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(784, 1584)
 
 [node name="SmallRock15" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1968, 536)
 
 [node name="SmallRock16" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1992, 1624)
 
 [node name="SmallRock17" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-352, -352)
 
 [node name="SmallRock18" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-752, -952)
 
 [node name="MediumRock11" parent="Obstacles" instance=ExtResource("16_4c15r")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-440, -1312)
 
 [node name="MediumRock12" parent="Obstacles" instance=ExtResource("15_fedht")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-744, -1552)
 
 [node name="Boulder4" parent="Obstacles" instance=ExtResource("22_y3bce")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1664, -1440)
 
 [node name="Boulder5" parent="Obstacles" instance=ExtResource("21_ilwjd")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-3256, -1016)
 
 [node name="LargeRock6" parent="Obstacles" instance=ExtResource("17_ait7k")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1352, -504)
 
 [node name="LargeRock8" parent="Obstacles" instance=ExtResource("17_ait7k")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2690, -1000)
 
 [node name="SmallRock19" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1072, 352)
 
 [node name="MediumRock13" parent="Obstacles" instance=ExtResource("16_4c15r")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1584, 628)
 
 [node name="MediumRock14" parent="Obstacles" instance=ExtResource("15_fedht")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1432, 896)
 
 [node name="SmallRock20" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1656, 1160)
 
 [node name="SmallRock21" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1576, 1216)
 
 [node name="Small_Tree_B11" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1952, 1056)
 
 [node name="Small_Tree_A9" parent="Obstacles" instance=ExtResource("26_yjxuc")]
+z_index = 5
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1680, 1768)
 
 [node name="LargeRock7" parent="Obstacles" instance=ExtResource("17_ait7k")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1144, 1790)
 
 [node name="SmallRock22" parent="Obstacles" instance=ExtResource("2_vonw3")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-400, 1888)
 
 [node name="MediumRock15" parent="Obstacles" instance=ExtResource("15_fedht")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-64, 1104)
 
 [node name="Raccoon" parent="Obstacles" instance=ExtResource("28_hvubb")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(752, 1824)
 
 [node name="Beetle" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(392, 1720)
 
 [node name="Mouse" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(608, 1648)
 
 [node name="Mouse2" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(568, 1472)
 
 [node name="Mouse3" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(640, 1008)
 
 [node name="Mouse4" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(960, 1904)
 
 [node name="Scorpion" parent="Obstacles" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1248, 1856)
 
 [node name="Rabbit" parent="Obstacles" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1376, 1096)
 
 [node name="Beetle2" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1184, 1280)
 
 [node name="Beetle3" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1384, 1432)
 
 [node name="Fox" parent="Obstacles" instance=ExtResource("29_aoqsc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1832, 896)
 
 [node name="Mouse5" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1240, 936)
 
 [node name="Mouse6" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1768, 1544)
 
 [node name="Mouse7" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1920, 1864)
 
 [node name="Beetle4" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2192, 1664)
 
 [node name="Beetle5" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2136, 1848)
 
 [node name="Beetle6" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2360, 1848)
 
 [node name="Scorpion2" parent="Obstacles" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2240, 1816)
 
 [node name="Mouse8" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2568, 1776)
 
 [node name="Mouse9" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2768, 1864)
 
 [node name="Rabbit2" parent="Obstacles" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2736, 856)
 
 [node name="Mouse10" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2264, 1168)
 
 [node name="Mouse11" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1952, 1168)
 
 [node name="Mouse12" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2560, 1120)
 
 [node name="Beetle7" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2160, 848)
 
 [node name="Beetle8" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2216, 1424)
 
 [node name="Beetle9" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2288, 688)
 
 [node name="Beetle10" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2584, 648)
 
 [node name="Beetle11" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2664, 480)
 
 [node name="Scorpion3" parent="Obstacles" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2840, 704)
 
 [node name="Fox2" parent="Obstacles" instance=ExtResource("29_aoqsc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2552, -72)
 
 [node name="Mouse13" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1680, 448)
 
 [node name="Mouse14" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1920, 328)
 
 [node name="Mouse15" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2128, 440)
 
 [node name="Mouse16" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1688, -80)
 
 [node name="Mouse17" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1888, -232)
 
 [node name="Mouse18" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1648, -328)
 
 [node name="Mouse19" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1688, -544)
 
 [node name="Scorpion4" parent="Obstacles" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1984, -616)
 
 [node name="Beetle12" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2640, -432)
 
 [node name="Beetle13" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2504, -576)
 
 [node name="Beetle14" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2576, -1152)
 
 [node name="Mouse20" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2248, -816)
 
 [node name="Mouse21" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2824, -688)
 
 [node name="Scorpion5" parent="Obstacles" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2528, -952)
 
 [node name="Scorpion6" parent="Obstacles" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1240, -1024)
 
 [node name="Mouse22" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1736, -864)
 
 [node name="Rabbit3" parent="Obstacles" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1056, -728)
 
 [node name="Beetle15" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1704, -1320)
 
 [node name="Beetle16" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1920, -1040)
 
 [node name="Mouse23" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(2248, -1248)
 
 [node name="Raccoon2" parent="Obstacles" instance=ExtResource("28_hvubb")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1112, -1360)
 
 [node name="Raccoon3" parent="Obstacles" instance=ExtResource("28_hvubb")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1680, -1720)
 
 [node name="Mouse24" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1840, -1544)
 
 [node name="Beetle17" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(1416, -1712)
 
 [node name="Scorpion7" parent="Obstacles" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(232, -1288)
 
 [node name="Scorpion8" parent="Obstacles" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(240, -1792)
 
 [node name="Mouse25" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(632, -1184)
 
 [node name="Mouse26" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(728, -1440)
 
 [node name="Mouse27" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(416, -1688)
 
 [node name="Mouse28" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(640, -1800)
 
 [node name="Mouse29" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(272, -1512)
 
 [node name="Scorpion9" parent="Obstacles" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-224, -928)
 
 [node name="Scorpion10" parent="Obstacles" instance=ExtResource("8_km5ld")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-576, -896)
 
 [node name="Beetle18" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-600, -736)
 
 [node name="Beetle19" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-880, -752)
 
 [node name="Beetle20" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1536, -656)
 
 [node name="Mouse30" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1120, -664)
 
 [node name="Mouse31" parent="Obstacles" instance=ExtResource("6_1ainy")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1064, -472)
 
 [node name="Raccoon4" parent="Obstacles" instance=ExtResource("28_hvubb")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-760, -1208)
 
 [node name="Rabbit4" parent="Obstacles" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-992, -1632)
 
 [node name="Rabbit5" parent="Obstacles" instance=ExtResource("27_yjxuc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-464, -1640)
 
 [node name="Fox3" parent="Obstacles" instance=ExtResource("29_aoqsc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1256, -1688)
 
 [node name="Fox4" parent="Obstacles" instance=ExtResource("29_aoqsc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-2080, -304)
 
 [node name="Fox5" parent="Obstacles" instance=ExtResource("29_aoqsc")]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1136, 744)
 
 [node name="WorldBoundaries" type="Node" parent="."]
