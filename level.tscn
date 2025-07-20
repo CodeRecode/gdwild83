@@ -583,6 +583,57 @@ position = Vector2(-2776, 336)
 [node name="Narrator" parent="Animals" instance=ExtResource("11_2orkt")]
 position = Vector2(255, 386)
 
+[node name="Beetle15" parent="Animals" instance=ExtResource("7_n6hdu")]
+position = Vector2(192, 1128)
+
+[node name="Mouse21" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(-224, 1264)
+
+[node name="Mouse22" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(104, 1312)
+
+[node name="Mouse23" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(-112, 1496)
+
+[node name="Fox4" parent="Animals" instance=ExtResource("29_aoqsc")]
+position = Vector2(-24, 1688)
+
+[node name="Fox5" parent="Animals" instance=ExtResource("29_aoqsc")]
+position = Vector2(-1160, 1416)
+
+[node name="Beetle16" parent="Animals" instance=ExtResource("7_n6hdu")]
+position = Vector2(-904, 1776)
+
+[node name="Beetle17" parent="Animals" instance=ExtResource("7_n6hdu")]
+position = Vector2(-872, 1368)
+
+[node name="Beetle18" parent="Animals" instance=ExtResource("7_n6hdu")]
+position = Vector2(-504, 1680)
+
+[node name="Mouse24" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(-696, 1776)
+
+[node name="Mouse25" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(-864, 896)
+
+[node name="Mouse26" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(-1312, 1168)
+
+[node name="Mouse27" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(-944, 1120)
+
+[node name="Mouse28" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(-1680, 936)
+
+[node name="Mouse29" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(-1856, 880)
+
+[node name="Beetle19" parent="Animals" instance=ExtResource("7_n6hdu")]
+position = Vector2(2864, -1760)
+
+[node name="Mouse30" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(2960, -1448)
+
 [node name="Player" parent="." instance=ExtResource("1_u52ul")]
 position = Vector2(-59, 83)
 
@@ -1666,57 +1717,6 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundaries/NorthernEdge"]
 z_index = -1
 shape = SubResource("WorldBoundaryShape2D_fedht")
-
-[node name="Beetle" parent="." instance=ExtResource("7_n6hdu")]
-position = Vector2(192, 1128)
-
-[node name="Mouse" parent="." instance=ExtResource("6_1ainy")]
-position = Vector2(-224, 1264)
-
-[node name="Mouse2" parent="." instance=ExtResource("6_1ainy")]
-position = Vector2(104, 1312)
-
-[node name="Mouse3" parent="." instance=ExtResource("6_1ainy")]
-position = Vector2(-112, 1496)
-
-[node name="Fox" parent="." instance=ExtResource("29_aoqsc")]
-position = Vector2(-24, 1688)
-
-[node name="Fox2" parent="." instance=ExtResource("29_aoqsc")]
-position = Vector2(-1160, 1416)
-
-[node name="Beetle2" parent="." instance=ExtResource("7_n6hdu")]
-position = Vector2(-904, 1776)
-
-[node name="Beetle3" parent="." instance=ExtResource("7_n6hdu")]
-position = Vector2(-872, 1368)
-
-[node name="Beetle4" parent="." instance=ExtResource("7_n6hdu")]
-position = Vector2(-504, 1680)
-
-[node name="Mouse4" parent="." instance=ExtResource("6_1ainy")]
-position = Vector2(-696, 1776)
-
-[node name="Mouse5" parent="." instance=ExtResource("6_1ainy")]
-position = Vector2(-864, 896)
-
-[node name="Mouse6" parent="." instance=ExtResource("6_1ainy")]
-position = Vector2(-1312, 1168)
-
-[node name="Mouse7" parent="." instance=ExtResource("6_1ainy")]
-position = Vector2(-944, 1120)
-
-[node name="Mouse8" parent="." instance=ExtResource("6_1ainy")]
-position = Vector2(-1680, 936)
-
-[node name="Mouse9" parent="." instance=ExtResource("6_1ainy")]
-position = Vector2(-1856, 880)
-
-[node name="Beetle5" parent="." instance=ExtResource("7_n6hdu")]
-position = Vector2(2864, -1760)
-
-[node name="Mouse10" parent="." instance=ExtResource("6_1ainy")]
-position = Vector2(2960, -1448)
 
 [connection signal="game_begin" from="CanvasLayer/MainMenu" to="CanvasLayer/StoryController" method="_on_main_menu_game_begin"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/StartGameButton" to="CanvasLayer/MainMenu" method="_on_start_game_button_pressed"]
