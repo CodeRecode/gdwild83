@@ -1,5 +1,6 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://b6lxexhwgldwe"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://b6lxexhwgldwe"]
 
+[ext_resource type="FontFile" uid="uid://iablvhxhjbqw" path="res://ui/Handwritten-Regular.ttf" id="1_c0tnu"]
 [ext_resource type="Texture2D" uid="uid://bgh38d2cdo7yv" path="res://sprites/paper_bg.png" id="1_ktvv3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c0tnu"]
@@ -11,7 +12,11 @@ shadow_size = 2
 shadow_offset = Vector2(1, 1)
 
 [resource]
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_c0tnu")
 Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_c0tnu")
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
