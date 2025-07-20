@@ -13,7 +13,7 @@ var projectile = preload("res://projectile.tscn")
 var dna_awarded: int = 20
 
 
-var attack_power: int = 4
+var attack_power: int = 3
 var attack_delay: float = 1.5
 var attack_speed: float = 20000.0
 var attacking: bool = false
