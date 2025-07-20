@@ -22,4 +22,5 @@ stream_6/stream = ExtResource("7_83srw")
 stream_7/stream = ExtResource("8_0675g")
 
 [node name="HitFxPlayer" type="AudioStreamPlayer2D"]
+process_mode = 3
 stream = SubResource("AudioStreamRandomizer_6nj44")

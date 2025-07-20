@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c8b6qnp400wcf"]
+[gd_scene load_steps=31 format=3 uid="uid://c8b6qnp400wcf"]
 
 [ext_resource type="Script" uid="uid://bep15pwdio6yf" path="res://ui/stats_panel.gd" id="1_f2txt"]
 [ext_resource type="Theme" uid="uid://b6lxexhwgldwe" path="res://ui/paper_theme.tres" id="1_h6smj"]
@@ -26,6 +26,9 @@
 [ext_resource type="PackedScene" uid="uid://c3qdd467wylbu" path="res://geo/tree_b.tscn" id="24_fj6e6"]
 [ext_resource type="PackedScene" uid="uid://bd73e4ym1mhi0" path="res://geo/small_tree_b.tscn" id="25_2h3vt"]
 [ext_resource type="PackedScene" uid="uid://cbwsn7sb2rfei" path="res://geo/small_tree_a.tscn" id="26_yjxuc"]
+[ext_resource type="PackedScene" uid="uid://7rwewg3k02d1" path="res://animals/rabbit/rabbit.tscn" id="27_yjxuc"]
+[ext_resource type="PackedScene" uid="uid://ccwqrbj76doos" path="res://animals/raccoon/raccoon.tscn" id="28_hvubb"]
+[ext_resource type="PackedScene" uid="uid://c3jn0djs8vywe" path="res://animals/fox/fox.tscn" id="29_aoqsc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fedht"]
 
@@ -330,6 +333,90 @@ position = Vector2(1264, 732)
 
 [node name="Scorpion4" parent="Animals" instance=ExtResource("8_km5ld")]
 position = Vector2(-293, -226)
+
+[node name="Rabbit" parent="Animals" instance=ExtResource("27_yjxuc")]
+position = Vector2(-1096, 160)
+
+[node name="Rabbit2" parent="Animals" instance=ExtResource("27_yjxuc")]
+position = Vector2(2448, 265)
+
+[node name="Rabbit3" parent="Animals" instance=ExtResource("27_yjxuc")]
+position = Vector2(-432, 1272)
+
+[node name="Rabbit4" parent="Animals" instance=ExtResource("27_yjxuc")]
+position = Vector2(1083, 1520)
+
+[node name="Rabbit5" parent="Animals" instance=ExtResource("27_yjxuc")]
+position = Vector2(2296, -456)
+
+[node name="Rabbit6" parent="Animals" instance=ExtResource("27_yjxuc")]
+position = Vector2(2752, -1143)
+
+[node name="Rabbit7" parent="Animals" instance=ExtResource("27_yjxuc")]
+position = Vector2(2384, -1096)
+
+[node name="Rabbit8" parent="Animals" instance=ExtResource("27_yjxuc")]
+position = Vector2(1672, -1096)
+
+[node name="Rabbit9" parent="Animals" instance=ExtResource("27_yjxuc")]
+position = Vector2(504, -1464)
+
+[node name="Rabbit10" parent="Animals" instance=ExtResource("27_yjxuc")]
+position = Vector2(-416, -1096)
+
+[node name="Rabbit11" parent="Animals" instance=ExtResource("27_yjxuc")]
+position = Vector2(-2128, -1419)
+
+[node name="Rabbit12" parent="Animals" instance=ExtResource("27_yjxuc")]
+position = Vector2(-1864, -576)
+
+[node name="Raccoon" parent="Animals" instance=ExtResource("28_hvubb")]
+position = Vector2(400, -856)
+
+[node name="Raccoon2" parent="Animals" instance=ExtResource("28_hvubb")]
+position = Vector2(688, 1224)
+
+[node name="Raccoon3" parent="Animals" instance=ExtResource("28_hvubb")]
+position = Vector2(2040, 1312)
+
+[node name="Raccoon4" parent="Animals" instance=ExtResource("28_hvubb")]
+position = Vector2(-1320, 512)
+
+[node name="Raccoon5" parent="Animals" instance=ExtResource("28_hvubb")]
+position = Vector2(-1672, -896)
+
+[node name="Raccoon6" parent="Animals" instance=ExtResource("28_hvubb")]
+position = Vector2(-2232, 1640)
+
+[node name="Fox" parent="Animals" instance=ExtResource("29_aoqsc")]
+position = Vector2(2272, -1568)
+
+[node name="Fox2" parent="Animals" instance=ExtResource("29_aoqsc")]
+position = Vector2(-2360, -928)
+
+[node name="Fox3" parent="Animals" instance=ExtResource("29_aoqsc")]
+position = Vector2(-3352, 1600)
+
+[node name="Mouse16" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(-2376, 1160)
+
+[node name="Mouse17" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(-2200, 744)
+
+[node name="Mouse18" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(-2776, 912)
+
+[node name="Mouse19" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(-2448, 832)
+
+[node name="Mouse20" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(-3168, 1144)
+
+[node name="Rabbit13" parent="Animals" instance=ExtResource("27_yjxuc")]
+position = Vector2(-2016, 32)
+
+[node name="Rabbit14" parent="Animals" instance=ExtResource("27_yjxuc")]
+position = Vector2(-2776, 336)
 
 [node name="Narrator" parent="Animals" instance=ExtResource("11_2orkt")]
 position = Vector2(206, 343)

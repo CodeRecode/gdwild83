@@ -2,18 +2,18 @@ extends Animal
 class_name Beetle
 
 
-@export var instance_health: int = 10
-@export var restore_health_value: int = 1
+var instance_health: int = 4
+var restore_health_value: int = 3
 
 
-@export var dna_awarded: int = 15
+var dna_awarded: int = 6
 
 
-@export var attack_power: int = 2
-@export var attack_delay: float = 1.0
+var attack_power: int = 2
+var attack_delay: float = 1.0
 var attacking: bool = false
 
-@export var speed: float = 4000.0
+var speed: float = 3000.0
 var collided: bool = false
 var collision_normal: Vector2 = Vector2.ZERO
 var previously_collided: bool = false

@@ -112,19 +112,20 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	velocity = input_dir.normalized() * current_speed * delta
+	if health > 0:
+		var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+		velocity = input_dir.normalized() * current_speed * delta
 
-	if current_movement_evolution == Movement_Evolution.LEGS_BASIC:
-		if velocity.length_squared() > 0:
-			legs_sprite.play("walk")
-		else:
-			legs_sprite.play("default")
+		if current_movement_evolution == Movement_Evolution.LEGS_BASIC:
+			if velocity.length_squared() > 0:
+				legs_sprite.play("walk")
+			else:
+				legs_sprite.play("default")
 
-	move_and_slide()
-	_deal_damage()
-	_check_evolve()
-	_regen_health()
+		move_and_slide()
+		_deal_damage()
+		_check_evolve()
+		_regen_health()
 
 	background.material.set("shader_parameter/player_position", global_position)
 
@@ -172,6 +173,7 @@ func _update_attack(new_attack_evolution: Attack_Evolution) -> void:
 			if current_movement_evolution == Movement_Evolution.TENTACLES_BASIC:
 				current_damage *= 1 + tentacles_modifier
 				damage_delay *= 1 - tentacles_modifier
+				attack_speed *= 1 + tentacles_modifier
 
 
 func _update_modifier(new_attack_modifier: Attack_Modifier) -> void:
@@ -203,9 +205,6 @@ func _update_movement(new_movement_evolution: Movement_Evolution) -> void:
 		Movement_Evolution.TENTACLES_BASIC:
 			legs_sprite.play("tentacles")
 			current_speed = Movement_Evolution.TENTACLES_BASIC
-			attack_speed *= 1 + tentacles_modifier
-			current_damage *= 1 + tentacles_modifier
-			damage_delay *=  1 - tentacles_modifier
 
 
 func _update_health(new_health_evolution: Health_Evolution) -> void:
@@ -266,7 +265,7 @@ func _on_attack_range_area_2d_body_exited(body: CharacterBody2D) -> void:
 
 
 func _deal_damage() -> void:
-	if animals_in_range.size() <= 0:
+	if animals_in_range.size() < 1:
 		can_deal_damage = true
 
 	if animals_in_range.size() > 0 and can_deal_damage:
@@ -275,6 +274,7 @@ func _deal_damage() -> void:
 
 		for animal in animals_in_range:
 			if animal.current_status == animal.STATUS.DEAD:
+				animals_in_range.erase(animal)
 				pass
 
 			if current_attack_evolution != Attack_Evolution.SPRAY:
@@ -284,7 +284,8 @@ func _deal_damage() -> void:
 
 			if animal.current_status == animal.STATUS.DEAD and current_attack_evolution != Attack_Evolution.SPRAY:
 				_consume_resources(animal)
-				if animals_in_range.has(animal): animals_in_range.erase(animal)
+				if animals_in_range.has(animal):
+					animals_in_range.erase(animal)
 
 			if tween_once:
 				var animal_direction = (animal.position - scalars.position).normalized() * 10 * scalars.scale
@@ -296,7 +297,7 @@ func _deal_damage() -> void:
 
 				tween_once = false
 
-		await get_tree().create_timer(damage_delay).timeout
+		await get_tree().create_timer(damage_delay - 0.075 - 0.05).timeout
 		can_deal_damage = true
 
 
@@ -327,7 +328,6 @@ func _consume_resources(animal: Animal) -> void:
 
 	consume_tweening = true
 
-
 # Additive color, set factor 0-1 to increase/decrease the greenness
 	var green_factor = .3
 	var tween_in_time = .1
@@ -335,7 +335,7 @@ func _consume_resources(animal: Animal) -> void:
 
 	var current_scale = scalars.scale
 	var enter_tween = create_tween()
-	enter_tween.tween_property(scalars, "scale", scalars.scale*Vector2(1.2,1.2), tween_in_time)
+	enter_tween.tween_property(scalars, "scale", current_scale*Vector2(1.2,1.2), tween_in_time)
 
 	create_tween().tween_property(body_sprite, "material:shader_parameter/hit_color", Color.GREEN * green_factor, tween_in_time)
 	create_tween().tween_property(legs_sprite, "material:shader_parameter/hit_color", Color.GREEN * green_factor, tween_in_time)
@@ -422,6 +422,19 @@ func _modify_health(delta: float) -> void:
 	health_modified.emit(health)
 
 	if health <= 0:
+		player_took_damage.emit()
+		hit_fx_player.play()
+
+# Additive color, set factor 0-1 to increase/decrease the redness
+		var red_factor = .4
+		var tween_in_time = 0.25
+
+		var tween = create_tween().tween_property(body_sprite, "material:shader_parameter/hit_color", Color.RED * red_factor, tween_in_time)
+		create_tween().tween_property(legs_sprite, "material:shader_parameter/hit_color", Color.RED * red_factor, tween_in_time)
+		create_tween().tween_property(weapon_sprite, "material:shader_parameter/hit_color", Color.RED * red_factor, tween_in_time)
+
+		await tween.finished
+
 		get_tree().paused = true
 		player_died.emit()
 

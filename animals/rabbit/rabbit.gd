@@ -1,15 +1,15 @@
 extends Animal
-class_name Mouse
+class_name Rabbit
 
 
-var instance_health: int = 3
-var restore_health_value: int = 2
+var instance_health: int = 30
+var restore_health_value: int = 6
 
 
-var dna_awarded: int = 3
+var dna_awarded: int = 30
 
 
-var speed: float = 3000.0
+var speed: float = 7500.0
 var collided: bool = false
 var collision_normal: Vector2 = Vector2.ZERO
 var previously_collided: bool = false
@@ -118,7 +118,7 @@ func _flee_state(delta: float) -> void:
 	can_transition = false
 
 	var flee_vector: Vector2 = (position - player.position).normalized()
-	velocity = flee_vector * (speed * 1.2) * delta
+	velocity = flee_vector * (speed * 1.15) * delta
 
 	sight_detector.rotation = flee_vector.angle()
 

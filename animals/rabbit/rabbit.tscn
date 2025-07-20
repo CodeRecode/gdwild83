@@ -1,24 +1,24 @@
-[gd_scene load_steps=9 format=3 uid="uid://x1kmlegtg47p"]
+[gd_scene load_steps=9 format=3 uid="uid://7rwewg3k02d1"]
 
-[ext_resource type="Script" uid="uid://bvf5vr2an0ok0" path="res://animals/mouse/mouse.gd" id="1_7hfej"]
-[ext_resource type="Shader" uid="uid://3h883wfcxp6t" path="res://shaders/blend.gdshader" id="2_pyxpy"]
-[ext_resource type="Texture2D" uid="uid://ci6v52jel2504" path="res://sprites/animals/Mouse_0000.png" id="3_hfx0i"]
-[ext_resource type="Texture2D" uid="uid://bcn3wyi4c0hae" path="res://sprites/animals/Mouse_0001.png" id="4_fyin8"]
-[ext_resource type="PackedScene" uid="uid://8xhu0alqge3g" path="res://audio/hit_fx_player.tscn" id="5_dmu72"]
+[ext_resource type="Script" uid="uid://d1l8tqa2y5ll" path="res://animals/rabbit/rabbit.gd" id="1_82nj6"]
+[ext_resource type="Shader" uid="uid://3h883wfcxp6t" path="res://shaders/blend.gdshader" id="2_7rohy"]
+[ext_resource type="Texture2D" uid="uid://ci6v52jel2504" path="res://sprites/animals/Mouse_0000.png" id="3_xiyjm"]
+[ext_resource type="Texture2D" uid="uid://bcn3wyi4c0hae" path="res://sprites/animals/Mouse_0001.png" id="4_kjo3e"]
+[ext_resource type="PackedScene" uid="uid://8xhu0alqge3g" path="res://audio/hit_fx_player.tscn" id="5_lxuxn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_riyer"]
 resource_local_to_scene = true
-shader = ExtResource("2_pyxpy")
+shader = ExtResource("2_7rohy")
 shader_parameter/hit_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_riyer"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_hfx0i")
+"texture": ExtResource("3_xiyjm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_fyin8")
+"texture": ExtResource("4_kjo3e")
 }],
 "loop": true,
 "name": &"default",
@@ -26,15 +26,15 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0b4ue"]
-radius = 21.0
+radius = 56.0
 
-[node name="Mouse" type="CharacterBody2D"]
-script = ExtResource("1_7hfej")
+[node name="Rabbit" type="CharacterBody2D"]
+script = ExtResource("1_82nj6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_riyer")
-position = Vector2(13, 8)
-scale = Vector2(0.2, 0.2)
+position = Vector2(48, 24)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_riyer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -47,9 +47,9 @@ visible = false
 collision_layer = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SightDetection"]
-polygon = PackedVector2Array(80, 60, 80, -60, 0, 0)
+polygon = PackedVector2Array(384, 448, 384, -448, 56, -320, 0, 0, 64, 320)
 
-[node name="HitFxPlayer" parent="." instance=ExtResource("5_dmu72")]
+[node name="HitFxPlayer" parent="." instance=ExtResource("5_lxuxn")]
 
 [connection signal="body_entered" from="SightDetection" to="." method="_on_sight_detection_body_entered"]
 [connection signal="body_exited" from="SightDetection" to="." method="_on_sight_detection_body_exited"]

@@ -1,24 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://q33bmw1osj75"]
+[gd_scene load_steps=11 format=3 uid="uid://c3jn0djs8vywe"]
 
-[ext_resource type="Script" uid="uid://4i0yrchqlvqf" path="res://animals/beetle/beetle.gd" id="1_bj3vx"]
-[ext_resource type="Shader" uid="uid://3h883wfcxp6t" path="res://shaders/blend.gdshader" id="2_kpd0k"]
-[ext_resource type="Texture2D" uid="uid://b8lrq57athw8g" path="res://sprites/animals/Beetle_0000.png" id="2_l0aso"]
-[ext_resource type="Texture2D" uid="uid://b311qpv1qwr6t" path="res://sprites/animals/Beetle_0001.png" id="3_kpd0k"]
-[ext_resource type="PackedScene" uid="uid://8xhu0alqge3g" path="res://audio/hit_fx_player.tscn" id="5_j7cay"]
+[ext_resource type="Script" uid="uid://bqp6jvib4s05g" path="res://animals/fox/fox.gd" id="1_r3sjq"]
+[ext_resource type="Shader" uid="uid://3h883wfcxp6t" path="res://shaders/blend.gdshader" id="2_anfof"]
+[ext_resource type="Texture2D" uid="uid://e31yqu7amaav" path="res://sprites/animals/Scorpion_0000.png" id="3_7g8k2"]
+[ext_resource type="Texture2D" uid="uid://dieyngx3bvu5t" path="res://sprites/animals/Scorpion_0001.png" id="4_5hgtj"]
+[ext_resource type="PackedScene" uid="uid://8xhu0alqge3g" path="res://audio/hit_fx_player.tscn" id="5_0pydw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j7cay"]
 resource_local_to_scene = true
-shader = ExtResource("2_kpd0k")
+shader = ExtResource("2_anfof")
 shader_parameter/hit_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j7cay"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_l0aso")
+"texture": ExtResource("3_7g8k2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_kpd0k")
+"texture": ExtResource("4_5hgtj")
 }],
 "loop": true,
 "name": &"default",
@@ -26,18 +26,21 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0b4ue"]
-radius = 34.0
+radius = 216.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xr8pp"]
+radius = 705.634
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj3vx"]
-radius = 50.0
+radius = 264.0
 
-[node name="Beetle" type="CharacterBody2D"]
-script = ExtResource("1_bj3vx")
+[node name="Fox" type="CharacterBody2D"]
+script = ExtResource("1_r3sjq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_j7cay")
 position = Vector2(11, -1)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_j7cay")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -49,8 +52,8 @@ debug_color = Color(0.275355, 0.62802, 0.208024, 0.42)
 visible = false
 collision_layer = 0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SightDetection"]
-polygon = PackedVector2Array(61, 39, 61, -41, 0, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SightDetection"]
+shape = SubResource("CircleShape2D_xr8pp")
 
 [node name="AttackRangeArea2D" type="Area2D" parent="."]
 visible = false
@@ -61,7 +64,7 @@ monitorable = false
 shape = SubResource("CircleShape2D_bj3vx")
 debug_color = Color(0.962607, 0, 0.503595, 0.42)
 
-[node name="HitFxPlayer" parent="." instance=ExtResource("5_j7cay")]
+[node name="HitFxPlayer" parent="." instance=ExtResource("5_0pydw")]
 
 [connection signal="body_entered" from="SightDetection" to="." method="_on_sight_detection_body_entered"]
 [connection signal="body_exited" from="SightDetection" to="." method="_on_sight_detection_body_exited"]

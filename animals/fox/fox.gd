@@ -1,23 +1,22 @@
 extends Animal
-class_name Scorpion
+class_name Fox
 
 
-var instance_health: int = 6
-var restore_health_value: int = 5
-
-var projectile = preload("res://projectile.tscn")
-
-var dna_awarded: int = 20
+var instance_health: int = 75
+var restore_health_value: int = 15
 
 
-var attack_power: int = 4
-var attack_delay: float = 1.5
+var dna_awarded: int = 35
+
+
+var attack_power: int = 8
+var attack_delay: float = 2.0
 var attack_speed: float = 20000.0
 var attacking: bool = false
 @onready var attack_range: CollisionShape2D = $AttackRangeArea2D/AttackRange
 
 
-var speed: float = 3000.0
+var speed: float = 9000.0
 var collided: bool = false
 var collision_normal: Vector2 = Vector2.ZERO
 var previously_collided: bool = false
@@ -238,7 +237,7 @@ func _attack_state() -> void:
 	can_transition = false
 
 	if not attacking:
-		_fire_projectile()
+		player.take_damage(attack_power, 0)
 		attacking = true
 
 		var player_direction = (animated_sprite_2d.position - player.position).normalized() * 15
@@ -284,17 +283,6 @@ func _chase_state(delta: float) -> void:
 	can_transition = true
 #endregion
 
-
-func _fire_projectile() -> void:
-	var projectile_instance: Projectile = projectile.instantiate()
-
-	projectile_instance.global_position = global_position
-
-	var attack_vector: Vector2 = player.global_position - global_position
-	var projectile_velocity: Vector2 = attack_vector.normalized() * attack_speed
-
-	projectile_instance.spawn(attack_power, attack_range.shape.radius, projectile_velocity, 0)
-	get_tree().root.add_child(projectile_instance)
 
 func _respond_to_damage():
 	_attack_if_attacked()
