@@ -97,6 +97,10 @@ func _ready() -> void:
 	# top down motion mode
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 
+	create_tween().tween_property(body_sprite, "material:shader_parameter/hit_color", Color.BLACK, 0.001)
+	create_tween().tween_property(legs_sprite, "material:shader_parameter/hit_color", Color.BLACK, 0.001)
+	create_tween().tween_property(weapon_sprite, "material:shader_parameter/hit_color", Color.BLACK, 0.001)
+
 	current_speed = DEFAULT_SPEED
 	_update_attack_radius(DEFAULT_ATTACK_RADIUS)
 	current_attack_evolution = Attack_Evolution.NONE

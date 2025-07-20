@@ -2,6 +2,9 @@ extends Animal
 class_name Mouse
 
 
+const DEFAULT_SPEED:float = 3000.0
+
+
 var instance_health: int = 3
 var restore_health_value: int = 2
 
@@ -29,9 +32,15 @@ func _ready() -> void:
 	health = instance_health
 
 func _physics_process(delta: float) -> void:
+	if current_status == STATUS.SLOWED:
+		speed *= 0.5
+	else:
+		speed = DEFAULT_SPEED
+
 	run_state_machine(delta)
 	collided = move_and_slide()
 
+	_take_poison_damage()
 	_idle_upon_obstacle_collision()
 	_flee_upon_player_sighted()
 

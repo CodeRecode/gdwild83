@@ -13,6 +13,9 @@ var remains = preload("res://animals/remains.tscn")
 var player: Player = null
 var player_attacked_me: bool = false
 var player_sighted: bool = false
+
+var poison_timer: float = 0.5
+var can_take_poison_damage: bool = true
 #
 #
 #@export var dna_awarded: int = 15
@@ -96,6 +99,21 @@ func take_damage(damage_amount: int, attack_modifier) -> void:
 		create_tween().tween_property( animated_sprite_2d, "scale", original_scale,tween_out_time)
 
 		player_sighted = true
+
+
+func _take_poison_damage() -> void:
+	if current_status == STATUS.POISONED and can_take_poison_damage:
+		health -= 2
+		can_take_poison_damage = false
+
+		if health <= 0:
+			current_status = STATUS.DEAD
+			_die()
+
+		await get_tree().create_timer(poison_timer).timeout
+
+		can_take_poison_damage = true
+
 
 
 func _die():
