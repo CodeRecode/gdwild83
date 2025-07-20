@@ -43,14 +43,14 @@ func _on_main_menu_game_begin() -> void:
 	lines_to_play.append("The Keplerian slime is a recent transplant to earth, but no stranger to astrobiologists.")
 
 	lines_to_play.append("On its home planet in Kepler, it is an obligate herbivore.")
-	
+
 func _play_line() -> void:
 	playing = true
 	dialog_subtitles.show()
 	subtitles_label.text = lines_to_play[current_line]
-	
+
 	await get_tree().create_timer(5.0).timeout
-	
+
 	current_line += 1
 	if current_line >= lines_to_play.size():
 		dialog_subtitles.hide()
@@ -70,4 +70,3 @@ func _on_player_evolution_complete(new_level: int) -> void:
 			narrator_vulnerable.emit()
 		4:
 			lines_to_play.append("I think we may be in some trouble.")
-	

@@ -52,6 +52,7 @@ var projectile = preload("res://projectile.tscn")
 @export var damage_delay: float = 0.5
 @export var attack_speed: float = 25000.0
 var can_deal_damage: bool = false
+var tween_once: bool = true
 var animals_in_range: Array[Animal] = []
 
 
@@ -277,7 +278,8 @@ func _deal_damage() -> void:
 
 	if animals_in_range.size() > 0 and can_deal_damage:
 		can_deal_damage = false
-		var tween_once: bool = true
+		tween_once = true
+		var animal_position: Vector2 = animals_in_range[0].position
 
 		for animal in animals_in_range:
 			if animal.current_status == animal.STATUS.DEAD:
@@ -294,15 +296,16 @@ func _deal_damage() -> void:
 				if animals_in_range.has(animal):
 					animals_in_range.erase(animal)
 
-			if tween_once:
-				var animal_direction = (animal.position - scalars.position).normalized() * 10 * scalars.scale
+		if tween_once:
+			var animal_direction = (animal_position - scalars.position).normalized() * 10 * scalars.scale
 
-				var original_position = scalars.position
-				var tween = create_tween().tween_property(scalars, "position", original_position + animal_direction, 0.075)
-				await tween.finished
-				create_tween().tween_property(scalars, "position", original_position, 0.05)
+			var original_position = scalars.position
+			var tween = create_tween().tween_property(scalars, "position", original_position + animal_direction, 0.075)
+			await tween.finished
+			var end_tween = create_tween().tween_property(scalars, "position", original_position, 0.05)
+			await  end_tween.finished
 
-				tween_once = false
+			tween_once = false
 
 		await get_tree().create_timer(damage_delay - 0.075 - 0.05).timeout
 		can_deal_damage = true

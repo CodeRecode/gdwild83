@@ -1282,7 +1282,7 @@ position = Vector2(-1952, 1056)
 position = Vector2(-1680, 1768)
 
 [node name="LargeRock7" parent="Obstacles" instance=ExtResource("17_ait7k")]
-position = Vector2(-1024, 1824)
+position = Vector2(-1144, 1790)
 
 [node name="SmallRock22" parent="Obstacles" instance=ExtResource("2_vonw3")]
 position = Vector2(-248, 1848)
@@ -1324,6 +1324,21 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundaries/NorthernEdge"]
 z_index = -1
 shape = SubResource("WorldBoundaryShape2D_fedht")
+
+[node name="Beetle" parent="." instance=ExtResource("7_n6hdu")]
+position = Vector2(192, 1128)
+
+[node name="Mouse" parent="." instance=ExtResource("6_1ainy")]
+position = Vector2(-224, 1264)
+
+[node name="Mouse2" parent="." instance=ExtResource("6_1ainy")]
+position = Vector2(104, 1312)
+
+[node name="Mouse3" parent="." instance=ExtResource("6_1ainy")]
+position = Vector2(-112, 1496)
+
+[node name="Fox" parent="." instance=ExtResource("29_aoqsc")]
+position = Vector2(-24, 1688)
 
 [connection signal="game_begin" from="CanvasLayer/MainMenu" to="CanvasLayer/StoryController" method="_on_main_menu_game_begin"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/StartGameButton" to="CanvasLayer/MainMenu" method="_on_start_game_button_pressed"]
