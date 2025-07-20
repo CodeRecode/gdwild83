@@ -17,7 +17,7 @@ signal player_died()
 signal player_took_damage()
 signal zoom_camera(new_value: float)
 
-var current_speed: int = 5000
+var current_speed: int = 6000
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var current_attack_range_CS2D = $Scalars/AttackRangeArea2D/AttackRange
 
@@ -162,7 +162,7 @@ func _update_attack(new_attack_evolution: Attack_Evolution) -> void:
 			current_attack_evolution = Attack_Evolution.CLAWS
 			_update_attack_radius(DEFAULT_ATTACK_RADIUS + 4)
 
-			current_damage = 4
+			current_damage = 8
 			damage_delay = 0.5
 
 			if current_movement_evolution == Movement_Evolution.TENTACLES_BASIC:
@@ -174,7 +174,7 @@ func _update_attack(new_attack_evolution: Attack_Evolution) -> void:
 			current_attack_evolution =Attack_Evolution.SPRAY
 			_update_attack_radius(DEFAULT_ATTACK_RADIUS + 64)
 
-			current_damage = 2
+			current_damage = 4
 			damage_delay = 1.5
 
 			if current_movement_evolution == Movement_Evolution.TENTACLES_BASIC:
@@ -232,14 +232,20 @@ func _check_evolve() -> void:
 	if evolution_level < evolution_thresholds.size() and stored_dna > evolution_thresholds[evolution_level]:
 		choosing_evolution = true
 		match evolution_level:
-			0: evolution_triggered.emit("Legs", "Tentacles")
-			1: evolution_triggered.emit("Claws", "Spray")
-			2: evolution_triggered.emit("Armor", "Regen")
+			0:
+				evolution_triggered.emit("Legs", "Tentacles")
+			1:
+				evolution_triggered.emit("Claws", "Spray")
+			2:
+				evolution_triggered.emit("Armor", "Regen")
+				current_damage *= 2
 			3:
 				if current_attack_evolution == Attack_Evolution.CLAWS:
 					evolution_triggered.emit("Attack Speed", "Oneshot")
+					current_damage *= 2
 				else:
 					evolution_triggered.emit("Venom", "Slowdown")
+					current_damage *= 2
 
 func _on_upgrade_panel_evolution_chosen(choice: int) -> void:
 	match evolution_level:
@@ -298,13 +304,13 @@ func _deal_damage() -> void:
 
 		if tween_once:
 			var animal_direction = (animal_position - scalars.position).normalized() * 10 * scalars.scale
-
+#
 			var original_position = scalars.position
-			var tween = create_tween().tween_property(scalars, "position", original_position + animal_direction, 0.075)
+			var tween = create_tween().tween_property(scalars, "position", animal_direction, 0.075)
 			await tween.finished
-			var end_tween = create_tween().tween_property(scalars, "position", original_position, 0.05)
+			var end_tween = create_tween().tween_property(scalars, "position", Vector2.ZERO, 0.05)
 			await  end_tween.finished
-
+#
 			tween_once = false
 
 		await get_tree().create_timer(damage_delay - 0.075 - 0.05).timeout
@@ -327,6 +333,9 @@ var consume_tweening = false
 func _consume_resources(animal: Animal) -> void:
 	_modify_health(animal.restore_health_value)
 	_modify_dna(animal.dna_awarded)
+
+	if tween_once or consume_tweening:
+		await get_tree().create_timer(0.25).timeout
 
 	# Don't set scale if we're going to evolve
 	if evolution_level < evolution_thresholds.size() and stored_dna > evolution_thresholds[evolution_level]:

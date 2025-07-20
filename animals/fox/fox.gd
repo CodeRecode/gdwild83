@@ -12,6 +12,8 @@ var restore_health_value: int = 15
 var dna_awarded: int = 35
 
 
+var projectile = preload("res://projectile.tscn")
+
 var attack_power: int = 8
 var attack_delay: float = 2.0
 var attack_speed: float = 20000.0
@@ -246,7 +248,7 @@ func _attack_state() -> void:
 	can_transition = false
 
 	if not attacking:
-		player.take_damage(attack_power, 0)
+		_fire_projectile()
 		attacking = true
 
 		var player_direction = (animated_sprite_2d.position - player.position).normalized() * 15
@@ -267,6 +269,18 @@ func _attack_state() -> void:
 		current_state = STATE.LOOK
 
 	can_transition = true
+
+
+func _fire_projectile() -> void:
+	var projectile_instance: Projectile = projectile.instantiate()
+
+	projectile_instance.global_position = global_position
+
+	var attack_vector: Vector2 = player.global_position - global_position
+	var projectile_velocity: Vector2 = attack_vector.normalized() * attack_speed
+
+	projectile_instance.spawn(attack_power, attack_range.shape.radius, projectile_velocity, 0)
+	get_tree().root.add_child(projectile_instance)
 
 
 func _chase_state(delta: float) -> void:

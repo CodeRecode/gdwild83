@@ -111,7 +111,18 @@ func _take_poison_damage() -> void:
 			current_status = STATUS.DEAD
 			_die()
 
-		await get_tree().create_timer(poison_timer).timeout
+		var original_scale: Vector2 = animated_sprite_2d.scale
+		var tween = create_tween().tween_property(animated_sprite_2d, "material:shader_parameter/hit_color", Color.GREEN * 0.2, 0.15)
+		create_tween().tween_property(animated_sprite_2d, "scale", original_scale * Vector2(0.8,1.2),0.15)
+
+		await tween.finished
+
+		var end_tween = create_tween().tween_property(animated_sprite_2d, "material:shader_parameter/hit_color", Color.BLACK, 0.1)
+		create_tween().tween_property(animated_sprite_2d, "scale", original_scale, 0.1)
+
+		await  end_tween.finished
+
+		await get_tree().create_timer(poison_timer - 0.25).timeout
 
 		can_take_poison_damage = true
 

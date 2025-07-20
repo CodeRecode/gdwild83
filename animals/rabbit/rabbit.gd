@@ -5,14 +5,14 @@ class_name Rabbit
 const DEFAULT_SPEED:float = 7500.0
 
 
-var instance_health: int = 30
+var instance_health: int = 20
 var restore_health_value: int = 6
 
 
 var dna_awarded: int = 30
 
 
-var speed: float = 7500.0
+var speed: float = 8500.0
 var collided: bool = false
 var collision_normal: Vector2 = Vector2.ZERO
 var previously_collided: bool = false
