@@ -268,6 +268,8 @@ func _on_upgrade_panel_evolution_chosen(choice: int) -> void:
 func _on_attack_range_area_2d_body_entered(body: CharacterBody2D) -> void:
 	if body is Animal and not animals_in_range.has(body):
 		animals_in_range.append(body)
+		if animals_in_range.size() == 1:
+			can_deal_damage = true
 
 
 func _on_attack_range_area_2d_body_exited(body: CharacterBody2D) -> void:
@@ -279,9 +281,6 @@ func _on_attack_range_area_2d_body_exited(body: CharacterBody2D) -> void:
 
 
 func _deal_damage() -> void:
-	if animals_in_range.size() < 1:
-		can_deal_damage = true
-
 	if animals_in_range.size() > 0 and can_deal_damage:
 		can_deal_damage = false
 		tween_once = true
