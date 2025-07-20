@@ -67,6 +67,7 @@ func take_damage(damage_amount: int, attack_modifier) -> void:
 	player_attacked_me = true
 	health -= damage_amount
 	hit_fx_player.play()
+	player_sighted = true
 
 	# Additive color, set factor 0-1 to increase/decrease the redness
 	var red_factor = .2
@@ -95,10 +96,10 @@ func take_damage(damage_amount: int, attack_modifier) -> void:
 
 		await tween.finished
 
-		create_tween().tween_property(animated_sprite_2d, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time)
+		var end_tween = create_tween().tween_property(animated_sprite_2d, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time)
 		create_tween().tween_property( animated_sprite_2d, "scale", original_scale,tween_out_time)
 
-		player_sighted = true
+		await  end_tween.finished
 
 
 func _take_poison_damage() -> void:

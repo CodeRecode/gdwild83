@@ -610,9 +610,6 @@ position = Vector2(-342, 680)
 [node name="MediumRock" parent="Obstacles" instance=ExtResource("16_4c15r")]
 position = Vector2(936, 1144)
 
-[node name="LargeRock" parent="Obstacles" instance=ExtResource("17_ait7k")]
-position = Vector2(-1288, 1280)
-
 [node name="World Fences" type="Node" parent="Obstacles"]
 
 [node name="Fence1" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
@@ -1180,7 +1177,7 @@ position = Vector2(328, 600)
 position = Vector2(984, 736)
 
 [node name="MediumRock5" parent="Obstacles" instance=ExtResource("15_fedht")]
-position = Vector2(1504, 856)
+position = Vector2(1501, 685)
 
 [node name="SmallRock10" parent="Obstacles" instance=ExtResource("2_vonw3")]
 position = Vector2(2072, 1000)
@@ -1234,7 +1231,7 @@ position = Vector2(1328, 1712)
 position = Vector2(784, 1584)
 
 [node name="SmallRock15" parent="Obstacles" instance=ExtResource("2_vonw3")]
-position = Vector2(1872, 624)
+position = Vector2(1968, 536)
 
 [node name="SmallRock16" parent="Obstacles" instance=ExtResource("2_vonw3")]
 position = Vector2(1992, 1624)
@@ -1285,10 +1282,235 @@ position = Vector2(-1680, 1768)
 position = Vector2(-1144, 1790)
 
 [node name="SmallRock22" parent="Obstacles" instance=ExtResource("2_vonw3")]
-position = Vector2(-248, 1848)
+position = Vector2(-400, 1888)
 
 [node name="MediumRock15" parent="Obstacles" instance=ExtResource("15_fedht")]
 position = Vector2(-64, 1104)
+
+[node name="Raccoon" parent="Obstacles" instance=ExtResource("28_hvubb")]
+position = Vector2(752, 1824)
+
+[node name="Beetle" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+position = Vector2(392, 1720)
+
+[node name="Mouse" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(608, 1648)
+
+[node name="Mouse2" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(568, 1472)
+
+[node name="Mouse3" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(640, 1008)
+
+[node name="Mouse4" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(960, 1904)
+
+[node name="Scorpion" parent="Obstacles" instance=ExtResource("8_km5ld")]
+position = Vector2(1248, 1856)
+
+[node name="Rabbit" parent="Obstacles" instance=ExtResource("27_yjxuc")]
+position = Vector2(1376, 1096)
+
+[node name="Beetle2" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+position = Vector2(1184, 1280)
+
+[node name="Beetle3" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+position = Vector2(1384, 1432)
+
+[node name="Fox" parent="Obstacles" instance=ExtResource("29_aoqsc")]
+position = Vector2(1832, 896)
+
+[node name="Mouse5" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(1240, 936)
+
+[node name="Mouse6" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(1768, 1544)
+
+[node name="Mouse7" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(1920, 1864)
+
+[node name="Beetle4" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+position = Vector2(2192, 1664)
+
+[node name="Beetle5" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+position = Vector2(2136, 1848)
+
+[node name="Beetle6" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+position = Vector2(2360, 1848)
+
+[node name="Scorpion2" parent="Obstacles" instance=ExtResource("8_km5ld")]
+position = Vector2(2240, 1816)
+
+[node name="Mouse8" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(2568, 1776)
+
+[node name="Mouse9" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(2768, 1864)
+
+[node name="Rabbit2" parent="Obstacles" instance=ExtResource("27_yjxuc")]
+position = Vector2(2736, 856)
+
+[node name="Mouse10" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(2264, 1168)
+
+[node name="Mouse11" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(1952, 1168)
+
+[node name="Mouse12" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(2560, 1120)
+
+[node name="Beetle7" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+position = Vector2(2160, 848)
+
+[node name="Beetle8" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+position = Vector2(2216, 1424)
+
+[node name="Beetle9" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+position = Vector2(2288, 688)
+
+[node name="Beetle10" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+position = Vector2(2584, 648)
+
+[node name="Beetle11" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+position = Vector2(2664, 480)
+
+[node name="Scorpion3" parent="Obstacles" instance=ExtResource("8_km5ld")]
+position = Vector2(2840, 704)
+
+[node name="Fox2" parent="Obstacles" instance=ExtResource("29_aoqsc")]
+position = Vector2(2552, -72)
+
+[node name="Mouse13" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(1680, 448)
+
+[node name="Mouse14" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(1920, 328)
+
+[node name="Mouse15" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(2128, 440)
+
+[node name="Mouse16" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(1688, -80)
+
+[node name="Mouse17" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(1888, -232)
+
+[node name="Mouse18" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(1648, -328)
+
+[node name="Mouse19" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(1688, -544)
+
+[node name="Scorpion4" parent="Obstacles" instance=ExtResource("8_km5ld")]
+position = Vector2(1984, -616)
+
+[node name="Beetle12" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+position = Vector2(2640, -432)
+
+[node name="Beetle13" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+position = Vector2(2504, -576)
+
+[node name="Beetle14" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+position = Vector2(2576, -1152)
+
+[node name="Mouse20" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(2248, -816)
+
+[node name="Mouse21" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(2824, -688)
+
+[node name="Scorpion5" parent="Obstacles" instance=ExtResource("8_km5ld")]
+position = Vector2(2528, -952)
+
+[node name="Scorpion6" parent="Obstacles" instance=ExtResource("8_km5ld")]
+position = Vector2(1240, -1024)
+
+[node name="Mouse22" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(1736, -864)
+
+[node name="Rabbit3" parent="Obstacles" instance=ExtResource("27_yjxuc")]
+position = Vector2(1056, -728)
+
+[node name="Beetle15" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+position = Vector2(1704, -1320)
+
+[node name="Beetle16" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+position = Vector2(1920, -1040)
+
+[node name="Mouse23" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(2248, -1248)
+
+[node name="Raccoon2" parent="Obstacles" instance=ExtResource("28_hvubb")]
+position = Vector2(1112, -1360)
+
+[node name="Raccoon3" parent="Obstacles" instance=ExtResource("28_hvubb")]
+position = Vector2(1680, -1720)
+
+[node name="Mouse24" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(1840, -1544)
+
+[node name="Beetle17" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+position = Vector2(1416, -1712)
+
+[node name="Scorpion7" parent="Obstacles" instance=ExtResource("8_km5ld")]
+position = Vector2(232, -1288)
+
+[node name="Scorpion8" parent="Obstacles" instance=ExtResource("8_km5ld")]
+position = Vector2(240, -1792)
+
+[node name="Mouse25" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(632, -1184)
+
+[node name="Mouse26" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(728, -1440)
+
+[node name="Mouse27" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(416, -1688)
+
+[node name="Mouse28" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(640, -1800)
+
+[node name="Mouse29" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(272, -1512)
+
+[node name="Scorpion9" parent="Obstacles" instance=ExtResource("8_km5ld")]
+position = Vector2(-224, -928)
+
+[node name="Scorpion10" parent="Obstacles" instance=ExtResource("8_km5ld")]
+position = Vector2(-576, -896)
+
+[node name="Beetle18" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+position = Vector2(-600, -736)
+
+[node name="Beetle19" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+position = Vector2(-880, -752)
+
+[node name="Beetle20" parent="Obstacles" instance=ExtResource("7_n6hdu")]
+position = Vector2(-1536, -656)
+
+[node name="Mouse30" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(-1120, -664)
+
+[node name="Mouse31" parent="Obstacles" instance=ExtResource("6_1ainy")]
+position = Vector2(-1064, -472)
+
+[node name="Raccoon4" parent="Obstacles" instance=ExtResource("28_hvubb")]
+position = Vector2(-760, -1208)
+
+[node name="Rabbit4" parent="Obstacles" instance=ExtResource("27_yjxuc")]
+position = Vector2(-992, -1632)
+
+[node name="Rabbit5" parent="Obstacles" instance=ExtResource("27_yjxuc")]
+position = Vector2(-464, -1640)
+
+[node name="Fox3" parent="Obstacles" instance=ExtResource("29_aoqsc")]
+position = Vector2(-1256, -1688)
+
+[node name="Fox4" parent="Obstacles" instance=ExtResource("29_aoqsc")]
+position = Vector2(-2080, -304)
+
+[node name="Fox5" parent="Obstacles" instance=ExtResource("29_aoqsc")]
+position = Vector2(-1136, 744)
 
 [node name="WorldBoundaries" type="Node" parent="."]
 
@@ -1339,6 +1561,42 @@ position = Vector2(-112, 1496)
 
 [node name="Fox" parent="." instance=ExtResource("29_aoqsc")]
 position = Vector2(-24, 1688)
+
+[node name="Fox2" parent="." instance=ExtResource("29_aoqsc")]
+position = Vector2(-1160, 1416)
+
+[node name="Beetle2" parent="." instance=ExtResource("7_n6hdu")]
+position = Vector2(-904, 1776)
+
+[node name="Beetle3" parent="." instance=ExtResource("7_n6hdu")]
+position = Vector2(-872, 1368)
+
+[node name="Beetle4" parent="." instance=ExtResource("7_n6hdu")]
+position = Vector2(-504, 1680)
+
+[node name="Mouse4" parent="." instance=ExtResource("6_1ainy")]
+position = Vector2(-696, 1776)
+
+[node name="Mouse5" parent="." instance=ExtResource("6_1ainy")]
+position = Vector2(-864, 896)
+
+[node name="Mouse6" parent="." instance=ExtResource("6_1ainy")]
+position = Vector2(-1312, 1168)
+
+[node name="Mouse7" parent="." instance=ExtResource("6_1ainy")]
+position = Vector2(-944, 1120)
+
+[node name="Mouse8" parent="." instance=ExtResource("6_1ainy")]
+position = Vector2(-1680, 936)
+
+[node name="Mouse9" parent="." instance=ExtResource("6_1ainy")]
+position = Vector2(-1856, 880)
+
+[node name="Beetle5" parent="." instance=ExtResource("7_n6hdu")]
+position = Vector2(2864, -1760)
+
+[node name="Mouse10" parent="." instance=ExtResource("6_1ainy")]
+position = Vector2(2960, -1448)
 
 [connection signal="game_begin" from="CanvasLayer/MainMenu" to="CanvasLayer/StoryController" method="_on_main_menu_game_begin"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/VBoxContainer/StartGameButton" to="CanvasLayer/MainMenu" method="_on_start_game_button_pressed"]
