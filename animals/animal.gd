@@ -59,10 +59,17 @@ func _ready() -> void:
 	animated_sprite_2d.play()
 	player = get_tree().get_first_node_in_group("Player")
 
+
 func take_damage(damage_amount: int, attack_modifier) -> void:
 	player_attacked_me = true
 	health -= damage_amount
 	hit_fx_player.play()
+
+	# Additive color, set factor 0-1 to increase/decrease the redness
+	var red_factor = .2
+	var original_scale = animated_sprite_2d.scale
+	var tween_in_time = .05
+	var tween_out_time = .15
 
 	match  attack_modifier:
 		STATUS.HEALTHY:
@@ -79,15 +86,24 @@ func take_damage(damage_amount: int, attack_modifier) -> void:
 
 	if current_status == STATUS.DEAD:
 		_die()
+	else:
+		var tween = create_tween().tween_property(animated_sprite_2d, "material:shader_parameter/hit_color", Color.RED * red_factor, tween_in_time)
+		create_tween().tween_property(animated_sprite_2d, "scale", original_scale * Vector2(0.8,1.2),tween_in_time)
 
-	player_sighted = true
+		await tween.finished
+
+		create_tween().tween_property(animated_sprite_2d, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time)
+		create_tween().tween_property( animated_sprite_2d, "scale", original_scale,tween_out_time)
+
+		player_sighted = true
+
 
 func _die():
 	var instance = remains.instantiate()
 	instance.global_position = global_position
 	get_tree().root.add_child(instance)
 	queue_free.call_deferred()
-	
+
 
 #abstract func
 func _respond_to_damage():

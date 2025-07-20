@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://c8b6qnp400wcf"]
+[gd_scene load_steps=18 format=3 uid="uid://c8b6qnp400wcf"]
 
 [ext_resource type="Script" uid="uid://bep15pwdio6yf" path="res://ui/stats_panel.gd" id="1_f2txt"]
-[ext_resource type="Theme" uid="uid://bca7bmrwcv4bs" path="res://ui/paper_theme.tres" id="1_h6smj"]
+[ext_resource type="Theme" uid="uid://b6lxexhwgldwe" path="res://ui/paper_theme.tres" id="1_h6smj"]
 [ext_resource type="PackedScene" uid="uid://ns1cyrf2ln52" path="res://player.tscn" id="1_u52ul"]
 [ext_resource type="Script" uid="uid://ccngsd6hxa6nu" path="res://ui/upgrade_panel.gd" id="2_1ainy"]
 [ext_resource type="PackedScene" uid="uid://vstiefs8fhix" path="res://geo/small_rock.tscn" id="2_vonw3"]
@@ -14,6 +14,9 @@
 [ext_resource type="AudioStream" uid="uid://doqi4aguv33e7" path="res://audio/728695__minecraftgamerlr__intense-gore-sound-opening-chest-cavity.ogg" id="8_v5j5c"]
 [ext_resource type="Script" uid="uid://bnm2nmfcxlwic" path="res://story_controller.gd" id="10_8cye3"]
 [ext_resource type="PackedScene" uid="uid://b51qjjopgjcy7" path="res://animals/narrator.tscn" id="11_2orkt"]
+[ext_resource type="PackedScene" uid="uid://cqstf0tld7iwa" path="res://geo/medium_rock2.tscn" id="15_fedht"]
+[ext_resource type="PackedScene" uid="uid://b0kk73qe0npcf" path="res://geo/medium_rock.tscn" id="16_4c15r"]
+[ext_resource type="PackedScene" uid="uid://d2hamw32qfl0v" path="res://geo/large_rock.tscn" id="17_ait7k"]
 
 [node name="Level" type="Node2D"]
 
@@ -259,6 +262,15 @@ scale = Vector2(0.5, 0.486033)
 [node name="SmallRock4" parent="Obstacles" instance=ExtResource("2_vonw3")]
 position = Vector2(411, 355)
 scale = Vector2(0.5, 0.486033)
+
+[node name="MediumRock2" parent="Obstacles" instance=ExtResource("15_fedht")]
+position = Vector2(216, 552)
+
+[node name="MediumRock" parent="Obstacles" instance=ExtResource("16_4c15r")]
+position = Vector2(760, 792)
+
+[node name="LargeRock" parent="Obstacles" instance=ExtResource("17_ait7k")]
+position = Vector2(-392, 776)
 
 [connection signal="evolution_chosen" from="CanvasLayer/UpgradePanel" to="Player" method="_on_upgrade_panel_evolution_chosen"]
 [connection signal="pressed" from="CanvasLayer/UpgradePanel/MarginContainer/VBoxContainer/HBoxContainer2/Upgrade1Button" to="CanvasLayer/UpgradePanel" method="_on_upgrade_1_button_pressed"]

@@ -214,7 +214,13 @@ func _attack_state() -> void:
 		player.take_damage(attack_power, 0)
 		attacking = true
 
-	await get_tree().create_timer(attack_delay).timeout
+		var player_direction = (animated_sprite_2d.position - player.position).normalized() * 15
+		var original_position = animated_sprite_2d.position
+		var tween = create_tween().tween_property(animated_sprite_2d, "position", original_position + player_direction, 0.075)
+		await tween.finished
+		create_tween().tween_property(animated_sprite_2d, "position", original_position, 0.05)
+
+	await get_tree().create_timer(attack_delay - 0.075).timeout
 
 	attacking = false
 

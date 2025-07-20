@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dxcp0mkutg664"]
+
+[ext_resource type="Shader" uid="uid://3h883wfcxp6t" path="res://shaders/blend.gdshader" id="1_7pqp7"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_7pqp7")
+shader_parameter/hit_color = Color(0, 0, 0, 1)

@@ -15,4 +15,4 @@ func _on_player_player_took_damage() -> void:
 
 
 func _on_player_zoom_camera(new_value: float) -> void:
-	create_tween().tween_property(self, "zoom", Vector2(new_value, new_value), 1)
+	create_tween().tween_property(self, "zoom", Vector2(new_value, new_value), 0.1)

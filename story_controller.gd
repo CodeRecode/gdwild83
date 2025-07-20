@@ -24,5 +24,5 @@ func _on_narrator_narrator_died() -> void:
 	tween.tween_property(you_win_label, "modulate:a", 1.0, 3.0)
 
 func _on_player_dna_modified(new_value: int) -> void:
-	if new_value > 2:
+	if new_value > 10:
 		narrator_vulnerable.emit()

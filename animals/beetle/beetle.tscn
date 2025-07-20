@@ -7,7 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://8xhu0alqge3g" path="res://audio/hit_fx_player.tscn" id="5_j7cay"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j7cay"]
+resource_local_to_scene = true
 shader = ExtResource("2_kpd0k")
+shader_parameter/hit_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j7cay"]
 animations = [{

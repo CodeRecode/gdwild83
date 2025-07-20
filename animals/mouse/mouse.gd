@@ -6,7 +6,6 @@ class_name Mouse
 @export var restore_health_value: int = 1
 
 
-
 @export var dna_awarded: int = 15
 
 
@@ -119,7 +118,7 @@ func _flee_state(delta: float) -> void:
 	can_transition = false
 
 	var flee_vector: Vector2 = (position - player.position).normalized()
-	velocity = flee_vector * speed * delta
+	velocity = flee_vector * (speed * 1.15) * delta
 
 	sight_detector.rotation = flee_vector.angle()
 

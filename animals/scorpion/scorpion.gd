@@ -2,22 +2,22 @@ extends Animal
 class_name Scorpion
 
 
-@export var instance_health: int = 10
-@export var restore_health_value: int = 1
+var instance_health: int = 6
+var restore_health_value: int = 3
 
 var projectile = preload("res://projectile.tscn")
 
-@export var dna_awarded: int = 15
+@export var dna_awarded: int = 20
 
 
-@export var attack_power: int = 3
-@export var attack_delay: float = 2.0
-@export var attack_speed: float = 15000.0
+var attack_power: int = 4
+var attack_delay: float = 1.5
+var attack_speed: float = 20000.0
 var attacking: bool = false
 @onready var attack_range: CollisionShape2D = $AttackRangeArea2D/AttackRange
 
 
-@export var speed: float = 3000.0
+var speed: float = 3000.0
 var collided: bool = false
 var collision_normal: Vector2 = Vector2.ZERO
 var previously_collided: bool = false
@@ -240,6 +240,12 @@ func _attack_state() -> void:
 	if not attacking:
 		_fire_projectile()
 		attacking = true
+
+		var player_direction = (animated_sprite_2d.position - player.position).normalized() * 15
+		var original_position = animated_sprite_2d.position
+		var tween = create_tween().tween_property(animated_sprite_2d, "position", original_position + player_direction, 0.075)
+		await tween.finished
+		create_tween().tween_property(animated_sprite_2d, "position", original_position, 0.05)
 
 	await get_tree().create_timer(attack_delay).timeout
 

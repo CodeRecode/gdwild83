@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b51qjjopgjcy7"]
+[gd_scene load_steps=8 format=3 uid="uid://b51qjjopgjcy7"]
 
 [ext_resource type="Texture2D" uid="uid://dawjarjkcwxcu" path="res://icon.svg" id="1_4pnkk"]
 [ext_resource type="Script" uid="uid://ba7nylvmkcuvb" path="res://animals/narrator.gd" id="1_obntq"]
+[ext_resource type="Material" uid="uid://dxcp0mkutg664" path="res://shaders/animal_shader.tres" id="2_ndmlf"]
 [ext_resource type="PackedScene" uid="uid://8xhu0alqge3g" path="res://audio/hit_fx_player.tscn" id="3_wqwuo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a8py2"]
@@ -18,10 +19,14 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_4pnkk"]
 radius = 77.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ndmlf"]
+radius = 448.286
+
 [node name="Narrator" type="CharacterBody2D"]
 script = ExtResource("1_obntq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("2_ndmlf")
 sprite_frames = SubResource("SpriteFrames_a8py2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -31,7 +36,10 @@ debug_color = Color(0.275355, 0.62802, 0.208024, 0.42)
 [node name="SightDetection" type="Area2D" parent="."]
 collision_layer = 0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SightDetection"]
-polygon = PackedVector2Array(139, 131, 141, -146, 0, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SightDetection"]
+shape = SubResource("CircleShape2D_ndmlf")
 
 [node name="HitFxPlayer" parent="." instance=ExtResource("3_wqwuo")]
+
+[connection signal="body_entered" from="SightDetection" to="." method="_on_sight_detection_body_entered"]
+[connection signal="body_exited" from="SightDetection" to="." method="_on_sight_detection_body_exited"]

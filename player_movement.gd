@@ -48,7 +48,7 @@ var projectile = preload("res://projectile.tscn")
 
 @export var current_damage: int = 1
 @export var damage_delay: float = 0.5
-@export var attack_speed: float = 17500.0
+@export var attack_speed: float = 25000.0
 var can_deal_damage: bool = false
 var animals_in_range: Array[Animal] = []
 
@@ -57,6 +57,9 @@ var animals_in_range: Array[Animal] = []
 @export var current_attack_modifier: Attack_Modifier = Attack_Modifier.NONE
 @export var current_movement_evolution: Movement_Evolution = Movement_Evolution.NONE
 @export var current_health_evolution: Health_Evolution = Health_Evolution.NONE
+
+
+var tentacles_modifier: float = 0.3
 
 
 enum Attack_Evolution {
@@ -122,7 +125,7 @@ func _physics_process(delta: float) -> void:
 	_deal_damage()
 	_check_evolve()
 	_regen_health()
-	
+
 	background.material.set("shader_parameter/player_position", global_position)
 
 #region Evolution
@@ -150,14 +153,25 @@ func _update_attack(new_attack_evolution: Attack_Evolution) -> void:
 			weapon_sprite.play("claws")
 			current_attack_evolution = Attack_Evolution.CLAWS
 			_update_attack_radius(DEFAULT_ATTACK_RADIUS + 4)
-			current_damage = 3
+
+			current_damage = 4
 			damage_delay = 0.5
+
+			if current_movement_evolution == Movement_Evolution.TENTACLES_BASIC:
+				current_damage *= 1 + tentacles_modifier
+				damage_delay *= 1 - tentacles_modifier
+
 		Attack_Evolution.SPRAY:
 			weapon_sprite.play("spray")
 			current_attack_evolution =Attack_Evolution.SPRAY
 			_update_attack_radius(DEFAULT_ATTACK_RADIUS + 64)
-			current_damage = 1
-			damage_delay = 2
+
+			current_damage = 2
+			damage_delay = 1.5
+
+			if current_movement_evolution == Movement_Evolution.TENTACLES_BASIC:
+				current_damage *= 1 + tentacles_modifier
+				damage_delay *= 1 - tentacles_modifier
 
 
 func _update_modifier(new_attack_modifier: Attack_Modifier) -> void:
@@ -189,6 +203,9 @@ func _update_movement(new_movement_evolution: Movement_Evolution) -> void:
 		Movement_Evolution.TENTACLES_BASIC:
 			legs_sprite.play("tentacles")
 			current_speed = Movement_Evolution.TENTACLES_BASIC
+			attack_speed *= 1 + tentacles_modifier
+			current_damage *= 1 + tentacles_modifier
+			damage_delay *=  1 - tentacles_modifier
 
 
 func _update_health(new_health_evolution: Health_Evolution) -> void:
@@ -254,8 +271,12 @@ func _deal_damage() -> void:
 
 	if animals_in_range.size() > 0 and can_deal_damage:
 		can_deal_damage = false
+		var tween_once: bool = true
 
 		for animal in animals_in_range:
+			if animal.current_status == animal.STATUS.DEAD:
+				pass
+
 			if current_attack_evolution != Attack_Evolution.SPRAY:
 				animal.take_damage(current_damage, current_attack_modifier)
 			else:
@@ -263,6 +284,16 @@ func _deal_damage() -> void:
 
 			if animal.current_status == animal.STATUS.DEAD and current_attack_evolution != Attack_Evolution.SPRAY:
 				_consume_resources(animal)
+
+			if tween_once:
+				var animal_direction = (animal.position - scalars.position).normalized() * 10 * scalars.scale
+
+				var original_position = scalars.position
+				var tween = create_tween().tween_property(scalars, "position", original_position + animal_direction, 0.075)
+				await tween.finished
+				create_tween().tween_property(scalars, "position", original_position, 0.05)
+
+				tween_once = false
 
 		await get_tree().create_timer(damage_delay).timeout
 		can_deal_damage = true
@@ -279,6 +310,7 @@ func _fire_projectile(animal: Animal) -> void:
 	projectile_instance.spawn(current_damage, current_attack_range_CS2D.shape.radius * scalars.scale.x, projectile_velocity, 1)
 	get_tree().root.add_child(projectile_instance)
 
+
 var consume_tweening = false
 func _consume_resources(animal: Animal) -> void:
 	_modify_health(animal.restore_health_value)
@@ -287,18 +319,37 @@ func _consume_resources(animal: Animal) -> void:
 	# Don't set scale if we're going to evolve
 	if evolution_level < evolution_thresholds.size() and stored_dna > evolution_thresholds[evolution_level]:
 		return
-	
+
 	# don't double play
 	if consume_tweening:
 		return
 
 	consume_tweening = true
+
+
+# Additive color, set factor 0-1 to increase/decrease the greenness
+	var green_factor = .2
+	var tween_in_time = .075
+	var tween_out_time = .15
+
 	var current_scale = scalars.scale
-	var tween = create_tween()
-	tween.tween_property(scalars, "scale", scalars.scale*Vector2(.7,1.3), 0.075)
-	tween.tween_property(scalars, "scale", current_scale, 0.05)
-	
-	await tween.finished
+	var enter_tween = create_tween()
+	enter_tween.tween_property(scalars, "scale", scalars.scale*Vector2(.7,1.3), tween_in_time)
+
+	create_tween().tween_property(body_sprite, "material:shader_parameter/hit_color", Color.GREEN * green_factor, tween_in_time)
+	create_tween().tween_property(legs_sprite, "material:shader_parameter/hit_color", Color.GREEN * green_factor, tween_in_time)
+	create_tween().tween_property(weapon_sprite, "material:shader_parameter/hit_color", Color.GREEN * green_factor, tween_in_time)
+
+	await enter_tween.finished
+
+	var exit_tween = create_tween().tween_property(scalars, "scale", current_scale, tween_out_time)
+
+	create_tween().tween_property(body_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time)
+	create_tween().tween_property(legs_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time)
+	create_tween().tween_property(weapon_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time)
+
+	await exit_tween.finished
+
 	consume_tweening = false
 
 
@@ -308,33 +359,58 @@ func take_damage(damage_amount: float, damage_modifier: int) -> void:
 	player_took_damage.emit()
 
 	# Additive color, set factor 0-1 to increase/decrease the redness
-	var red_factor = .1
-	var tween_in_time = .1
-	var tween_out_time = .1
-	
+	var red_factor = .2
+	var tween_in_time = .05
+	var tween_out_time = .15
+
 	var tween = create_tween().tween_property(body_sprite, "material:shader_parameter/hit_color", Color.RED * red_factor, tween_in_time)
-	create_tween().tween_property(legs_sprite, "material:shader_parameter/hit_color", Color.RED * red_factor, tween_in_time) 
-	create_tween().tween_property(weapon_sprite, "material:shader_parameter/hit_color", Color.RED * red_factor, tween_in_time) 
-	
+	create_tween().tween_property(legs_sprite, "material:shader_parameter/hit_color", Color.RED * red_factor, tween_in_time)
+	create_tween().tween_property(weapon_sprite, "material:shader_parameter/hit_color", Color.RED * red_factor, tween_in_time)
+
 	await tween.finished
-	
-	create_tween().tween_property(body_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time) 
-	create_tween().tween_property(legs_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time) 
-	create_tween().tween_property(weapon_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time) 
+
+	create_tween().tween_property(body_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time)
+	create_tween().tween_property(legs_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time)
+	create_tween().tween_property(weapon_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time)
+
 
 func _scale_evolve() -> void:
 	var new_scale = evolution_scales[evolution_level + 1]
 	collision_shape_2d.scale = Vector2(new_scale, new_scale)
 	scalars.scale = Vector2(new_scale, new_scale)
-	
+
 	zoom_camera.emit(camera_scales[evolution_level + 1])
+
 
 func _regen_health() -> void:
 	if can_regen:
 		can_regen = false
 
 		_modify_health(regen_amount)
-		await get_tree().create_timer(regen_timer).timeout
+
+		var green_factor = .2
+		var tween_in_time = .075
+		var tween_out_time = .15
+
+		var current_scale = scalars.scale
+
+		var enter_tween = create_tween().tween_property(scalars, "scale", scalars.scale*Vector2(.7,1.3), tween_in_time)
+
+		create_tween().tween_property(body_sprite, "material:shader_parameter/hit_color", Color.GREEN * green_factor, tween_in_time)
+		create_tween().tween_property(legs_sprite, "material:shader_parameter/hit_color", Color.GREEN * green_factor, tween_in_time)
+		create_tween().tween_property(weapon_sprite, "material:shader_parameter/hit_color", Color.GREEN * green_factor, tween_in_time)
+
+		await enter_tween.finished
+
+		var exit_tween = create_tween().tween_property(scalars, "scale", current_scale, tween_out_time)
+
+		create_tween().tween_property(body_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time)
+		create_tween().tween_property(legs_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time)
+		create_tween().tween_property(weapon_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time)
+
+		await exit_tween.finished
+
+		await get_tree().create_timer(regen_timer - tween_in_time - tween_out_time).timeout
 
 		can_regen = true
 
