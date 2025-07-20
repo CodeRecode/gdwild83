@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6xvkvchu5q63"]
+
+[ext_resource type="Texture2D" uid="uid://qvr04ap2ll1s" path="res://sprites/geo/treetrunks.png" id="1_y1qwh"]
+[ext_resource type="Texture2D" uid="uid://bi866eujs2rhr" path="res://sprites/geo/Treetop.png" id="2_myh2x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxp6b"]
+size = Vector2(225, 576)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hldig"]
+radius = 32.0
+height = 396.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y1qwh"]
+radius = 227.009
+
+[node name="Tree_A" type="StaticBody2D"]
+
+[node name="Trunk" type="Sprite2D" parent="."]
+position = Vector2(40, 0)
+texture = ExtResource("1_y1qwh")
+region_enabled = true
+region_rect = Rect2(150, 180, 425, 650)
+
+[node name="Top" type="Sprite2D" parent="."]
+position = Vector2(189, -269)
+texture = ExtResource("2_myh2x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -28)
+shape = SubResource("RectangleShape2D_kxp6b")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(48, 279)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_hldig")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(11, -453)
+shape = SubResource("CircleShape2D_y1qwh")

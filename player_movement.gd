@@ -253,7 +253,7 @@ func _on_upgrade_panel_evolution_chosen(choice: int) -> void:
 
 #region Combat
 func _on_attack_range_area_2d_body_entered(body: CharacterBody2D) -> void:
-	if body is Animal:
+	if body is Animal and not animals_in_range.has(body):
 		animals_in_range.append(body)
 
 
@@ -262,7 +262,7 @@ func _on_attack_range_area_2d_body_exited(body: CharacterBody2D) -> void:
 		animals_in_range.erase(body)
 
 		if animals_in_range.size() <= 0:
-			animals_in_range.resize(0)
+			animals_in_range.clear()
 
 
 func _deal_damage() -> void:
@@ -284,6 +284,7 @@ func _deal_damage() -> void:
 
 			if animal.current_status == animal.STATUS.DEAD and current_attack_evolution != Attack_Evolution.SPRAY:
 				_consume_resources(animal)
+				if animals_in_range.has(animal): animals_in_range.erase(animal)
 
 			if tween_once:
 				var animal_direction = (animal.position - scalars.position).normalized() * 10 * scalars.scale
@@ -328,13 +329,13 @@ func _consume_resources(animal: Animal) -> void:
 
 
 # Additive color, set factor 0-1 to increase/decrease the greenness
-	var green_factor = .2
-	var tween_in_time = .075
+	var green_factor = .3
+	var tween_in_time = .1
 	var tween_out_time = .15
 
 	var current_scale = scalars.scale
 	var enter_tween = create_tween()
-	enter_tween.tween_property(scalars, "scale", scalars.scale*Vector2(.7,1.3), tween_in_time)
+	enter_tween.tween_property(scalars, "scale", scalars.scale*Vector2(1.2,1.2), tween_in_time)
 
 	create_tween().tween_property(body_sprite, "material:shader_parameter/hit_color", Color.GREEN * green_factor, tween_in_time)
 	create_tween().tween_property(legs_sprite, "material:shader_parameter/hit_color", Color.GREEN * green_factor, tween_in_time)

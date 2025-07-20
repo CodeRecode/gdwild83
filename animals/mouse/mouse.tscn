@@ -41,10 +41,12 @@ scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_riyer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_0b4ue")
 debug_color = Color(0.275355, 0.62802, 0.208024, 0.42)
 
 [node name="SightDetection" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SightDetection"]

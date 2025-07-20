@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c8b6qnp400wcf"]
+[gd_scene load_steps=28 format=3 uid="uid://c8b6qnp400wcf"]
 
 [ext_resource type="Script" uid="uid://bep15pwdio6yf" path="res://ui/stats_panel.gd" id="1_f2txt"]
 [ext_resource type="Theme" uid="uid://b6lxexhwgldwe" path="res://ui/paper_theme.tres" id="1_h6smj"]
@@ -17,6 +17,17 @@
 [ext_resource type="PackedScene" uid="uid://cqstf0tld7iwa" path="res://geo/medium_rock2.tscn" id="15_fedht"]
 [ext_resource type="PackedScene" uid="uid://b0kk73qe0npcf" path="res://geo/medium_rock.tscn" id="16_4c15r"]
 [ext_resource type="PackedScene" uid="uid://d2hamw32qfl0v" path="res://geo/large_rock.tscn" id="17_ait7k"]
+[ext_resource type="PackedScene" uid="uid://ddqoyn7ybpgkp" path="res://geo/fence1.tscn" id="18_42xju"]
+[ext_resource type="PackedScene" uid="uid://bpeikxs4fm757" path="res://geo/fence2.tscn" id="19_v7sqt"]
+[ext_resource type="PackedScene" uid="uid://bbmbwb1ugnxnd" path="res://geo/fence3.tscn" id="20_ilwjd"]
+[ext_resource type="PackedScene" uid="uid://thk0hrtit2y4" path="res://geo/boulder2.tscn" id="21_ilwjd"]
+[ext_resource type="PackedScene" uid="uid://blypcwqit55v6" path="res://geo/boulder.tscn" id="22_y3bce"]
+[ext_resource type="PackedScene" uid="uid://c6xvkvchu5q63" path="res://geo/tree_a.tscn" id="23_u3yai"]
+[ext_resource type="PackedScene" uid="uid://c3qdd467wylbu" path="res://geo/tree_b.tscn" id="24_fj6e6"]
+[ext_resource type="PackedScene" uid="uid://bd73e4ym1mhi0" path="res://geo/small_tree_b.tscn" id="25_2h3vt"]
+[ext_resource type="PackedScene" uid="uid://cbwsn7sb2rfei" path="res://geo/small_tree_a.tscn" id="26_yjxuc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fedht"]
 
 [node name="Level" type="Node2D"]
 
@@ -218,11 +229,74 @@ position = Vector2(871, -89)
 [node name="Mouse5" parent="Animals" instance=ExtResource("6_1ainy")]
 position = Vector2(-459, -97)
 
+[node name="Mouse6" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(-560, -320)
+
+[node name="Mouse7" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(-320, -584)
+
+[node name="Mouse8" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(368, -592)
+
+[node name="Mouse11" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(-560, 864)
+
+[node name="Mouse12" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(-128, 851)
+
+[node name="Mouse13" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(-656, 480)
+
+[node name="Mouse14" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(643, 476)
+
+[node name="Mouse15" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(1195, 264)
+
+[node name="Mouse9" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(952, -520)
+
+[node name="Mouse10" parent="Animals" instance=ExtResource("6_1ainy")]
+position = Vector2(1163, -272)
+
 [node name="Beetle" parent="Animals" instance=ExtResource("7_n6hdu")]
 position = Vector2(585, 46)
 
 [node name="Beetle2" parent="Animals" instance=ExtResource("7_n6hdu")]
 position = Vector2(-210, 98)
+
+[node name="Beetle4" parent="Animals" instance=ExtResource("7_n6hdu")]
+position = Vector2(-120, -456)
+
+[node name="Beetle5" parent="Animals" instance=ExtResource("7_n6hdu")]
+position = Vector2(416, -424)
+
+[node name="Beetle6" parent="Animals" instance=ExtResource("7_n6hdu")]
+position = Vector2(936, -320)
+
+[node name="Beetle7" parent="Animals" instance=ExtResource("7_n6hdu")]
+position = Vector2(1367, -368)
+
+[node name="Beetle8" parent="Animals" instance=ExtResource("7_n6hdu")]
+position = Vector2(1272, 80)
+
+[node name="Beetle9" parent="Animals" instance=ExtResource("7_n6hdu")]
+position = Vector2(1267, 504)
+
+[node name="Beetle10" parent="Animals" instance=ExtResource("7_n6hdu")]
+position = Vector2(710, 752)
+
+[node name="Beetle11" parent="Animals" instance=ExtResource("7_n6hdu")]
+position = Vector2(-59, 696)
+
+[node name="Beetle12" parent="Animals" instance=ExtResource("7_n6hdu")]
+position = Vector2(-363, 928)
+
+[node name="Beetle13" parent="Animals" instance=ExtResource("7_n6hdu")]
+position = Vector2(-584, 732)
+
+[node name="Beetle14" parent="Animals" instance=ExtResource("7_n6hdu")]
+position = Vector2(-1088, 964)
 
 [node name="Beetle3" parent="Animals" instance=ExtResource("7_n6hdu")]
 position = Vector2(215, -224)
@@ -235,6 +309,24 @@ position = Vector2(76, 915)
 
 [node name="Scorpion3" parent="Animals" instance=ExtResource("8_km5ld")]
 position = Vector2(-838, 352)
+
+[node name="Scorpion5" parent="Animals" instance=ExtResource("8_km5ld")]
+position = Vector2(-1010, -232)
+
+[node name="Scorpion6" parent="Animals" instance=ExtResource("8_km5ld")]
+position = Vector2(80, -672)
+
+[node name="Scorpion7" parent="Animals" instance=ExtResource("8_km5ld")]
+position = Vector2(625, -816)
+
+[node name="Scorpion8" parent="Animals" instance=ExtResource("8_km5ld")]
+position = Vector2(1439, -640)
+
+[node name="Scorpion9" parent="Animals" instance=ExtResource("8_km5ld")]
+position = Vector2(1624, 152)
+
+[node name="Scorpion10" parent="Animals" instance=ExtResource("8_km5ld")]
+position = Vector2(1264, 732)
 
 [node name="Scorpion4" parent="Animals" instance=ExtResource("8_km5ld")]
 position = Vector2(-293, -226)
@@ -264,13 +356,725 @@ position = Vector2(411, 355)
 scale = Vector2(0.5, 0.486033)
 
 [node name="MediumRock2" parent="Obstacles" instance=ExtResource("15_fedht")]
-position = Vector2(216, 552)
+position = Vector2(-342, 680)
 
 [node name="MediumRock" parent="Obstacles" instance=ExtResource("16_4c15r")]
-position = Vector2(760, 792)
+position = Vector2(936, 1144)
 
 [node name="LargeRock" parent="Obstacles" instance=ExtResource("17_ait7k")]
-position = Vector2(-392, 776)
+position = Vector2(-1288, 1280)
+
+[node name="World Fences" type="Node" parent="Obstacles"]
+
+[node name="Fence1" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
+show_behind_parent = true
+position = Vector2(-1096, 2128)
+
+[node name="Fence11" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
+show_behind_parent = true
+position = Vector2(3640, 2128)
+
+[node name="Fence9" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
+show_behind_parent = true
+position = Vector2(2512, 2128)
+rotation = 3.14159
+
+[node name="Fence7" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
+show_behind_parent = true
+position = Vector2(-1632, 2128)
+rotation = 3.14159
+
+[node name="Fence5" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
+show_behind_parent = true
+position = Vector2(952, 2128)
+
+[node name="Fence2" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
+show_behind_parent = true
+position = Vector2(-544, 2128)
+
+[node name="Fence10" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
+show_behind_parent = true
+position = Vector2(3096, 2128)
+
+[node name="Fence6" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
+show_behind_parent = true
+position = Vector2(1504, 2128)
+rotation = 3.14159
+
+[node name="Fence4" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
+show_behind_parent = true
+position = Vector2(424, 2128)
+
+[node name="Fence3" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
+show_behind_parent = true
+position = Vector2(-72, 2120)
+
+[node name="Fence12" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
+show_behind_parent = true
+position = Vector2(4112, 2120)
+
+[node name="Fence8" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
+show_behind_parent = true
+position = Vector2(2008, 2120)
+
+[node name="Fence13" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
+show_behind_parent = true
+position = Vector2(5152, 2128)
+
+[node name="Fence14" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
+show_behind_parent = true
+position = Vector2(-2624, 2128)
+
+[node name="Fence15" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
+show_behind_parent = true
+position = Vector2(-3752, 2128)
+rotation = 3.14159
+
+[node name="Fence16" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
+show_behind_parent = true
+position = Vector2(4616, 2128)
+rotation = 3.14159
+
+[node name="Fence17" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
+show_behind_parent = true
+position = Vector2(-5312, 2128)
+
+[node name="Fence18" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
+show_behind_parent = true
+position = Vector2(5704, 2128)
+
+[node name="Fence19" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
+show_behind_parent = true
+position = Vector2(-3168, 2128)
+
+[node name="Fence20" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
+show_behind_parent = true
+position = Vector2(-4760, 2128)
+rotation = 3.14159
+
+[node name="Fence21" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
+show_behind_parent = true
+position = Vector2(-5840, 2128)
+
+[node name="Fence22" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
+show_behind_parent = true
+position = Vector2(6176, 2120)
+
+[node name="Fence23" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
+show_behind_parent = true
+position = Vector2(-2152, 2120)
+
+[node name="Fence24" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
+show_behind_parent = true
+position = Vector2(-4256, 2120)
+
+[node name="Fence25" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
+show_behind_parent = true
+z_index = -1
+position = Vector2(-1184, -2000)
+
+[node name="Fence26" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
+show_behind_parent = true
+z_index = -3
+position = Vector2(3552, -2000)
+
+[node name="Fence27" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
+show_behind_parent = true
+z_index = -1
+position = Vector2(2424, -2000)
+rotation = 3.14159
+
+[node name="Fence28" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
+show_behind_parent = true
+z_index = -1
+position = Vector2(-1720, -2000)
+rotation = 3.14159
+
+[node name="Fence29" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
+show_behind_parent = true
+z_index = -1
+position = Vector2(864, -2000)
+
+[node name="Fence30" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
+show_behind_parent = true
+z_index = -1
+position = Vector2(-632, -2000)
+
+[node name="Fence31" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
+show_behind_parent = true
+z_index = -1
+position = Vector2(3008, -2000)
+
+[node name="Fence32" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
+show_behind_parent = true
+z_index = -1
+position = Vector2(1416, -2000)
+rotation = 3.14159
+
+[node name="Fence33" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
+show_behind_parent = true
+z_index = -1
+position = Vector2(336, -2000)
+
+[node name="Fence34" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
+show_behind_parent = true
+z_index = -1
+position = Vector2(-160, -2000)
+
+[node name="Fence35" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
+show_behind_parent = true
+z_index = -2
+position = Vector2(4024, -2000)
+
+[node name="Fence36" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
+show_behind_parent = true
+z_index = -1
+position = Vector2(1920, -2000)
+
+[node name="Fence37" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
+show_behind_parent = true
+position = Vector2(5064, -2000)
+
+[node name="Fence38" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
+show_behind_parent = true
+z_index = -1
+position = Vector2(-2712, -2000)
+
+[node name="Fence39" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
+show_behind_parent = true
+z_index = -1
+position = Vector2(-3840, -2000)
+rotation = 3.14159
+
+[node name="Fence40" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
+show_behind_parent = true
+position = Vector2(4528, -2000)
+rotation = 3.14159
+
+[node name="Fence41" parent="Obstacles/World Fences" instance=ExtResource("18_42xju")]
+show_behind_parent = true
+z_index = -1
+position = Vector2(-5400, -2000)
+
+[node name="Fence42" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
+show_behind_parent = true
+position = Vector2(5616, -2000)
+
+[node name="Fence43" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
+show_behind_parent = true
+z_index = -1
+position = Vector2(-3256, -2000)
+
+[node name="Fence44" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
+show_behind_parent = true
+z_index = -1
+position = Vector2(-4848, -2000)
+rotation = 3.14159
+
+[node name="Fence45" parent="Obstacles/World Fences" instance=ExtResource("19_v7sqt")]
+show_behind_parent = true
+z_index = -3
+position = Vector2(-5928, -2000)
+
+[node name="Fence46" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
+show_behind_parent = true
+position = Vector2(6088, -2000)
+
+[node name="Fence47" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
+show_behind_parent = true
+z_index = -1
+position = Vector2(-2240, -2000)
+
+[node name="Fence48" parent="Obstacles/World Fences" instance=ExtResource("20_ilwjd")]
+show_behind_parent = true
+z_index = -1
+position = Vector2(-4344, -2000)
+
+[node name="Boulder2" parent="Obstacles/World Fences" instance=ExtResource("21_ilwjd")]
+position = Vector2(-3664, 928)
+
+[node name="Boulder1" parent="Obstacles/World Fences" instance=ExtResource("22_y3bce")]
+position = Vector2(2520, 1488)
+
+[node name="WesternForest" type="Node" parent="Obstacles"]
+
+[node name="Tree_A" parent="Obstacles/WesternForest" instance=ExtResource("23_u3yai")]
+z_index = 1
+position = Vector2(-6216, 2120)
+
+[node name="Tree_A2" parent="Obstacles/WesternForest" instance=ExtResource("23_u3yai")]
+position = Vector2(-6272, 760)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Tree_B" parent="Obstacles/WesternForest" instance=ExtResource("24_fj6e6")]
+position = Vector2(-6040, 1304)
+
+[node name="Tree_B2" parent="Obstacles/WesternForest" instance=ExtResource("24_fj6e6")]
+z_index = -1
+position = Vector2(-6064, 160)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Tree_A3" parent="Obstacles/WesternForest" instance=ExtResource("23_u3yai")]
+position = Vector2(-6520, 496)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Tree_A4" parent="Obstacles/WesternForest" instance=ExtResource("23_u3yai")]
+z_index = -2
+position = Vector2(-6576, -864)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Tree_B3" parent="Obstacles/WesternForest" instance=ExtResource("24_fj6e6")]
+z_index = -2
+position = Vector2(-6344, -320)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Tree_B4" parent="Obstacles/WesternForest" instance=ExtResource("24_fj6e6")]
+z_index = -3
+position = Vector2(-6368, -1464)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Tree_A5" parent="Obstacles/WesternForest" instance=ExtResource("23_u3yai")]
+z_index = 1
+position = Vector2(-6696, 2536)
+
+[node name="Tree_A6" parent="Obstacles/WesternForest" instance=ExtResource("23_u3yai")]
+position = Vector2(-6752, 1176)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Tree_B5" parent="Obstacles/WesternForest" instance=ExtResource("24_fj6e6")]
+position = Vector2(-6520, 1720)
+
+[node name="Tree_B6" parent="Obstacles/WesternForest" instance=ExtResource("24_fj6e6")]
+z_index = -1
+position = Vector2(-6544, 576)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Tree_A7" parent="Obstacles/WesternForest" instance=ExtResource("23_u3yai")]
+position = Vector2(-7000, 912)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Tree_A8" parent="Obstacles/WesternForest" instance=ExtResource("23_u3yai")]
+z_index = -2
+position = Vector2(-7056, -448)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Tree_B7" parent="Obstacles/WesternForest" instance=ExtResource("24_fj6e6")]
+z_index = -2
+position = Vector2(-6824, 96)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Tree_B8" parent="Obstacles/WesternForest" instance=ExtResource("24_fj6e6")]
+z_index = -3
+position = Vector2(-6848, -1048)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Tree_A9" parent="Obstacles/WesternForest" instance=ExtResource("23_u3yai")]
+z_index = -4
+position = Vector2(-6944, -1616)
+
+[node name="Tree_A10" parent="Obstacles/WesternForest" instance=ExtResource("23_u3yai")]
+position = Vector2(-7200, 2920)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Tree_B9" parent="Obstacles/WesternForest" instance=ExtResource("24_fj6e6")]
+position = Vector2(-6968, 3464)
+
+[node name="Tree_B10" parent="Obstacles/WesternForest" instance=ExtResource("24_fj6e6")]
+z_index = -1
+position = Vector2(-6992, 2320)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Tree_A11" parent="Obstacles/WesternForest" instance=ExtResource("23_u3yai")]
+position = Vector2(-7448, 2656)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Tree_A12" parent="Obstacles/WesternForest" instance=ExtResource("23_u3yai")]
+z_index = -2
+position = Vector2(-7504, 1296)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Tree_B11" parent="Obstacles/WesternForest" instance=ExtResource("24_fj6e6")]
+z_index = -2
+position = Vector2(-7272, 1840)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="Tree_B12" parent="Obstacles/WesternForest" instance=ExtResource("24_fj6e6")]
+z_index = -3
+position = Vector2(-7296, 696)
+rotation = -3.14159
+scale = Vector2(1, -1)
+
+[node name="WesternForest2" type="Node" parent="Obstacles"]
+
+[node name="Tree_A" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
+z_index = 1
+position = Vector2(4224, 1128)
+scale = Vector2(-1, 1)
+
+[node name="Tree_A2" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
+position = Vector2(4168, -232)
+rotation = -3.14159
+scale = Vector2(-1, -1)
+
+[node name="Tree_B" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
+position = Vector2(4400, 312)
+scale = Vector2(-1, 1)
+
+[node name="Tree_B2" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
+z_index = -1
+position = Vector2(4376, -832)
+rotation = -3.14159
+scale = Vector2(-1, -1)
+
+[node name="Tree_A3" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
+position = Vector2(3920, -496)
+rotation = -3.14159
+scale = Vector2(-1, -1)
+
+[node name="Tree_A4" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
+z_index = -2
+position = Vector2(3864, -1856)
+rotation = -3.14159
+scale = Vector2(-1, -1)
+
+[node name="Tree_B3" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
+z_index = -2
+position = Vector2(4096, -1312)
+rotation = -3.14159
+scale = Vector2(-1, -1)
+
+[node name="Tree_B4" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
+z_index = -3
+position = Vector2(4072, -2456)
+rotation = -3.14159
+scale = Vector2(-1, -1)
+
+[node name="Tree_A5" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
+z_index = 1
+position = Vector2(3744, 1544)
+scale = Vector2(-1, 1)
+
+[node name="Tree_A6" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
+position = Vector2(3688, 184)
+rotation = -3.14159
+scale = Vector2(-1, -1)
+
+[node name="Tree_B5" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
+position = Vector2(3920, 728)
+scale = Vector2(-1, 1)
+
+[node name="Tree_B6" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
+z_index = -1
+position = Vector2(3896, -416)
+rotation = -3.14159
+scale = Vector2(-1, -1)
+
+[node name="Tree_A7" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
+position = Vector2(3440, -80)
+rotation = -3.14159
+scale = Vector2(-1, -1)
+
+[node name="Tree_A8" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
+z_index = -1
+position = Vector2(3224, -1328)
+rotation = -3.14159
+scale = Vector2(-1, -1)
+
+[node name="Tree_B7" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
+z_index = -2
+position = Vector2(3616, -896)
+rotation = -3.14159
+scale = Vector2(-1, -1)
+
+[node name="Tree_B8" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
+z_index = -3
+position = Vector2(3592, -2040)
+rotation = -3.14159
+scale = Vector2(-1, -1)
+
+[node name="Tree_A9" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
+z_index = -4
+position = Vector2(3496, -2608)
+scale = Vector2(-1, 1)
+
+[node name="Tree_A10" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
+position = Vector2(3328, 2104)
+rotation = -3.14159
+scale = Vector2(-1, -1)
+
+[node name="Tree_B9" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
+position = Vector2(3472, 2472)
+scale = Vector2(-1, 1)
+
+[node name="Tree_B10" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
+z_index = -1
+position = Vector2(3448, 1328)
+rotation = -3.14159
+scale = Vector2(-1, -1)
+
+[node name="Tree_A11" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
+position = Vector2(2992, 1664)
+rotation = -3.14159
+scale = Vector2(-1, -1)
+
+[node name="Tree_A12" parent="Obstacles/WesternForest2" instance=ExtResource("23_u3yai")]
+z_index = -2
+position = Vector2(2936, 304)
+rotation = -3.14159
+scale = Vector2(-1, -1)
+
+[node name="Tree_B11" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
+z_index = -2
+position = Vector2(3168, 848)
+rotation = -3.14159
+scale = Vector2(-1, -1)
+
+[node name="Tree_B12" parent="Obstacles/WesternForest2" instance=ExtResource("24_fj6e6")]
+z_index = -3
+position = Vector2(3144, -296)
+rotation = -3.14159
+scale = Vector2(-1, -1)
+
+[node name="SmallRock5" parent="Obstacles" instance=ExtResource("2_vonw3")]
+position = Vector2(968, 64)
+
+[node name="MediumRock3" parent="Obstacles" instance=ExtResource("16_4c15r")]
+position = Vector2(-1120, -64)
+
+[node name="Small_Tree_B" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+position = Vector2(368, 1232)
+
+[node name="SmallRock6" parent="Obstacles" instance=ExtResource("2_vonw3")]
+position = Vector2(647, -608)
+
+[node name="MediumRock4" parent="Obstacles" instance=ExtResource("16_4c15r")]
+position = Vector2(-400, -808)
+
+[node name="LargeRock2" parent="Obstacles" instance=ExtResource("17_ait7k")]
+position = Vector2(392, -1144)
+
+[node name="Tree_A" parent="Obstacles" instance=ExtResource("23_u3yai")]
+position = Vector2(-112, -1840)
+
+[node name="Boulder1" parent="Obstacles" instance=ExtResource("22_y3bce")]
+position = Vector2(2096, 8)
+
+[node name="Boulder2" parent="Obstacles" instance=ExtResource("21_ilwjd")]
+position = Vector2(-2520, -96)
+
+[node name="Small_Tree_A" parent="Obstacles" instance=ExtResource("26_yjxuc")]
+position = Vector2(-1696, 176)
+
+[node name="Small_Tree_B2" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+position = Vector2(-1120, -984)
+
+[node name="Small_Tree_A2" parent="Obstacles" instance=ExtResource("26_yjxuc")]
+position = Vector2(-2808, 1568)
+
+[node name="Small_Tree_B3" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+position = Vector2(1648, 1664)
+
+[node name="Small_Tree_A3" parent="Obstacles" instance=ExtResource("26_yjxuc")]
+position = Vector2(1400, 160)
+
+[node name="Small_Tree_B4" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+position = Vector2(2040, -912)
+
+[node name="Small_Tree_A4" parent="Obstacles" instance=ExtResource("26_yjxuc")]
+position = Vector2(1456, -1136)
+
+[node name="Small_Tree_B5" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+position = Vector2(-4232, -1016)
+
+[node name="Small_Tree_A5" parent="Obstacles" instance=ExtResource("26_yjxuc")]
+position = Vector2(-5288, 1424)
+
+[node name="Small_Tree_B6" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+position = Vector2(-4752, 624)
+
+[node name="LargeRock3" parent="Obstacles" instance=ExtResource("17_ait7k")]
+position = Vector2(-2360, 440)
+
+[node name="SmallRock7" parent="Obstacles" instance=ExtResource("2_vonw3")]
+position = Vector2(-297, 1472)
+
+[node name="SmallRock8" parent="Obstacles" instance=ExtResource("2_vonw3")]
+position = Vector2(-864, 608)
+
+[node name="SmallRock9" parent="Obstacles" instance=ExtResource("2_vonw3")]
+position = Vector2(-464, 168)
+
+[node name="LargeRock4" parent="Obstacles" instance=ExtResource("17_ait7k")]
+position = Vector2(88, -384)
+
+[node name="LargeRock5" parent="Obstacles" instance=ExtResource("17_ait7k")]
+position = Vector2(328, 600)
+
+[node name="Small_Tree_B7" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+position = Vector2(984, 736)
+
+[node name="MediumRock5" parent="Obstacles" instance=ExtResource("15_fedht")]
+position = Vector2(1504, 856)
+
+[node name="SmallRock10" parent="Obstacles" instance=ExtResource("2_vonw3")]
+position = Vector2(2072, 1000)
+
+[node name="Small_Tree_B8" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+position = Vector2(2416, 808)
+
+[node name="MediumRock6" parent="Obstacles" instance=ExtResource("15_fedht")]
+position = Vector2(1848, -416)
+
+[node name="MediumRock7" parent="Obstacles" instance=ExtResource("16_4c15r")]
+position = Vector2(1208, -504)
+
+[node name="SmallRock11" parent="Obstacles" instance=ExtResource("2_vonw3")]
+position = Vector2(1136, -936)
+
+[node name="Small_Tree_A6" parent="Obstacles" instance=ExtResource("26_yjxuc")]
+position = Vector2(-32, -952)
+
+[node name="Small_Tree_B9" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+position = Vector2(872, -1296)
+
+[node name="SmallRock12" parent="Obstacles" instance=ExtResource("2_vonw3")]
+position = Vector2(1232, -1664)
+
+[node name="Boulder3" parent="Obstacles" instance=ExtResource("22_y3bce")]
+position = Vector2(2616, -1536)
+
+[node name="MediumRock8" parent="Obstacles" instance=ExtResource("15_fedht")]
+position = Vector2(2536, -768)
+
+[node name="SmallRock13" parent="Obstacles" instance=ExtResource("2_vonw3")]
+position = Vector2(1984, -1704)
+
+[node name="Small_Tree_A7" parent="Obstacles" instance=ExtResource("26_yjxuc")]
+position = Vector2(672, 8)
+
+[node name="Small_Tree_A8" parent="Obstacles" instance=ExtResource("26_yjxuc")]
+position = Vector2(-720, 1424)
+
+[node name="Small_Tree_B10" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+position = Vector2(-752, -200)
+
+[node name="MediumRock9" parent="Obstacles" instance=ExtResource("15_fedht")]
+position = Vector2(208, 1752)
+
+[node name="MediumRock10" parent="Obstacles" instance=ExtResource("16_4c15r")]
+position = Vector2(1328, 1712)
+
+[node name="SmallRock14" parent="Obstacles" instance=ExtResource("2_vonw3")]
+position = Vector2(784, 1584)
+
+[node name="SmallRock15" parent="Obstacles" instance=ExtResource("2_vonw3")]
+position = Vector2(1872, 624)
+
+[node name="SmallRock16" parent="Obstacles" instance=ExtResource("2_vonw3")]
+position = Vector2(1992, 1624)
+
+[node name="SmallRock17" parent="Obstacles" instance=ExtResource("2_vonw3")]
+position = Vector2(-352, -352)
+
+[node name="SmallRock18" parent="Obstacles" instance=ExtResource("2_vonw3")]
+position = Vector2(-752, -952)
+
+[node name="MediumRock11" parent="Obstacles" instance=ExtResource("16_4c15r")]
+position = Vector2(-440, -1312)
+
+[node name="MediumRock12" parent="Obstacles" instance=ExtResource("15_fedht")]
+position = Vector2(-744, -1552)
+
+[node name="Boulder4" parent="Obstacles" instance=ExtResource("22_y3bce")]
+position = Vector2(-1664, -1440)
+
+[node name="Boulder5" parent="Obstacles" instance=ExtResource("21_ilwjd")]
+position = Vector2(-3256, -1016)
+
+[node name="LargeRock6" parent="Obstacles" instance=ExtResource("17_ait7k")]
+position = Vector2(-1352, -504)
+
+[node name="SmallRock19" parent="Obstacles" instance=ExtResource("2_vonw3")]
+position = Vector2(-1072, 352)
+
+[node name="MediumRock13" parent="Obstacles" instance=ExtResource("16_4c15r")]
+position = Vector2(-1584, 712)
+
+[node name="MediumRock14" parent="Obstacles" instance=ExtResource("15_fedht")]
+position = Vector2(-1432, 896)
+
+[node name="SmallRock20" parent="Obstacles" instance=ExtResource("2_vonw3")]
+position = Vector2(-1680, 1072)
+
+[node name="SmallRock21" parent="Obstacles" instance=ExtResource("2_vonw3")]
+position = Vector2(-1576, 1216)
+
+[node name="Small_Tree_B11" parent="Obstacles" instance=ExtResource("25_2h3vt")]
+position = Vector2(-1952, 1056)
+
+[node name="Small_Tree_A9" parent="Obstacles" instance=ExtResource("26_yjxuc")]
+position = Vector2(-1680, 1768)
+
+[node name="LargeRock7" parent="Obstacles" instance=ExtResource("17_ait7k")]
+position = Vector2(-1024, 1824)
+
+[node name="SmallRock22" parent="Obstacles" instance=ExtResource("2_vonw3")]
+position = Vector2(-248, 1848)
+
+[node name="MediumRock15" parent="Obstacles" instance=ExtResource("15_fedht")]
+position = Vector2(-64, 1104)
+
+[node name="WorldBoundaries" type="Node" parent="."]
+
+[node name="SouthernEdge" type="StaticBody2D" parent="WorldBoundaries"]
+position = Vector2(0, 2000)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundaries/SouthernEdge"]
+shape = SubResource("WorldBoundaryShape2D_fedht")
+
+[node name="EasternEdge" type="StaticBody2D" parent="WorldBoundaries"]
+position = Vector2(3000, 0)
+rotation = -1.5708
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundaries/EasternEdge"]
+shape = SubResource("WorldBoundaryShape2D_fedht")
+
+[node name="WesternEdge" type="StaticBody2D" parent="WorldBoundaries"]
+position = Vector2(-3000, 0)
+rotation = 1.5708
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundaries/WesternEdge"]
+shape = SubResource("WorldBoundaryShape2D_fedht")
+
+[node name="NorthernEdge" type="StaticBody2D" parent="WorldBoundaries"]
+z_index = -1
+position = Vector2(3, -1844)
+rotation = 3.14159
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundaries/NorthernEdge"]
+z_index = -1
+shape = SubResource("WorldBoundaryShape2D_fedht")
 
 [connection signal="evolution_chosen" from="CanvasLayer/UpgradePanel" to="Player" method="_on_upgrade_panel_evolution_chosen"]
 [connection signal="pressed" from="CanvasLayer/UpgradePanel/MarginContainer/VBoxContainer/HBoxContainer2/Upgrade1Button" to="CanvasLayer/UpgradePanel" method="_on_upgrade_1_button_pressed"]

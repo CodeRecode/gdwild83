@@ -149,6 +149,7 @@ texture = ExtResource("19_pbfsw")
 volume_db = -5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_5xgho")
 
 [node name="Scalars" type="Node2D" parent="."]
@@ -174,11 +175,11 @@ sprite_frames = SubResource("SpriteFrames_2hs0m")
 animation = &"tentacles"
 
 [node name="AttackRangeArea2D" type="Area2D" parent="Scalars"]
+visible = false
 collision_layer = 0
 monitorable = false
 
 [node name="AttackRange" type="CollisionShape2D" parent="Scalars/AttackRangeArea2D"]
-position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_4flbx")
 debug_color = Color(0.962607, 0, 0.503595, 0.42)
 
