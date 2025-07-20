@@ -37,7 +37,7 @@
 [sub_resource type="SystemFont" id="SystemFont_6btg4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sl4om"]
-bg_color = Color(0.137255, 0.137255, 0.137255, 0.756863)
+bg_color = Color(0.0962047, 0.0962048, 0.0962047, 0.756863)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fedht"]
 
@@ -357,10 +357,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -531.0
-offset_top = -114.0
-offset_right = 531.0
-offset_bottom = -43.0
+offset_left = -36.5
+offset_top = -44.0
+offset_right = 36.5
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_sl4om")
@@ -374,7 +374,7 @@ theme_override_constants/margin_right = 10
 layout_mode = 2
 theme = ExtResource("1_h6smj")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "The Keplerian slime is a recent transplant to earth, but no stranger to biologists."
+text = "asdf"
 horizontal_alignment = 1
 
 [node name="Animals" type="Node" parent="."]
@@ -1337,6 +1337,7 @@ shape = SubResource("WorldBoundaryShape2D_fedht")
 [connection signal="narrator_died" from="Animals/Narrator" to="CanvasLayer/StoryController" method="_on_narrator_narrator_died"]
 [connection signal="dna_modified" from="Player" to="CanvasLayer/StatsPanel" method="_on_player_dna_modified"]
 [connection signal="dna_modified" from="Player" to="CanvasLayer/StoryController" method="_on_player_dna_modified"]
+[connection signal="evolution_complete" from="Player" to="CanvasLayer/StoryController" method="_on_player_evolution_complete"]
 [connection signal="evolution_triggered" from="Player" to="CanvasLayer/UpgradePanel" method="_on_player_evolution_triggered"]
 [connection signal="health_modified" from="Player" to="CanvasLayer/StatsPanel" method="_on_player_health_modified"]
 [connection signal="player_died" from="Player" to="CanvasLayer/DeathNotif" method="_on_player_player_died"]

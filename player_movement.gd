@@ -11,6 +11,8 @@ const ARMOR_DAMAGE_REDUCTION: float = 0.7
 signal health_modified(new_value: float)
 signal dna_modified(new_value: int)
 signal evolution_triggered(name1: String, name2: String)
+signal evolution_complete(new_level: int)
+
 signal player_died()
 signal player_took_damage()
 signal zoom_camera(new_value: float)
@@ -36,7 +38,7 @@ var armor_multiplier: float = 1.0
 
 
 @export var stored_dna: int = 0
-@export var evolution_thresholds: Array[int] = [10, 50, 250, 1000]
+@export var evolution_thresholds: Array[int] = [10, 50, 250, 500]
 @export var evolution_scales: Array[float] = [1.0, 1.5, 2.0, 3.0, 5.0]
 @export var camera_scales: Array[float] = [1.0, .8, .6, .4, .3]
 var evolution_level: int = 0
@@ -251,6 +253,7 @@ func _on_upgrade_panel_evolution_chosen(choice: int) -> void:
 
 	evolution_level += 1
 	choosing_evolution = false
+	evolution_complete.emit(evolution_level)
 #endregion
 
 
@@ -399,17 +402,17 @@ func _regen_health() -> void:
 
 		var current_scale = scalars.scale
 
-		var enter_tween = create_tween().tween_property(scalars, "scale", scalars.scale*Vector2(.7,1.3), tween_in_time)
+		#var enter_tween = create_tween().tween_property(scalars, "scale", scalars.scale*Vector2(.7,1.3), tween_in_time)
 
-		create_tween().tween_property(body_sprite, "material:shader_parameter/hit_color", Color.GREEN * green_factor, tween_in_time)
+		var enter_tween = create_tween().tween_property(body_sprite, "material:shader_parameter/hit_color", Color.GREEN * green_factor, tween_in_time)
 		create_tween().tween_property(legs_sprite, "material:shader_parameter/hit_color", Color.GREEN * green_factor, tween_in_time)
 		create_tween().tween_property(weapon_sprite, "material:shader_parameter/hit_color", Color.GREEN * green_factor, tween_in_time)
 
 		await enter_tween.finished
 
-		var exit_tween = create_tween().tween_property(scalars, "scale", current_scale, tween_out_time)
+		#var exit_tween = create_tween().tween_property(scalars, "scale", current_scale, tween_out_time)
 
-		create_tween().tween_property(body_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time)
+		var exit_tween = create_tween().tween_property(body_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time)
 		create_tween().tween_property(legs_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time)
 		create_tween().tween_property(weapon_sprite, "material:shader_parameter/hit_color", Color.BLACK, tween_out_time)
 

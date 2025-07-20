@@ -174,7 +174,6 @@ sprite_frames = SubResource("SpriteFrames_2hs0m")
 animation = &"tentacles"
 
 [node name="AttackRangeArea2D" type="Area2D" parent="Scalars"]
-visible = false
 collision_layer = 0
 monitorable = false
 
