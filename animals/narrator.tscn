@@ -1,23 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://b51qjjopgjcy7"]
+[gd_scene load_steps=9 format=3 uid="uid://b51qjjopgjcy7"]
 
-[ext_resource type="Texture2D" uid="uid://dawjarjkcwxcu" path="res://icon.svg" id="1_4pnkk"]
 [ext_resource type="Script" uid="uid://ba7nylvmkcuvb" path="res://animals/narrator.gd" id="1_obntq"]
 [ext_resource type="Material" uid="uid://dxcp0mkutg664" path="res://shaders/animal_shader.tres" id="2_ndmlf"]
 [ext_resource type="PackedScene" uid="uid://8xhu0alqge3g" path="res://audio/hit_fx_player.tscn" id="3_wqwuo"]
+[ext_resource type="Texture2D" uid="uid://c3vnbb4p7e7q5" path="res://sprites/animals/Narrator_0000.png" id="3_xv67k"]
+[ext_resource type="Texture2D" uid="uid://c7n4rbteglc7s" path="res://sprites/animals/Narrator_0001.png" id="4_su570"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a8py2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_4pnkk")
+"texture": ExtResource("3_xv67k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_su570")
 }],
 "loop": true,
 "name": &"default",
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4pnkk"]
-radius = 77.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_xv67k"]
+radius = 79.3095
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ndmlf"]
 radius = 448.286
@@ -27,11 +31,12 @@ script = ExtResource("1_obntq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("2_ndmlf")
+position = Vector2(-31, -122)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_a8py2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("CircleShape2D_4pnkk")
+shape = SubResource("CircleShape2D_xv67k")
 debug_color = Color(0.275355, 0.62802, 0.208024, 0.42)
 
 [node name="SightDetection" type="Area2D" parent="."]

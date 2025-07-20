@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://blp705gs5xhjr" path="res://animals/raccoon/raccoon.gd" id="1_ljubt"]
 [ext_resource type="Shader" uid="uid://3h883wfcxp6t" path="res://shaders/blend.gdshader" id="2_vy4ji"]
-[ext_resource type="Texture2D" uid="uid://b8lrq57athw8g" path="res://sprites/animals/Beetle_0000.png" id="3_rh85y"]
-[ext_resource type="Texture2D" uid="uid://b311qpv1qwr6t" path="res://sprites/animals/Beetle_0001.png" id="4_rm6n8"]
+[ext_resource type="Texture2D" uid="uid://bxrfim6nh2uqo" path="res://sprites/animals/Racoon_0000.png" id="3_ljubt"]
+[ext_resource type="Texture2D" uid="uid://cg80h807wrw1q" path="res://sprites/animals/Racoon_0001.png" id="4_25ybk"]
 [ext_resource type="PackedScene" uid="uid://8xhu0alqge3g" path="res://audio/hit_fx_player.tscn" id="5_o2s7q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j7cay"]
@@ -15,10 +15,10 @@ shader_parameter/hit_color = Color(0, 0, 0, 1)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_rh85y")
+"texture": ExtResource("3_ljubt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_rm6n8")
+"texture": ExtResource("4_25ybk")
 }],
 "loop": true,
 "name": &"default",
@@ -36,12 +36,11 @@ script = ExtResource("1_ljubt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_j7cay")
-position = Vector2(56, -40)
-scale = Vector2(0.5, 0.5)
+position = Vector2(12, -42)
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_j7cay")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_0b4ue")
 debug_color = Color(0.275355, 0.62802, 0.208024, 0.42)
 

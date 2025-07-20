@@ -1,7 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbwsn7sb2rfei"]
+[gd_scene load_steps=8 format=3 uid="uid://cbwsn7sb2rfei"]
 
 [ext_resource type="Texture2D" uid="uid://qvr04ap2ll1s" path="res://sprites/geo/treetrunks.png" id="1_57x6k"]
+[ext_resource type="Shader" uid="uid://3h883wfcxp6t" path="res://shaders/blend.gdshader" id="1_ab2bq"]
 [ext_resource type="Texture2D" uid="uid://bi866eujs2rhr" path="res://sprites/geo/Treetop.png" id="2_ab2bq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ab2bq"]
+shader = ExtResource("1_ab2bq")
+shader_parameter/hit_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_itj60"]
+shader = ExtResource("1_ab2bq")
+shader_parameter/hit_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_57x6k"]
 radius = 100.0
@@ -15,12 +24,14 @@ height = 396.0
 scale = Vector2(0.7, 0.7)
 
 [node name="Trunk" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ab2bq")
 position = Vector2(40, 0)
 texture = ExtResource("1_57x6k")
 region_enabled = true
 region_rect = Rect2(150, 180, 425, 650)
 
 [node name="Top" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_itj60")
 position = Vector2(189, -269)
 texture = ExtResource("2_ab2bq")
 

@@ -215,6 +215,12 @@ parameters/looping = true
 [node name="NarratorDeathPlayer" type="AudioStreamPlayer" parent="CanvasLayer/StoryController"]
 stream = ExtResource("8_v5j5c")
 
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_h6smj")
+
 [node name="Animals" type="Node" parent="."]
 
 [node name="Mouse" parent="Animals" instance=ExtResource("6_1ainy")]
@@ -419,10 +425,10 @@ position = Vector2(-2016, 32)
 position = Vector2(-2776, 336)
 
 [node name="Narrator" parent="Animals" instance=ExtResource("11_2orkt")]
-position = Vector2(206, 343)
+position = Vector2(255, 386)
 
 [node name="Player" parent="." instance=ExtResource("1_u52ul")]
-position = Vector2(204, 98)
+position = Vector2(-60, 90)
 
 [node name="Obstacles" type="Node" parent="."]
 
